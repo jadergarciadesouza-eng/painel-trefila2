@@ -141,6 +141,7 @@ main{flex:1 1 auto;min-height:0;position:relative}
     <button class="aba" role="tab" data-view="inicio" aria-selected="true">Início</button>
     <button class="aba" role="tab" data-view="perfil" aria-selected="false">Perfil de Perdas</button>
     <button class="aba" role="tab" data-view="backlog" aria-selected="false">Backlog</button>
+    <button class="aba" role="tab" data-view="cruzamento" aria-selected="false">Perda &times; Backlog</button>
   </nav>
 </header>
 
@@ -186,6 +187,22 @@ main{flex:1 1 auto;min-height:0;position:relative}
             <a class="lnk" href="backlog.html" target="_blank" rel="noopener">abrir em nova aba</a>
           </div>
         </div>
+
+        <div class="card">
+          <div class="olho">Cruzamento &middot; OEE + SAP</div>
+          <h2>Perda &times; Backlog</h2>
+          <p>A fila de manutenção está apontando para onde a produção perde?
+             Junta as duas dimensões acima.</p>
+          <ul>
+            <li><b>Atacar já</b> — perde muito e tem fila</li>
+            <li><b>Risco oculto</b> — perde muito e quase não tem ordem</li>
+            <li><b>Fila inflada</b> — fila grande sem perda apontada</li>
+          </ul>
+          <div class="pe">
+            <button class="btn" data-abrir="cruzamento">Abrir Perda &times; Backlog</button>
+            <a class="lnk" href="cruzamento.html" target="_blank" rel="noopener">abrir em nova aba</a>
+          </div>
+        </div>
       </div>
 
       <div class="nota" id="nota-fontes">
@@ -201,7 +218,10 @@ main{flex:1 1 auto;min-height:0;position:relative}
 
 <script>
 (function(){
-  var FONTES = {perfil:"perfil.html", backlog:"backlog.html"};
+  var FONTES = {perfil:"perfil.html", backlog:"backlog.html",
+                cruzamento:"cruzamento.html"};
+  var NOMES  = {perfil:"Perfil de Perdas", backlog:"Backlog",
+                cruzamento:"Perda × Backlog"};
   var main = document.querySelector("main");
   var inicio = document.getElementById("v-inicio");
   var abas = Array.prototype.slice.call(document.querySelectorAll(".aba"));
@@ -215,7 +235,7 @@ main{flex:1 1 auto;min-height:0;position:relative}
       var f = document.createElement("iframe");
       f.className = "quadro";
       f.src = FONTES[v];
-      f.title = (v === "perfil" ? "Perfil de Perdas" : "Backlog");
+      f.title = NOMES[v] || v;
       f.setAttribute("loading","lazy");
       main.appendChild(f);
       quadros[v] = f;
@@ -225,7 +245,7 @@ main{flex:1 1 auto;min-height:0;position:relative}
       b.setAttribute("aria-selected", String(b.dataset.view === v));
     });
     document.title = (v === "inicio" ? "Portal Trefila 2"
-      : (v === "perfil" ? "Perfil de Perdas" : "Backlog") + " · Portal Trefila 2");
+      : NOMES[v] + " · Portal Trefila 2");
   }
 
   function ir(v){

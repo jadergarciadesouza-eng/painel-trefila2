@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Perda × Backlog · Trefila 2</title>
+</head>
+<body>
+<title>Perda × Backlog · Trefila 2</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:#eef2f6;color:#141b22;
+  font:15px/1.6 "IBM Plex Sans",system-ui,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.env{max-width:1080px;margin:0 auto;padding:34px 22px 60px}
+h1{margin:0;font:700 30px/1.15 "Barlow Condensed",sans-serif;letter-spacing:.02em;
+  text-transform:uppercase}
+.hsub{color:#5c6b7a;font-size:13.5px;margin-top:4px}
+.lead{background:#ffffff;border:1px solid #dde4ec;border-left:4px solid #0f6d7d;
+  border-radius:0 10px 10px 0;padding:18px 20px;margin:22px 0 26px;max-width:74ch;
+  color:#3d4c5a;font-size:14.5px}
+h2{font:600 12px/1.3 "IBM Plex Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;
+  color:#141b22;margin:34px 0 4px}
+h2+.h2sub{color:#5c6b7a;font-size:13px;margin:0 0 12px}
+.regua{width:30px;height:3px;background:#0f6d7d;margin:7px 0 13px}
+table{width:100%;border-collapse:collapse;background:#ffffff;
+  border:1px solid #dde4ec;border-radius:10px;overflow:hidden}
+th{font:600 10px/1.3 "IBM Plex Sans",sans-serif;letter-spacing:.09em;text-transform:uppercase;
+  color:#5c6b7a;text-align:left;padding:11px 12px;border-bottom:1.5px solid #dde4ec;
+  background:#ffffff;white-space:nowrap}
+td{padding:11px 12px;border-bottom:1px solid #eef2f6;font-size:14px;vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:nth-child(even) td{background:#f8fafc}
+.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sub{color:#5c6b7a;font-size:11.5px;font-weight:400;margin-top:2px;
+  max-width:34ch;line-height:1.4}
+.fraco{color:#5c6b7a;font-size:12.5px}
+.ast{color:#5c6b7a}
+.chip{display:inline-block;font:600 11.5px/1 "IBM Plex Sans",sans-serif;
+  padding:5px 9px;border-radius:5px;white-space:nowrap}
+.leg{display:flex;gap:11px;align-items:flex-start;margin:7px 0;font-size:13.5px;
+  color:#3d4c5a;max-width:78ch}
+.leg .chip{flex:0 0 auto;margin-top:1px}
+.nota{margin-top:30px;padding-top:17px;border-top:1px solid #dde4ec;
+  color:#5c6b7a;font-size:12.5px;line-height:1.75;max-width:80ch}
+.nota b{color:#3d4c5a}
+.rolo{overflow-x:auto}
+@media(max-width:620px){.env{padding:24px 14px 44px}h1{font-size:24px}}
+</style>
+<div class="env">
+  <h1>Perda × Backlog</h1>
+  <div class="hsub">A fila de manutenção está apontando para onde a produção
+    perde? &middot; janela de 30 dias: 13/08 a 11/09/2026</div>
+
+  <div class="lead"><b>Sim, onde dá para comparar.</b> Nas áreas cujo backlog é mapeado por inteiro (Ovalado, Trefilação), o ranking de perda e o de fila coincidem: a fila está apontando para onde a produção perde.  <b>Cuidado ao ler a Galvanização:</b> só a fatia de backlog marcada por linha entra na conta, então a fila dela aparece <i>menor do que é</i>. Não conclua daí que a linha está sem pendência. O ganho fino, porém, está <b>por máquina</b> —
+    é lá que aparecem as três situações abaixo.</div>
+
+  <div class="leg"><span class="chip" style="color:#9b291f;background:#fbedeb">Atacar já</span><span>Perde muito e tem fila — prioridade.</span></div><div class="leg"><span class="chip" style="color:#9b291f;background:#fbedeb">Risco oculto</span><span>Perde muito mas quase não tem ordem: falha que não virou ordem ou reincide após fechar.</span></div><div class="leg"><span class="chip" style="color:#9c6605;background:#fdf4e3">Fila inflada</span><span>Fila grande sem perda apontada no mês: preventiva represada ou item não-crítico — candidata a repriorizar.</span></div>
+
+  <h2>Por área</h2>
+  <div class="regua"></div>
+  <div class="rolo"><table><thead><tr><th>Área</th><th class="n">Falha 30d</th>
+    <th class="n">Nº falhas</th><th class="n">Backlog aberto</th>
+    <th class="n">Corretivas</th></tr></thead><tbody><tr><td><b>Linha 3</b><div class="sub">Galvanização Linha 3</div></td><td class="n"><b>740 h</b></td><td class="n">153</td><td class="n"><b>122</b> <span class="ast">*</span></td><td class="n">93</td></tr><tr><td><b>Galv L2</b><div class="sub">Galvanização Linha 2</div></td><td class="n"><b>308 h</b></td><td class="n">42</td><td class="n"><b>29</b> <span class="ast">*</span></td><td class="n">27</td></tr><tr><td><b>Trefilação</b><div class="sub">Trefilaria 2</div></td><td class="n"><b>261 h</b></td><td class="n">140</td><td class="n"><b>231</b></td><td class="n">125</td></tr><tr><td><b>Galv L1</b><div class="sub">Galvanização Linha 1</div></td><td class="n"><b>142 h</b></td><td class="n">54</td><td class="n"><b>24</b> <span class="ast">*</span></td><td class="n">22</td></tr><tr><td><b>Ovalado</b><div class="sub">Acabamento (bobinadores de ovalado)</div></td><td class="n"><b>84 h</b></td><td class="n">113</td><td class="n"><b>89</b></td><td class="n">53</td></tr></tbody></table></div>
+
+  <h2>Trefilação — por máquina</h2>
+  <p class="h2sub">Onde o pareamento é limpo: o código SAP <b>MTT42</b> é a
+    <b>TT-242</b> do BI.</p>
+  <div class="rolo"><table><thead><tr><th>Máquina</th><th class="n">Falha 30d</th><th class="n">Nº</th><th class="n">Fila aberta</th><th class="n">Corret.</th><th>Leitura</th></tr></thead><tbody><tr><td><b>TT-242</b><div class="sub">MÁQUINA DE TREFILAR S635/8 (TT-242)</div></td><td class="n">80 h</td><td class="n">29</td><td class="n"><b>21</b></td><td class="n">10</td><td><span class="chip" style="color:#9b291f;background:#fbedeb">Atacar já</span></td></tr><tr><td><b>TT-245</b><div class="sub">MÁQUINA DE TREFILAR S710/6-RT710(TT-245)</div></td><td class="n">62 h</td><td class="n">39</td><td class="n"><b>16</b></td><td class="n">10</td><td><span class="chip" style="color:#9b291f;background:#fbedeb">Atacar já</span></td></tr><tr><td><b>TT-233</b><div class="sub">MAQUINA TREFILAR G016/5(TT233)VER 810.12</div></td><td class="n">47 h</td><td class="n">6</td><td class="n"><b>7</b></td><td class="n">4</td><td><span class="chip" style="color:#9b291f;background:#fbedeb">Risco oculto</span></td></tr><tr><td><b>TT-243</b><div class="sub">MÁQUINA DE TREFILAR S635/9 (TT-243)</div></td><td class="n">18 h</td><td class="n">14</td><td class="n"><b>11</b></td><td class="n">5</td><td><span class="chip" style="color:#9b291f;background:#fbedeb">Atacar já</span></td></tr><tr><td><b>TT-216</b><div class="sub">MAQUINA DE TREFILAR GWDB600/5(TT216)</div></td><td class="n">10 h</td><td class="n">11</td><td class="n"><b>11</b></td><td class="n">5</td><td><span class="chip" style="color:#9b291f;background:#fbedeb">Atacar já</span></td></tr><tr><td><b>TT-235</b><div class="sub">CILINDRO PNEUMATICO DUPLO EFEITO DIA.40X</div></td><td class="n">9 h</td><td class="n">10</td><td class="n"><b>4</b></td><td class="n">—</td><td><span class="chip" style="color:#5c6b7a;background:#f0f4f8">Sob controle</span></td></tr><tr><td><b>TT-240</b><div class="sub">PAINEL ELÉTRICO</div></td><td class="n">8 h</td><td class="n">7</td><td class="n"><b>5</b></td><td class="n">4</td><td><span class="chip" style="color:#5c6b7a;background:#f0f4f8">Sob controle</span></td></tr><tr><td><b>TT-237</b><div class="sub">MAQUINA DE RETREFILAR S400(TT-237)</div></td><td class="n">7 h</td><td class="n">6</td><td class="n"><b>3</b></td><td class="n">2</td><td><span class="chip" style="color:#5c6b7a;background:#f0f4f8">Sob controle</span></td></tr><tr><td><b>TT-217</b><div class="sub">MAQUINA DE TREFILAR GWD600/5 (TT217)</div></td><td class="n">6 h</td><td class="n">7</td><td class="n"><b>9</b></td><td class="n">5</td><td><span class="chip" style="color:#9c6605;background:#fdf4e3">Fila inflada</span></td></tr><tr><td><b>TT-239</b><div class="sub">MAQUINA DE RETREFILAR 400(TT239)</div></td><td class="n">4 h</td><td class="n">1</td><td class="n"><b>2</b></td><td class="n">—</td><td><span class="chip" style="color:#5c6b7a;background:#f0f4f8">Sob controle</span></td></tr><tr><td><b>TT-238</b><div class="sub">MAQUINA DE TREFILAR S635(TT238)</div></td><td class="n">3 h</td><td class="n">4</td><td class="n"><b>6</b></td><td class="n">3</td><td><span class="chip" style="color:#5c6b7a;background:#f0f4f8">Sob controle</span></td></tr><tr><td><b>TT-241</b><div class="sub">MÁQUINA DE TREFILAR (7 PASSES) TT-241</div></td><td class="n">3 h</td><td class="n">5</td><td class="n"><b>8</b></td><td class="n">5</td><td><span class="chip" style="color:#9c6605;background:#fdf4e3">Fila inflada</span></td></tr><tr><td><b>TT-214</b><div class="sub">MAQUINA DE TREFILAR GWD600/2/D/4(TT214)</div></td><td class="n">2 h</td><td class="n">1</td><td class="n"><b>3</b></td><td class="n">1</td><td><span class="chip" style="color:#5c6b7a;background:#f0f4f8">Sob controle</span></td></tr><tr><td><b>TT-244</b><div class="sub">MÁQUINA DE TREFILAR S635_4R(TT244)</div></td><td class="n">—</td><td class="n">—</td><td class="n"><b>19</b></td><td class="n">9</td><td><span class="chip" style="color:#9c6605;background:#fdf4e3">Fila inflada</span></td></tr><tr><td><b>TT-213</b><div class="sub">MAQUINA TREF. 3RT1600+1RTC1600(TT-213)</div></td><td class="n">—</td><td class="n">—</td><td class="n"><b>13</b></td><td class="n">10</td><td><span class="chip" style="color:#9c6605;background:#fdf4e3">Fila inflada</span></td></tr><tr><td><b>TT-212</b><div class="sub">MAQUINA DE TREFILAR GN600/4(TT-212)</div></td><td class="n">—</td><td class="n">—</td><td class="n"><b>12</b></td><td class="n">7</td><td><span class="chip" style="color:#9c6605;background:#fdf4e3">Fila inflada</span></td></tr><tr><td><b>TT-210</b><div class="sub">MAQUINA DE TREFILAR KHD11(TT-210)</div></td><td class="n">—</td><td class="n">—</td><td class="n"><b>10</b></td><td class="n">9</td><td><span class="chip" style="color:#9c6605;background:#fdf4e3">Fila inflada</span></td></tr><tr><td><b>TT-236</b><div class="sub">CONJUNTO POSICIONADOR BOBINA (P/ TT-236)</div></td><td class="n">—</td><td class="n">—</td><td class="n"><b>9</b></td><td class="n">5</td><td><span class="chip" style="color:#9c6605;background:#fdf4e3">Fila inflada</span></td></tr></tbody></table></div>
+
+  <h2>Ovalado — por máquina</h2>
+  <div class="regua"></div>
+  <div class="rolo"><table><thead><tr><th>Máquina</th><th class="n">Falha 30d</th><th class="n">Nº</th><th class="n">Fila aberta</th><th class="n">Corret.</th><th>Leitura</th></tr></thead><tbody><tr><td><b>FAO 01</b></td><td class="n">32 h</td><td class="n">47</td><td class="n"><b>28</b></td><td class="n">5</td><td><span class="chip" style="color:#9b291f;background:#fbedeb">Atacar já</span></td></tr><tr><td><b>BAO 01</b></td><td class="n">28 h</td><td class="n">35</td><td class="n"><span class="fraco">sem ordem própria</span></td><td class="n">—</td><td><span class="chip" style="color:#9b291f;background:#fbedeb">Risco oculto</span></td></tr><tr><td><b>BAO 02</b></td><td class="n">24 h</td><td class="n">31</td><td class="n"><span class="fraco">sem ordem própria</span></td><td class="n">—</td><td><span class="chip" style="color:#9b291f;background:#fbedeb">Risco oculto</span></td></tr></tbody></table></div>
+
+  <div class="nota">
+    <b>Como é feito.</b> <b>Falha</b> = parada mecânica, elétrica ou de automação
+    no BI <i>ExOp</i>, nos últimos 30 dias (mesmo grão da aba Perfil de Perdas).
+    <b>Fila</b> = ordens de manutenção <i>em aberto</i> no SAP (IW39). Os cortes:
+    acima de <b>10 h</b> de falha no mês a perda é relevante;
+    a partir de <b>8</b> ordens abertas a fila pesa.<br>
+    <b>Limites, ditos e não escondidos.</b> <span class="ast">*</span> Na
+    Galvanização só parte do backlog é marcada por linha (LIN01/02/03); fornos e
+    bobinadores ficam no nível da célula e não entram na linha. As bancadas
+    <b>BAO 01 e BAO 02 não têm local próprio no SAP</b> — as ordens delas não são
+    separadas, por isso aparecem como “sem ordem própria”. Sem dado pessoal.
+  </div>
+</div>
+
+</body>
+</html>

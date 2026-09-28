@@ -285,7 +285,7 @@ footer .defs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr
       <div><b>Espera</b> — tempo em “Aguardando Manutenção”: o equipamento parou e ainda não foi atendido.</div>
       <div><b>MTBF</b> — horas-equipamento em operação ÷ nº de falhas. O BI não guarda hora de início e fim, então é o parque da área, não uma máquina isolada.</div>
       <div><b>Disponibilidade</b> — tempo de operação ÷ tempo programado para produzir.</div>
-      <div><b>Perda em tonelada</b> — horas paradas × taxa do equipamento: 1.358 kg/h por BAO e 130 kg/h por cabeça da Linha 3. <b>Trefilação e Galvanização L1/L2 ainda não têm taxa informada</b>: nelas a perda aparece como <b>&ldquo;—&rdquo;</b> e a medida é o <b>tempo parado</b> (colunas de hora) e a queda de <b>disponibilidade</b>. Assim que a taxa vier, vira tonelada também.</div>
+      <div><b>Perda em tonelada</b> — horas paradas × taxa do equipamento. Informadas pela área: <b>1.358 kg/h</b> por BAO e <b>130 kg/h</b> por cabeça da Linha 3. As outras três foram <b>calculadas</b> em 28/09/2026 — volume do BI do AOP ÷ horas de operação do BI de OEE: <b>Trefilação 1.342 kg/h</b>, <b>Galv L1 e L2 78 kg/h</b> cada. Números calculados aparecem com <b>~</b> na frente. O método foi conferido nas duas áreas de taxa conhecida e fica dentro de ±15%: serve para <b>dimensionar</b> a perda, não para medir. O AOP não separa L1 de L2, então as duas usam a mesma taxa e a perda de cada uma fica proporcional às horas que ela parou.</div>
       <div><b>Tempo-padrão</b> — abastecimento na BAO tem meta de 3 min por troca e a solda de matéria-prima da Linha 3, 35 min. Nessas duas, só o que passa da meta entra como perda; o tempo previsto é parte do processo.</div>
       <div><b>Contagem de eventos</b> — pela coluna <i>Nº Paradas</i> do BI, que rateia a parada que atravessa turno. Contar linhas infla a média.</div>
       <div><b>Turma</b> — pela escala oficial, não pelo campo do BI, que diverge de forma sistemática.</div>
@@ -324,7 +324,7 @@ const C_MAN = CONC.findIndex(c => c.startsWith("Interrupções de Manutenção")
    130 kg/h por cabeça da Linha 3.
    Onde a parada TEM tempo-padrão (abastecimento 3 min, solda 35 min), só o que
    passa da meta é perda — o tempo previsto é parte do processo, não prejuízo. */
-const CFG = {"taxa": {"ovalado": 1.358, "linha3": 0.13}, "metas": {"ovalado": {"OPE - Abastecimento de Máquina": 3}, "linha3": {"Solda de matéria prima": 35}}};
+const CFG = {"taxa": {"ovalado": 1.358, "linha3": 0.13, "trefilacao": 1.342, "galv_l1": 0.078, "galv_l2": 0.078}, "metas": {"ovalado": {"OPE - Abastecimento de Máquina": 3}, "linha3": {"Solda de matéria prima": 35}}, "estimadas": ["galv_l1", "galv_l2", "trefilacao"]};
 const TAXA = D.areas.map(a => CFG.taxa[a.chave] || 0);
 const METAS = D.areas.map(a => {
   const m = new Map();
@@ -341,12 +341,18 @@ function excedenteH(ai, cai, h, n) {
 }
 const perdaT = (ai, cai, h, n) => excedenteH(ai, cai, h, n) * (TAXA[ai] || 0);
 
-/* Nem toda área tem taxa t/h conhecida — Trefilação e Galvanização L1/L2 ainda
-   não têm (12/09/2026). Onde não tem, a perda NÃO pode virar "0,0 t": mostra
-   "—" e a medida passa a ser o TEMPO parado, que já está nas colunas de hora.
-   Mesma regra do e-mail, para os dois não divergirem. */
+/* Nem toda área tem taxa t/h conhecida. Onde não tem, a perda NÃO pode virar
+   "0,0 t": mostra "—" e a medida passa a ser o TEMPO parado, que já está nas
+   colunas de hora. Mesma regra do e-mail, para os dois não divergirem.
+
+   Desde 28/09/2026 as cinco áreas têm taxa, mas três delas são CALCULADAS
+   (volume do AOP ÷ horas de operação do BI de OEE), não informadas pela área.
+   Ficam marcadas com ~ para ninguém ler estimativa como medição. */
 const temTaxa = ai => (TAXA[ai] || 0) > 0;
-const fmtT = (ai, v) => temTaxa(ai) ? nf(v, 1) + " t" : "—";
+const ESTIMADA = new Set(CFG.estimadas || []);
+const taxaEstimada = ai => ESTIMADA.has(D.areas[ai] && D.areas[ai].chave);
+const fmtT = (ai, v) => !temTaxa(ai) ? "—"
+  : (taxaEstimada(ai) ? "~" : "") + nf(v, 1) + " t";
 
 const nomeTurno = s => { const h = parseInt(s, 10);
   return isNaN(h) ? s : (h >= 5 && h < 12 ? "Manhã" : h >= 12 && h < 20 ? "Tarde" : "Noite"); };

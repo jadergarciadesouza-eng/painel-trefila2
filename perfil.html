@@ -285,7 +285,7 @@ footer .defs{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr
       <div><b>Espera</b> — tempo em “Aguardando Manutenção”: o equipamento parou e ainda não foi atendido.</div>
       <div><b>MTBF</b> — horas-equipamento em operação ÷ nº de falhas. O BI não guarda hora de início e fim, então é o parque da área, não uma máquina isolada.</div>
       <div><b>Disponibilidade</b> — tempo de operação ÷ tempo programado para produzir.</div>
-      <div><b>Perda em tonelada</b> — horas paradas × taxa do equipamento. Informadas pela área: <b>1.358 kg/h</b> por BAO e <b>130 kg/h</b> por cabeça da Linha 3. As outras três foram <b>calculadas</b> em 28/09/2026 — volume do BI do AOP ÷ horas de operação do BI de OEE: <b>Trefilação 1.342 kg/h</b>, <b>Galv L1 e L2 78 kg/h</b> cada. Números calculados aparecem com <b>~</b> na frente. O método foi conferido nas duas áreas de taxa conhecida e fica dentro de ±15%: serve para <b>dimensionar</b> a perda, não para medir. O AOP não separa L1 de L2, então as duas usam a mesma taxa e a perda de cada uma fica proporcional às horas que ela parou.</div>
+      <div><b>Perda em tonelada</b> — horas paradas × taxa do equipamento. Informadas pela área: <b>1.358 kg/h</b> por BAO e <b>130 kg/h</b> por cabeça da Linha 3. As outras três foram <b>calculadas</b> em 28/09/2026 — Real da planilha do controle ÷ horas de operação do BI de OEE: <b>Trefilação 1.357 kg/h</b>, <b>Galv L1 46 kg/h</b> e <b>Galv L2 111 kg/h</b>. Números calculados aparecem com <b>~</b> na frente. O método foi conferido nas duas áreas de taxa conhecida e fica dentro de ±15%: serve para <b>dimensionar</b> a perda, não para medir.</div>
       <div><b>Tempo-padrão</b> — abastecimento na BAO tem meta de 3 min por troca e a solda de matéria-prima da Linha 3, 35 min. Nessas duas, só o que passa da meta entra como perda; o tempo previsto é parte do processo.</div>
       <div><b>Contagem de eventos</b> — pela coluna <i>Nº Paradas</i> do BI, que rateia a parada que atravessa turno. Contar linhas infla a média.</div>
       <div><b>Turma</b> — pela escala oficial, não pelo campo do BI, que diverge de forma sistemática.</div>
@@ -324,7 +324,7 @@ const C_MAN = CONC.findIndex(c => c.startsWith("Interrupções de Manutenção")
    130 kg/h por cabeça da Linha 3.
    Onde a parada TEM tempo-padrão (abastecimento 3 min, solda 35 min), só o que
    passa da meta é perda — o tempo previsto é parte do processo, não prejuízo. */
-const CFG = {"taxa": {"ovalado": 1.358, "linha3": 0.13, "trefilacao": 1.342, "galv_l1": 0.078, "galv_l2": 0.078}, "metas": {"ovalado": {"OPE - Abastecimento de Máquina": 3}, "linha3": {"Solda de matéria prima": 35}}, "estimadas": ["galv_l1", "galv_l2", "trefilacao"]};
+const CFG = {"taxa": {"ovalado": 1.358, "linha3": 0.13, "trefilacao": 1.357, "galv_l1": 0.046, "galv_l2": 0.111}, "metas": {"ovalado": {"OPE - Abastecimento de Máquina": 3}, "linha3": {"Solda de matéria prima": 35}}, "estimadas": ["galv_l1", "galv_l2", "trefilacao"]};
 const TAXA = D.areas.map(a => CFG.taxa[a.chave] || 0);
 const METAS = D.areas.map(a => {
   const m = new Map();

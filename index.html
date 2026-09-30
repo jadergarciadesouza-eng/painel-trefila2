@@ -142,6 +142,7 @@ main{flex:1 1 auto;min-height:0;position:relative}
     <button class="aba" role="tab" data-view="perfil" aria-selected="false">Perfil de Perdas</button>
     <button class="aba" role="tab" data-view="backlog" aria-selected="false">Backlog</button>
     <button class="aba" role="tab" data-view="cruzamento" aria-selected="false">Perda &times; Backlog</button>
+    <button class="aba" role="tab" data-view="qualidade" aria-selected="false">Qualidade</button>
   </nav>
 </header>
 
@@ -203,6 +204,22 @@ main{flex:1 1 auto;min-height:0;position:relative}
             <a class="lnk" href="cruzamento.html" target="_blank" rel="noopener">abrir em nova aba</a>
           </div>
         </div>
+
+        <div class="card">
+          <div class="olho">Rotina &middot; MES</div>
+          <h2>Qualidade</h2>
+          <p>A inspeção que o operador faz uma vez por turno no Ovalado está
+             sendo feita? É a mesma rotina cobrada na enquete de fim de turno.</p>
+          <ul>
+            <li>Cobertura por turno, por dia da semana e ao longo dos meses</li>
+            <li>Os maiores buracos — sequências de turnos sem nenhuma inspeção</li>
+            <li>Medições fora de faixa, por propriedade</li>
+          </ul>
+          <div class="pe">
+            <button class="btn" data-abrir="qualidade">Abrir Qualidade</button>
+            <a class="lnk" href="qualidade.html" target="_blank" rel="noopener">abrir em nova aba</a>
+          </div>
+        </div>
       </div>
 
       <div class="nota" id="nota-fontes">
@@ -219,7 +236,7 @@ main{flex:1 1 auto;min-height:0;position:relative}
 <script>
 (function(){
   var FONTES = {perfil:"perfil.html", backlog:"backlog.html",
-                cruzamento:"cruzamento.html"};
+                cruzamento:"cruzamento.html", qualidade:"qualidade.html"};
   var NOMES  = {perfil:"Perfil de Perdas", backlog:"Backlog",
                 cruzamento:"Perda × Backlog"};
   var main = document.querySelector("main");

@@ -142,6 +142,7 @@ main{flex:1 1 auto;min-height:0;position:relative}
     <button class="aba" role="tab" data-view="perfil" aria-selected="false">Perfil de Perdas</button>
     <button class="aba" role="tab" data-view="backlog" aria-selected="false">Backlog</button>
     <button class="aba" role="tab" data-view="cruzamento" aria-selected="false">Perda &times; Backlog</button>
+    <button class="aba" role="tab" data-view="inspecoes" aria-selected="false">Inspeções</button>
   </nav>
 </header>
 
@@ -203,14 +204,32 @@ main{flex:1 1 auto;min-height:0;position:relative}
             <a class="lnk" href="cruzamento.html" target="_blank" rel="noopener">abrir em nova aba</a>
           </div>
         </div>
+
+        <div class="card">
+          <div class="olho">Manutenção &middot; SAP</div>
+          <h2>Inspeções &times; Achados</h2>
+          <p>As rondas de inspeção estão sendo feitas — e isso está esvaziando
+             a fila de achados?</p>
+          <ul>
+            <li>Rondas executadas, bloqueadas e pendentes; planos atrasados</li>
+            <li>Ranking de máquinas por criticidade, achado aberto e idade</li>
+            <li>O roteiro de inspeção cobre o que os achados reclamam?</li>
+          </ul>
+          <div class="pe">
+            <button class="btn" data-abrir="inspecoes">Abrir Inspeções</button>
+            <a class="lnk" href="inspecoes.html" target="_blank" rel="noopener">abrir em nova aba</a>
+          </div>
+        </div>
       </div>
 
       <div class="nota" id="nota-fontes">
         <b>Fontes.</b> Perfil de Perdas: Power BI <i>ExOp - Performance Downstream</i>
         (paradas e tempos por equipamento, turno e turma; a turma vem da escala
         oficial). Backlog: ordens de manutenção do SAP (IW39), extraídas da
-        Trefila 2. <b>Sem dado pessoal:</b> o portal não traz nome nem login de
-        quem criou a ordem. Página não indexada por buscadores.
+        Trefila 2. Inspeções: ordens, confirmações, notas e planos do SAP da
+        Trefila 2. <b>Sem dado pessoal:</b> o portal não traz nome, matrícula nem
+        login de quem criou a ordem ou confirmou a inspeção. Página não indexada
+        por buscadores.
       </div>
     </div>
   </div>
@@ -219,9 +238,9 @@ main{flex:1 1 auto;min-height:0;position:relative}
 <script>
 (function(){
   var FONTES = {perfil:"perfil.html", backlog:"backlog.html",
-                cruzamento:"cruzamento.html"};
+                cruzamento:"cruzamento.html", inspecoes:"inspecoes.html"};
   var NOMES  = {perfil:"Perfil de Perdas", backlog:"Backlog",
-                cruzamento:"Perda × Backlog"};
+                cruzamento:"Perda × Backlog", inspecoes:"Inspeções × Achados"};
   var main = document.querySelector("main");
   var inicio = document.getElementById("v-inicio");
   var abas = Array.prototype.slice.call(document.querySelectorAll(".aba"));

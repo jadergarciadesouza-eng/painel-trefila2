@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Portal Trefila 2 · Pilar</title>
+</head>
+<body>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Portal Trefila 2 · Pilar</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Abas de pilar do Portal Trefila 2 (Segurança · Qualidade · Entrega) — 07/10/2026.
+   Mesma família da Visão da área: ardósia + turquesa, Barlow Condensed nos números, IBM Plex Sans no texto.
+   - estado nunca só por cor: ícone + palavra; 'sem meta' é um estado próprio (cinza), não é 'bom';
+   - dado velho ou ausente aparece como 'sem dado', jamais como zero;
+   - o mesmo arquivo gera a versão pública (só agregados da área) e a local (com turma e grade). */
+:root{
+  color-scheme: light;
+  --chrome:#16202b; --chrome-mut:#93a9bd;
+  --accent:#2aa3b8; --deep:#0f6d7d; --mid:#7cc0cc; --pale:#cfd8e2;
+  --ground:#eef2f6; --surface:#fff; --soft:#f6f8fb;
+  --ink:#141b22; --ink2:#3d4c5a; --muted:#566677; --line:#dde4ec; --line2:#c9d3de;
+  --plan:#7d8b9a;
+  --ok:#1b6e3f;  --ok-bg:#e4f3ea;
+  --at:#8a4b00;  --at-bg:#fdf0d6;  --atf:#c27c0e;
+  --cr:#a8261b;  --cr-bg:#fce6e3;
+  --ne:#4a5866;  --ne-bg:#e9edf2;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  --cond:"Barlow Condensed","IBM Plex Sans",system-ui,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+
+/* moldura (só na versão local; dentro do portal a moldura é a do portal) */
+.chrome{background:var(--chrome);color:#fff}
+.chrome-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 22px 12px;max-width:1280px;margin:0 auto}
+.marca{display:flex;align-items:baseline;gap:12px}
+.marca b{font:700 26px/1 var(--cond);letter-spacing:.055em;text-transform:uppercase}
+.marca span{font-size:12px;color:var(--chrome-mut)}
+.selo{font:500 11px/1.3 var(--sans);color:var(--chrome-mut);text-align:right}
+.selo b{display:block;color:#c9d8e5;font-weight:600}
+.abas{display:flex;gap:2px;padding:0 22px;max-width:1280px;margin:0 auto;overflow-x:auto;scrollbar-width:none}
+.aba{border:0;background:transparent;color:var(--chrome-mut);font:600 14px/1 var(--cond);letter-spacing:.07em;text-transform:uppercase;
+  padding:13px 16px 11px;border-bottom:3px solid transparent;white-space:nowrap;text-decoration:none}
+.aba[aria-selected="true"]{color:#fff;border-bottom-color:var(--accent)}
+.aba:hover{color:#fff}
+body.embed .chrome{display:none}
+body.embed main{padding-top:20px}
+.ver a{color:var(--deep);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line2);cursor:pointer}
+.ver a:hover{border-bottom-color:var(--deep)}
+.aviso-local{margin:14px 0 0;padding:10px 14px;background:var(--soft);border:1px dashed var(--line2);border-radius:8px;font-size:13px;color:var(--ink2)}
+
+/* layout */
+main{max-width:1280px;margin:0 auto;padding:26px 22px 60px}
+.titulo{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 24px}
+h1{margin:0;font:700 34px/1.1 var(--cond);letter-spacing:.02em;text-transform:uppercase}
+.sub{color:var(--muted);font-size:14px;margin-top:6px}
+.legenda{display:flex;flex-wrap:wrap;gap:8px}
+h2.sec{margin:34px 0 4px;font:700 22px/1.2 var(--cond);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.sec-sub{margin:0 0 14px;color:var(--muted);font-size:13.5px;max-width:80ch}
+
+/* chip de estado */
+.chip{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--sans);padding:5px 9px 5px 7px;border-radius:999px;white-space:nowrap}
+.chip svg{width:13px;height:13px;flex:none}
+.chip.ok{background:var(--ok-bg);color:var(--ok)} .chip.at{background:var(--at-bg);color:var(--at)}
+.chip.cr{background:var(--cr-bg);color:var(--cr)} .chip.ne{background:var(--ne-bg);color:var(--ne)}
+
+/* cartões de leitura */
+.decidir{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
+.dec{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.dec .topo{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:24px}
+.decidir.k3{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.dec .pilar{font:600 10.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--deep)}
+.dec h3{margin:0;font:600 17px/1.3 var(--sans)}
+.dec p{margin:0;color:var(--ink2);font-size:14px}
+.dec .rod{margin-top:auto;padding-top:8px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.kv .v{font:700 40px/1 var(--cond);letter-spacing:.01em}
+.kv .v small{font:600 20px var(--cond);color:var(--muted)}
+.kv .l{font-size:12.5px;color:var(--muted);margin-top:2px}
+.vazio{color:var(--muted);font-size:13px;background:var(--soft);border:1px dashed var(--line2);border-radius:8px;padding:10px 12px}
+
+/* painéis e gráficos */
+.painel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.duas{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(500px,1fr))}
+.tres{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.hal{paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.painel h3{margin:0;font:600 17px/1.3 var(--sans)}
+.painel .nota{margin:3px 0 8px;font-size:13px;color:var(--muted)}
+svg.grafico{width:100%;height:auto;display:block;overflow:visible}
+.leg{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0 0;font-size:12.5px;color:var(--ink2)}
+.leg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.leg b{font-weight:700;margin-right:5px}
+.tip{position:fixed;z-index:10;pointer-events:none;background:var(--chrome);color:#fff;font-size:12.5px;line-height:1.5;padding:8px 10px;border-radius:7px;box-shadow:0 4px 14px rgba(0,0,0,.25);display:none;max-width:250px}
+.tip b{font-weight:600}
+details.tab{margin-top:8px;font-size:13px;color:var(--muted)}
+details.tab summary{cursor:pointer;width:max-content}
+details.tab table{margin-top:8px;border-collapse:collapse;width:100%;font-size:12.5px}
+details.tab th,details.tab td{padding:4px 8px;border-bottom:1px solid var(--line);text-align:right}
+details.tab th:first-child,details.tab td:first-child{text-align:left}
+details.tab div{max-height:260px;overflow:auto}
+
+/* linhas de causa / etapa (barra horizontal com rótulo e valor) */
+.causa{display:grid;grid-template-columns:minmax(150px,1.2fr) 2fr 76px;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.causa:last-child{border-bottom:0}
+.causa small{display:block;color:var(--muted);font-size:11.5px}
+.causa .bar{height:10px;border-radius:5px;background:var(--ne-bg)}
+.causa .bar i{display:block;height:100%;border-radius:5px;background:var(--deep)}
+.causa .bar i.ocio{background:var(--plan)}
+.causa .h{text-align:right;font:600 15px var(--cond)}
+.painel h4{margin:16px 0 4px;font:600 11.5px/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* barras empilhadas (distribuição da equipe) */
+.dist{margin:14px 0 0}
+.dist .rot{display:flex;justify-content:space-between;gap:12px;font-size:14px;margin-bottom:5px}
+.dist .rot b{font-weight:600}
+.pilha{display:flex;height:26px;border-radius:6px;overflow:hidden;gap:2px;background:var(--surface)}
+.pilha span{display:flex;align-items:center;justify-content:center;font:600 13px var(--cond);min-width:2px}
+.pilha .z{background:var(--pale);color:var(--ink)} .pilha .p{background:var(--mid);color:var(--ink)} .pilha .m{background:var(--deep);color:#fff}
+.dist .res{font-size:12.5px;color:var(--muted);margin-top:4px}
+
+/* tabelas */
+table.t{width:100%;border-collapse:collapse;font-size:13.5px}
+table.t th{font:600 11px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:2px solid var(--line)}
+table.t td{padding:8px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.t td.n,table.t th.n{text-align:right;white-space:nowrap}
+table.t td.nw{white-space:nowrap}
+.cel{display:flex;align-items:center;gap:8px}
+.barra{position:relative;height:8px;border-radius:4px;background:var(--ne-bg);flex:1;min-width:50px}
+.barra i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--deep)}
+.barra i.f{background:var(--cr)}
+.cel span{font:600 14px var(--cond);min-width:44px;text-align:right}
+td small{display:block;color:var(--muted);font-size:12px}
+.conf{margin-top:14px;padding:14px 18px;background:var(--soft);border:1px solid var(--line);border-radius:10px;font-size:13.5px;color:var(--ink2)}
+.conf b{color:var(--ink)} .conf ul{margin:8px 0 0;padding-left:20px} .conf li{margin:4px 0}
+
+/* grade local (dia × turno × equipamento) */
+table.grade{border-collapse:separate;border-spacing:2px;font-size:11px}
+table.grade th{font:600 10.5px var(--sans);color:var(--muted);padding:0 2px;text-align:center}
+table.grade th.l{text-align:left;padding-right:8px;white-space:nowrap;font-size:12px;color:var(--ink2)}
+table.grade td{width:24px;height:24px;text-align:center;border-radius:4px;font:700 12px var(--sans)}
+td.fa{min-width:150px}
+td.g-feito{background:var(--deep);color:#fff} td.g-nao{background:var(--cr-bg);color:var(--cr)} td.g-parada{background:var(--ne-bg);color:var(--muted)}
+
+/* fontes */
+table.f{width:100%;border-collapse:collapse;font-size:13.5px}
+table.f th{font:600 11px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:2px solid var(--line)}
+table.f td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+.limites{margin:14px 0 0;padding:14px 18px;background:var(--soft);border:1px solid var(--line);border-radius:10px;font-size:13.5px;color:var(--ink2)}
+.limites b{color:var(--ink)} .limites ul{margin:8px 0 0;padding-left:20px} .limites li{margin:4px 0}
+footer{margin-top:30px;color:var(--muted);font-size:12.5px;max-width:90ch}
+
+@media (max-width:620px){
+  main{padding:18px 14px 44px} h1{font-size:27px} .duas{grid-template-columns:1fr} .decidir{grid-template-columns:1fr}
+  .causa{grid-template-columns:1fr 64px} .causa .bar{grid-column:1/-1;order:3}
+  .chrome-top{padding:12px 14px 10px} .selo{display:none} .painel{padding:14px 12px}
+  /* tabela por máquina vira cartão empilhado: as colunas que decidem (% da meta, falta) não ficam atrás de rolagem */
+  table.maq,table.maq tbody,table.maq tr,table.maq td{display:block}
+  table.maq thead{display:none}
+  table.maq tr{padding:10px 0;border-bottom:1px solid var(--line)}
+  table.maq td{border:0;padding:3px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:right;white-space:normal}
+  table.maq td::before{content:attr(data-l);color:var(--muted);font-size:12px;text-align:left;flex:none}
+  table.maq td:first-child{font-size:15px;justify-content:flex-start}
+  table.maq td:first-child::before{content:none}
+  table.maq td.vz{display:none}
+  table.maq td.fa{min-width:0} table.maq td.fa .cel{width:60%}
+  table.maq td small{text-align:right}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+:focus-visible{outline:2px solid var(--deep);outline-offset:2px}
+</style>
+</head>
+<body>
+<header class="chrome">
+  <div class="chrome-top">
+    <div class="marca"><b>Portal Trefila&nbsp;2</b><span>Cosigua &middot; Produção</span></div>
+    <div class="selo"><b>Dados</b><span id="selo"></span></div>
+  </div>
+  <nav class="abas" aria-label="Dimensões" id="nav-local"></nav>
+</header>
+
+<main>
+  <div class="titulo">
+    <div>
+      <h1 id="h1"></h1>
+      <div class="sub" id="sub"></div>
+    </div>
+    <div class="legenda" id="legenda"></div>
+  </div>
+  <div id="app"></div>
+  <h2 class="sec">Fontes e limites</h2>
+  <div class="painel"><div style="overflow-x:auto"><table class="f" id="fontes"></table></div>
+    <div class="limites" id="limites"></div></div>
+  <footer id="como-ler"></footer>
+</main>
+<div class="tip" id="tip" role="status"></div>
+
+<script>
+const D = {"gerado_em": "07/10/2026 11:35", "fechamento": "2026-10-06", "avisos": [], "publico": true, "modo": "", "metas": {}, "perdas": {"periodo": ["2026-10-01", "2026-10-06"], "areas": [{"chave": "ovalado", "nome": "Ovalado", "oee": 0.25578774270277826, "disp": 0.4206418234935694, "desemp": 0.6080891828073027, "qual": 1.0, "disp_ant": 0.6848599072313755, "oee_ant": 0.23962310622059688}, {"chave": "linha3", "nome": "Galvanização Linha 3", "oee": 0.6924695824955633, "disp": 0.7251402664826675, "desemp": 0.9549457043041133, "qual": 1.0, "disp_ant": 0.736982708836495, "oee_ant": 0.6955413396614679}], "causas": [{"area": "Galvanização Linha 3", "tipo": "Tempo Livre", "causa": "Falta de programação", "horas": 1440.5982811111112, "qtd": 199}, {"area": "Galvanização Linha 3", "tipo": "Operacional Externa", "causa": "OPX - Falta de Carretel", "horas": 158.29932666666667, "qtd": 64}, {"area": "Galvanização Linha 3", "tipo": "Operacional Externa", "causa": "OPX - Falta de matéria-prima (arame)", "horas": 155.5842377777778, "qtd": 42}, {"area": "Galvanização Linha 3", "tipo": "Operacional Interna", "causa": "Solda de matéria prima", "horas": 111.57432999999999, "qtd": 102}, {"area": "Ovalado", "tipo": "Tempo Livre", "causa": "EXT- Falta de espaço para Estocagem", "horas": 107.51433527777777, "qtd": 14}, {"area": "Galvanização Linha 3", "tipo": "Operacional Interna", "causa": "Limpeza de Campânula", "horas": 69.30902888888889, "qtd": 13}, {"area": "Galvanização Linha 3", "tipo": "Causa Externa", "causa": "EXT- Falta de ponte (manutenção)", "horas": 49.06111555555555, "qtd": 17}, {"area": "Ovalado", "tipo": "Operacional Externa", "causa": "OPE - Retirada de produção", "horas": 18.653819722222224, "qtd": 7}, {"area": "Ovalado", "tipo": "Operacional Interna", "causa": "OPE -Limpeza de máquina", "horas": 18.18221388888889, "qtd": 24}, {"area": "Ovalado", "tipo": "Tempo Livre", "causa": "Falta de programação", "horas": 16.348333333333333, "qtd": 3}, {"area": "Ovalado", "tipo": "Causa Externa", "causa": "EXT - Falta de ponte (manutenção)", "horas": 13.494619444444444, "qtd": 2}, {"area": "Ovalado", "tipo": "Operacional Interna", "causa": "OPE - Abastecimento de Máquina", "horas": 13.166993611111112, "qtd": 32}], "janela_causas": ["2026-09-30", "2026-10-06"]}, "perdas_det": {"periodo": ["2026-10-01", "2026-10-06"], "periodo_ant": ["2026-09-01", "2026-09-06"], "areas": {"ovalado": {"nome": "Ovalado", "tipos": [{"tipo": "Tempo Livre", "horas": 123.8626686111111, "qtd": 17, "horas_ant": 70.58744333333334}, {"tipo": "Operacional Interna", "horas": 52.93019972222222, "qtd": 101, "horas_ant": 98.31663555555555}, {"tipo": "Operacional Externa", "horas": 17.847628055555553, "qtd": 8, "horas_ant": 6.810820833333333}, {"tipo": "Causa Externa", "horas": 13.494619444444444, "qtd": 2, "horas_ant": null}, {"tipo": "Interrupção Elétrica", "horas": 2.6324933333333336, "qtd": 4, "horas_ant": 8.973495833333333}, {"tipo": "Interrupção Mecânica", "horas": 0.10748777777777777, "qtd": 2, "horas_ant": 9.49053111111111}], "causas": [{"tipo": "Tempo Livre", "causa": "EXT- Falta de espaço para Estocagem", "horas": 107.51433527777777, "qtd": 14}, {"tipo": "Operacional Externa", "causa": "OPE - Retirada de produção", "horas": 17.671230833333333, "qtd": 6}, {"tipo": "Tempo Livre", "causa": "Falta de programação", "horas": 16.348333333333333, "qtd": 3}, {"tipo": "Operacional Interna", "causa": "OPE -Limpeza de máquina", "horas": 16.281710277777776, "qtd": 20}, {"tipo": "Causa Externa", "causa": "EXT - Falta de ponte (manutenção)", "horas": 13.494619444444444, "qtd": 2}, {"tipo": "Operacional Interna", "causa": "OPE - Abastecimento de Máquina", "horas": 9.941265277777777, "qtd": 26}], "maquinas": [{"nome": "OVALADOS 4", "oee": 0.08705194922194924, "disp": 0.08975781326781328, "desemp": 0.9698537213936967, "disp_ant": 0.0}, {"nome": "OVALADOS 3", "oee": 0.10051775353018126, "disp": 0.179256350308642, "desemp": 0.5607486337700767, "disp_ant": 1.0}, {"nome": "OVALADOS 2", "oee": 0.1844674185440917, "disp": 0.3701777829224061, "desemp": 0.4983211501451949, "disp_ant": 1.0}, {"nome": "FAO 01", "oee": 0.23912037037037034, "disp": 0.45104043209876543, "desemp": 0.5301528496186115, "disp_ant": 0.4457365856481482}, {"nome": "BAO 02", "oee": 0.36788500719477174, "disp": 0.6831140620306146, "desemp": 0.5385411128870664, "disp_ant": 0.853263569261333}, {"nome": "BAO 01", "oee": 0.6832059901392136, "disp": 0.7647826683281999, "desemp": 0.8933335160859341, "disp_ant": 0.7315061835662229}], "total_h": 210.87509694444444}, "linha3": {"nome": "Galvanização Linha 3", "tipos": [{"tipo": "Tempo Livre", "horas": 1426.9102072222224, "qtd": 198, "horas_ant": 162.97174611111112}, {"tipo": "Operacional Externa", "horas": 301.43169250000005, "qtd": 101, "horas_ant": 1.2205258333333333}, {"tipo": "Operacional Interna", "horas": 140.43982027777776, "qtd": 97, "horas_ant": 1026.508795}, {"tipo": "Causa Externa", "horas": 49.06111555555555, "qtd": 17, "horas_ant": null}, {"tipo": "Interrupção Mecânica", "horas": 30.232006666666663, "qtd": 11, "horas_ant": 88.76492416666667}, {"tipo": "Interrupção Elétrica", "horas": 3.4958666666666667, "qtd": 1, "horas_ant": 7.416666666666667}], "causas": [{"tipo": "Tempo Livre", "causa": "Falta de programação", "horas": 1416.5982811111114, "qtd": 196}, {"tipo": "Operacional Externa", "causa": "OPX - Falta de matéria-prima (arame)", "horas": 155.5842377777778, "qtd": 42}, {"tipo": "Operacional Externa", "causa": "OPX - Falta de Carretel", "horas": 145.84745472222224, "qtd": 59}, {"tipo": "Operacional Interna", "causa": "Solda de matéria prima", "horas": 78.95834972222221, "qtd": 66}, {"tipo": "Causa Externa", "causa": "EXT- Falta de ponte (manutenção)", "horas": 49.06111555555555, "qtd": 17}, {"tipo": "Operacional Interna", "causa": "Quebra / Embolo de Arame", "horas": 25.595517222222224, "qtd": 11}], "maquinas": [], "total_h": 1951.5707088888892}}, "cruz": {"janela": ["2026-09-07", "2026-10-06"], "rotulos": {"ataca": {"rot": "Atacar já", "nivel": "alto", "txt": "Perde muito e tem fila — prioridade."}, "oculto": {"rot": "Risco oculto", "nivel": "alto", "txt": "Perde muito mas quase não tem ordem: falha que não virou ordem ou reincide após fechar."}, "fila": {"rot": "Fila inflada", "nivel": "medio", "txt": "Fila grande sem perda apontada no mês: preventiva represada ou item não-crítico — candidata a repriorizar."}, "ok": {"rot": "Sob controle", "nivel": "ok", "txt": "Perda e fila baixas."}}, "itens": [{"area": "Trefilação", "nome": "TT-243", "desc": "MÁQUINA DE TREFILAR S635/9 (TT-243)", "falha_h": 47.64152, "falha_n": 24.0, "fila": 10, "quad": "ataca"}, {"area": "Trefilação", "nome": "TT-241", "desc": "MÁQUINA DE TREFILAR (7 PASSES) TT-241", "falha_h": 29.92599, "falha_n": 24.0, "fila": 11, "quad": "ataca"}, {"area": "Trefilação", "nome": "TT-245", "desc": "MÁQUINA DE TREFILAR S710/6-RT710(TT-245)", "falha_h": 20.217769999999998, "falha_n": 34.0, "fila": 20, "quad": "ataca"}, {"area": "Trefilação", "nome": "TT-240", "desc": "MAQUINA DE TREFILAR SN30(TT240)", "falha_h": 39.32749999999999, "falha_n": 25.0, "fila": 7, "quad": "oculto"}, {"area": "Trefilação", "nome": "TT-239", "desc": "MAQUINA DE RETREFILAR 400(TT239)", "falha_h": 28.339569999999995, "falha_n": 11.5668, "fila": 2, "quad": "oculto"}, {"area": "Ovalado", "nome": "BAO 02", "desc": "", "falha_h": 19.86456, "falha_n": 23.0, "fila": null, "quad": "oculto"}, {"area": "Trefilação", "nome": "TT-238", "desc": "MAQUINA DE TREFILAR S635(TT238)", "falha_h": 18.3951, "falha_n": 16.0, "fila": 6, "quad": "oculto"}, {"area": "Trefilação", "nome": "TT-235", "desc": "MAQUINA DE TREFILAR S635(TT235)", "falha_h": 10.2076, "falha_n": 12.0, "fila": 7, "quad": "oculto"}], "areas": [{"area": "ovalado", "falha_h": 38.83265, "fila": 79, "corr": 44}, {"area": "trefilacao", "falha_h": 231.91926999999998, "fila": 227, "corr": 142}, {"area": "galv_l1", "falha_h": 87.51106, "fila": 20, "corr": 19}, {"area": "galv_l2", "falha_h": 89.26935, "fila": 39, "corr": 36}, {"area": "linha3", "falha_h": 210.23492, "fila": 201, "corr": 97}]}}, "pagina": "perdas", "paginas": {"seguranca": "seguranca.html", "qualidade": "qualidade-area.html", "entrega": "entrega.html", "perdas": "perdas.html", "manutencao": "manutencao.html"}};
+
+/* ---------- utilidades ---------- */
+const $ = (id) => document.getElementById(id);
+const NF = (n, d = 0) => (n == null || isNaN(n)) ? "—" : Number(n).toLocaleString("pt-BR", {minimumFractionDigits: d, maximumFractionDigits: d});
+const T = (kg, d = 0) => kg == null ? "—" : NF(kg / 1000, d) + " t";
+const P = (x, d = 1) => x == null ? "—" : NF(x * 100, d) + "%";
+const dm = (iso) => iso ? iso.slice(8, 10) + "/" + iso.slice(5, 7) : "—";
+const dd = (d, iso) => String(d).padStart(2, "0") + "/" + iso.slice(5, 7);
+const E = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+const ok = (b) => b && !b.erro;
+const lista = (xs) => xs.length <= 1 ? xs.join("") : xs.slice(0, -1).join(", ") + " e " + xs[xs.length - 1];
+
+const ICON = {
+  ok: '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  at: '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1.6L13 12H1z" fill="currentColor"/><path d="M7 5.4v3.2M7 10v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  cr: '<svg viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="currentColor"/><path d="M4.6 4.6l4.8 4.8M9.4 4.6L4.6 9.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>',
+  ne: '<svg viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.6 7h4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
+};
+const NOME = {ok: "No alvo", at: "Atenção", cr: "Fora do alvo", ne: "Sem meta definida"};
+const chip = (k, txt) => `<span class="chip ${k}">${ICON[k]}${E(txt || NOME[k])}</span>`;
+const COR = {ok: "var(--ok)", at: "var(--atf)", cr: "var(--cr)", ne: "var(--plan)"};
+/* regra de entrega (a mesma da mensagem do WhatsApp): ≥100 verde, 90–99,9 amarelo, <90 vermelho; usa o número como é mostrado */
+const estEntrega = (r) => { if (r == null) return "ne"; r = Math.round(r * 1000) / 1000; return r >= 1 ? "ok" : r >= 0.9 ? "at" : "cr"; };
+const METAS = D.metas || {};
+const estMeta = (v, m) => (v == null || m == null) ? "ne" : v >= m ? "ok" : v >= m - 0.05 ? "at" : "cr";
+const semDado = (m) => `<div class="vazio"><b>Sem dado.</b> ${E(m)}. Nada foi preenchido com zero.</div>`;
+const sec = (t, sub, corpo, id) => `<h2 class="sec"${id ? ` id="${id}"` : ""}>${E(t)}</h2>${sub ? `<p class="sec-sub">${sub}</p>` : ""}${corpo}`;
+const tabela = (cab, linhas) => `<details class="tab"><summary>Ver como tabela</summary><div><table><thead><tr>${cab.map(c => `<th>${E(c)}</th>`).join("")}</tr></thead><tbody>${
+  linhas.map(l => `<tr>${l.map(c => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div></details>`;
+
+const PAG = D.pagina, fech = D.fechamento;
+const EMBUTIDA = window.parent !== window;            // dentro do portal (iframe)
+if (EMBUTIDA) document.body.classList.add("embed");
+const TITULOS = {seguranca: "Segurança", qualidade: "Qualidade", entrega: "Entrega", perdas: "Perdas", manutencao: "Manutenção"};
+const ARQ = D.paginas || {};
+$("h1").textContent = TITULOS[PAG];
+document.title = TITULOS[PAG] + " · Portal Trefila 2";
+$("selo").textContent = "gerado " + D.gerado_em;
+$("legenda").innerHTML = chip("ok") + chip("at") + chip("cr") + chip("ne");
+/* navegação da versão local: links entre as páginas (no portal quem navega é a casca) */
+$("nav-local").innerHTML = [["visao.html", "Visão da área", "visao"], [ARQ.seguranca, "Segurança", "seguranca"], [ARQ.qualidade, "Qualidade", "qualidade"], [ARQ.entrega, "Entrega", "entrega"], [ARQ.perdas, "Perdas", "perdas"], [ARQ.manutencao, "Manutenção", "manutencao"]]
+  .filter(x => x[0]).map(([h, n, v]) => `<a class="aba" href="${h}" aria-selected="${v === PAG}">${n}</a>`).join("");
+
+/* ---------- tooltip e gráfico de colunas (reuso nas três abas) ---------- */
+const tip = $("tip"), BIND = [];
+function mostraTip(ev, html) {
+  tip.innerHTML = html; tip.style.display = "block";
+  const w = tip.offsetWidth, x = Math.min(innerWidth - w - 10, ev.clientX + 14);
+  tip.style.left = Math.max(8, x) + "px"; tip.style.top = (ev.clientY + 14) + "px";
+}
+const someTip = () => { tip.style.display = "none"; };
+function nice(max, n = 5) {
+  if (!(max > 0)) max = 1;
+  const raw = max / n, mag = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / mag;
+  const s = (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * mag;
+  return {passo: s, topo: Math.ceil(max / s - 1e-9) * s};
+}
+let SEQ = 0;
+/* itens: [{rot, v|null, cor, marca, rotulo, parado, tip}] — um número só aparece se o item pedir (rotulo) */
+function colunas(o) {
+  const id = "col" + (++SEQ);
+  const W = o.W || 600, H = o.H || 250, mL = o.mL ?? 46, mR = o.mR ?? 14, mT = 22, mB = 32, iw = W - mL - mR, ih = H - mT - mB;
+  const n = o.itens.length, sx = iw / n, bw = Math.min(30, sx * 0.64);
+  const nz = o.topo ? {passo: o.passo || o.topo / 4, topo: o.topo} : nice(o.yMax, 4), topo = nz.topo;
+  const X = (i) => mL + sx * (i + 0.5), Y = (v) => mT + ih * (1 - v / topo);
+  let g = "";
+  for (let v = 0; v <= topo + 1e-9; v += nz.passo) g += `<line x1="${mL}" x2="${W - mR}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e6ebf1"/><text x="${mL - 7}" y="${Y(v) + 4}" text-anchor="end" font-size="11" fill="#566677" class="num">${o.yFmt(v)}</text>`;
+  (o.linhas || []).forEach(l => { g += `<line x1="${mL}" x2="${W - mR}" y1="${Y(l.v)}" y2="${Y(l.v)}" stroke="${l.cor || "#16202b"}" stroke-width="1.3" stroke-dasharray="${l.trac ? "5 4" : ""}" opacity=".75"/><text x="${W - mR}" y="${Y(l.v) - 5}" text-anchor="end" font-size="10.5" font-weight="600" fill="${l.cor || "#3d4c5a"}" class="hal">${E(l.rot)}</text>`; });
+  const passoX = o.passoX || 1, y0 = Y(0);
+  o.itens.forEach((it, i) => {
+    const x = X(i);
+    if (it.vs) {          /* barras agrupadas: uma por série (ex.: entrou × saiu) */
+      const m = it.vs.length, w = Math.min(24, sx * 0.84 / m);
+      it.vs.forEach((v, j) => { if (v == null) return; const x0 = x - m * w / 2 + j * w;
+        g += `<rect x="${x0 + 1}" y="${Y(v)}" width="${w - 2}" height="${Math.max(1.5, y0 - Y(v))}" rx="2" fill="${o.cores[j]}"/>`;
+        if (o.rotulosGrupo) g += `<text x="${x0 + w / 2}" y="${Y(v) - 4}" text-anchor="middle" font-size="10.5" font-weight="600" fill="#141b22" class="num hal">${NF(v)}</text>`; });
+    } else if (it.pilha) {   /* barras empilhadas, de baixo para cima */
+      let acc = 0;
+      it.pilha.forEach(s => { if (!s.v) return; const y1 = Y(acc + s.v), y2 = Y(acc);
+        g += `<rect x="${x - bw / 2}" y="${y1}" width="${bw}" height="${Math.max(1, y2 - y1 - 1)}" fill="${s.cor}"/>`; acc += s.v; });
+    }
+    else if (it.v == null) g += `<text x="${x}" y="${y0 - 6}" text-anchor="middle" font-size="14" fill="#7d8b9a">–</text>`;
+    else if (it.parado) g += `<text x="${x}" y="${y0 - 5}" text-anchor="middle" font-size="16" font-weight="700" fill="var(--cr)">✕</text>`;
+    else g += `<rect x="${x - bw / 2}" y="${Y(it.v)}" width="${bw}" height="${Math.max(1.5, y0 - Y(it.v))}" rx="2" fill="${it.cor || "var(--deep)"}"/>`;
+    if (it.marca != null) g += `<line x1="${x - bw / 2 - 3}" x2="${x + bw / 2 + 3}" y1="${Y(it.marca)}" y2="${Y(it.marca)}" stroke="#141b22" stroke-width="2"/>`;
+    if (it.rotulo != null && it.v != null && !it.parado) g += `<text x="${x}" y="${Y(it.v) - 5}" text-anchor="middle" font-size="11.5" font-weight="600" fill="#141b22" class="num hal">${it.rotulo}</text>`;
+    if (i % passoX === 0 || i === n - 1) g += `<text x="${x}" y="${H - 10}" text-anchor="middle" font-size="11" fill="#566677" class="num">${E(it.rot)}</text>`;
+  });
+  g += `<g id="${id}h"></g><rect id="${id}c" x="${mL}" y="${mT}" width="${iw}" height="${ih}" fill="transparent"/>`;
+  BIND.push(() => {
+    const cap = $(id + "c"), hov = $(id + "h"), svg = cap.ownerSVGElement;
+    cap.addEventListener("mousemove", (ev) => {
+      const r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) / r.width * W;
+      const i = Math.max(0, Math.min(n - 1, Math.floor((px - mL) / sx)));
+      hov.innerHTML = `<rect x="${mL + sx * i}" y="${mT}" width="${sx}" height="${ih}" fill="#16202b" opacity=".07"/>`;
+      mostraTip(ev, o.itens[i].tip || "");
+    });
+    cap.addEventListener("mouseleave", () => { hov.innerHTML = ""; someTip(); });
+  });
+  return `<svg class="grafico" viewBox="0 0 ${W} ${H}" role="img" aria-label="${E(o.aria)}">${g}</svg>`;
+}
+const legenda = (xs) => `<div class="leg">${xs.join("")}</div>`;
+const quad = (cor, txt) => `<span><i style="background:${cor}"></i>${txt}</span>`;
+
+/* ======================================================================= ENTREGA */
+function projecao(a) { return a.projecao; }
+function cartaoArea(a) {
+  const k = estEntrega(a.aderencia), det = (D.entrega_det && D.entrega_det.areas || {})[a.chave];
+  const pj = a.meta_mes ? a.projecao / a.meta_mes : null;
+  let rod = "";
+  if (det) {
+    const partes = [`${det.dias_com_meta} dias fechados com meta`, `${det.no_alvo.length} no alvo`, `${det.abaixo.length} abaixo de 90%`];
+    partes.push(det.parados.length ? `<b>${det.parados.length} sem produção (${lista(det.parados.map(d => dd(d, fech)))})</b>` : "nenhum sem produção");
+    rod = partes.join(" · ");
+  }
+  return `<article class="dec"><div class="topo"><span class="pilar">${E(a.nome)}</span>${chip(k)}</div>
+    <div class="kv"><div class="v num">${P(a.aderencia)}</div><div class="l">da meta acumulada até ${dm(fech)}</div></div>
+    <p class="num">Realizado ${T(a.real_acum)} de ${T(a.meta_acum)} previstos. Mantido esse ritmo, o mês fecha em <b>${T(a.projecao)}</b> — ${P(pj, 0)} da meta de ${T(a.meta_mes)}. Para chegar a 100% é preciso produzir <b>${P(a.aderencia_necessaria, 0)}</b> da programação diária nos ${a.dias_restantes} dias com meta que restam.</p>
+    ${rod ? `<div class="rod">${rod}</div>` : ""}</article>`;
+}
+function graficoAcum(a, idx) {
+  const W = 600, H = 300, mL = 52, mR = 96, mT = 16, mB = 30, iw = W - mL - mR, ih = H - mT - mB;
+  const dias = a.dias, n = dias.length, dFech = Number(fech.slice(8, 10));
+  const proj = dias.map((x) => (x.d <= dFech) ? x.acm_real : a.real_acum + (x.acm_meta - dias[dFech - 1].acm_meta) * (a.aderencia || 0));
+  const nz = nice(Math.max(a.meta_mes, ...proj) / 1000), topo = nz.topo * 1000, passo = nz.passo * 1000;
+  const X = (d) => mL + iw * ((d - 1) / (n - 1)), Y = (v) => mT + ih * (1 - v / topo);
+  let g = "";
+  for (let v = 0; v <= topo + 1; v += passo) g += `<line x1="${mL}" x2="${W - mR}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e6ebf1"/><text x="${mL - 8}" y="${Y(v) + 4}" text-anchor="end" font-size="11" fill="#566677" class="num">${NF(v / 1000)}</text>`;
+  g += `<text x="${mL - 8}" y="${mT - 6}" text-anchor="end" font-size="10.5" fill="#566677">t</text>`;
+  [1, 8, 15, 22, 29].filter(d => d <= n).forEach(d => g += `<text x="${X(d)}" y="${H - 9}" text-anchor="middle" font-size="11" fill="#566677">${dd(d, fech)}</text>`);
+  const pts = (fn, de, ate) => dias.filter(x => x.d >= de && x.d <= ate).map(x => `${X(x.d).toFixed(1)},${Y(fn(x)).toFixed(1)}`).join(" ");
+  const gapKg = a.real_acum - dias[dFech - 1].acm_meta, yR = Y(a.real_acum), yM = Y(dias[dFech - 1].acm_meta), xF = X(dFech);
+  g += `<polyline points="${pts(x => x.acm_meta, 1, n)}" fill="none" stroke="var(--plan)" stroke-width="2"/>`;
+  g += `<polyline points="${pts(x => proj[x.d - 1], dFech, n)}" fill="none" stroke="var(--deep)" stroke-width="2.2" stroke-dasharray="6 5"/>`;
+  g += `<polyline points="${pts(x => x.acm_real, 1, dFech)}" fill="none" stroke="var(--deep)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  g += `<line x1="${xF}" x2="${xF}" y1="${Math.min(yR, yM)}" y2="${Math.max(yR, yM)}" stroke="var(--cr)" stroke-width="2"/>`;
+  g += `<circle cx="${xF}" cy="${yR}" r="4.6" fill="var(--deep)" stroke="#fff" stroke-width="2"/>`;
+  g += `<text x="${xF + 6}" y="${Math.min(yR, yM) - 12}" font-size="12" font-weight="600" fill="var(--cr)" class="num hal">${gapKg >= 0 ? "+" : "−"}${NF(Math.abs(gapKg) / 1000, 1)} t vs. meta em ${dm(fech)}</text>`;
+  const yMeta = Y(a.meta_mes), yProj = Y(proj[n - 1]), sep = Math.abs(yMeta - yProj) < 15 ? 15 : 0;
+  g += `<text x="${W - mR + 8}" y="${Math.min(yMeta, yProj) + 4}" font-size="12" fill="var(--ink2)" font-weight="600" class="num">${yMeta <= yProj ? "Meta " + T(a.meta_mes) : "Proj. " + T(proj[n - 1])}</text>`;
+  g += `<text x="${W - mR + 8}" y="${Math.max(yMeta, yProj) + 4 + sep / 2}" font-size="12" fill="${yMeta <= yProj ? "var(--deep)" : "var(--ink2)"}" font-weight="600" class="num">${yMeta <= yProj ? "Proj. " + T(proj[n - 1]) : "Meta " + T(a.meta_mes)}</text>`;
+  g += `<g id="ah${idx}"></g><rect id="ac${idx}" x="${mL}" y="${mT}" width="${iw}" height="${ih}" fill="transparent"/>`;
+  BIND.push(() => {
+    const cap = $("ac" + idx), hov = $("ah" + idx), svg = cap.ownerSVGElement;
+    cap.addEventListener("mousemove", (ev) => {
+      const r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) / r.width * W;
+      const d = Math.max(1, Math.min(n, Math.round(1 + (px - mL) / iw * (n - 1)))), x = dias[d - 1];
+      hov.innerHTML = `<line x1="${X(d)}" x2="${X(d)}" y1="${mT}" y2="${mT + ih}" stroke="#16202b" stroke-opacity=".35"/>`;
+      mostraTip(ev, `<b>${dd(d, fech)}</b><br>Meta do dia: ${T(x.orc, 1)}<br>` +
+        (d <= dFech ? `Real do dia: ${T(x.real, 1)}<br>Real acumulado: ${T(x.acm_real, 1)}` : `Projeção acumulada: ${T(proj[d - 1], 1)}`) + `<br>Meta acumulada: ${T(x.acm_meta, 1)}`);
+    });
+    cap.addEventListener("mouseleave", () => { hov.innerHTML = ""; someTip(); });
+  });
+  return `<section class="painel"><h3>${E(a.nome)}</h3>
+    <div class="nota num">Realizado ${T(a.real_acum)} de ${T(a.meta_acum)} previstos até ${dm(fech)} — <b>${P(a.aderencia)}</b> · ${chip(estEntrega(a.aderencia))}</div>
+    <svg class="grafico" viewBox="0 0 ${W} ${H}" role="img" aria-label="${E(a.nome)}: realizado acumulado ${T(a.real_acum)} contra meta acumulada ${T(a.meta_acum)} em ${dm(fech)}; projeção de ${T(proj[n - 1])} para meta mensal de ${T(a.meta_mes)}">${g}</svg>
+    ${legenda([quad("var(--deep)", "Realizado acumulado"), quad("var(--plan)", "Meta acumulada"), `<span><b style="color:var(--deep)">- - -</b>Projeção com a aderência do mês</span>`])}
+    ${tabela(["Dia", "Meta do dia", "Real do dia", "Meta acum.", "Real acum."], dias.filter(x => x.d <= dFech).map(x => [dd(x.d, fech), NF(x.orc), NF(x.real), NF(x.acm_meta), NF(x.acm_real)]))}</section>`;
+}
+function graficoDia(a) {
+  const dFech = Number(fech.slice(8, 10));
+  const itens = a.dias.map(x => {
+    const feito = x.d <= dFech, tem = (x.orc || 0) > 0, rot = String(x.d).padStart(2, "0");
+    if (!feito) return {rot, v: 0, marca: tem ? x.orc / 1000 : null, cor: "transparent", tip: `<b>${dd(x.d, fech)}</b><br>Meta do dia: ${T(x.orc, 1)}<br>Ainda não fechou`};
+    const r = tem ? (x.real || 0) / x.orc : null, k = r == null ? "ne" : estEntrega(r);
+    const parado = tem && (x.real || 0) === 0;
+    return {rot, v: x.real == null ? null : x.real / 1000, marca: tem ? x.orc / 1000 : null, parado, cor: COR[k],
+            tip: `<b>${dd(x.d, fech)}</b><br>Meta do dia: ${tem ? T(x.orc, 1) : "sem programação"}<br>Real do dia: ${parado ? "<b>sem produção</b>" : T(x.real, 1)}${r != null ? `<br>${P(r, 0)} da meta do dia` : ""}`};
+  });
+  const ymax = Math.max(...a.dias.map(x => Math.max(x.orc || 0, x.real || 0))) / 1000;
+  return `<section class="painel"><h3>${E(a.nome)}</h3><div class="nota">Toneladas por dia contra a meta do dia (traço preto)</div>` +
+    colunas({itens, yMax: ymax, yFmt: v => NF(v), passoX: 2, aria: `${a.nome}: produção diária contra a meta do dia em ${dm(fech)}`}) +
+    legenda([quad("var(--ok)", "≥ 100% da meta do dia"), quad("var(--atf)", "90 a 99,9%"), quad("var(--cr)", "abaixo de 90%"), `<span><b style="color:var(--cr)">✕</b>sem produção</span>`, `<span><b>▬</b>meta do dia</span>`]) +
+    tabela(["Dia", "Meta do dia", "Real do dia", "% do dia"], a.dias.filter(x => x.d <= dFech).map(x => [dd(x.d, fech), NF(x.orc), NF(x.real), (x.orc > 0 && x.real != null) ? P(x.real / x.orc, 0) : "—"])) + `</section>`;
+}
+function tabelaMaquinas(det) {
+  const ms = det.maquinas || [], conf = det.conferencia;
+  if (!ms.length) return "";
+  const normais = ms.filter(m => m.estado === "normal").sort((a, b) => b.falta - a.falta), outros = ms.filter(m => m.estado !== "normal");
+  const mx = Math.max(...normais.map(m => m.falta), 1);
+  const fora = (conf && conf.fora_do_total) || [];
+  const linha = (m) => {
+    let est, obs = "";
+    if (m.estado === "normal") {
+      est = chip(estEntrega(m.pct));
+      if (m.dias_zero.length) obs = `sem produção em ${lista(m.dias_zero.map(d => dd(d, fech)))}`;
+    } else if (m.estado === "sem_lancamento") {
+      est = chip("ne", "Sem lançamento");
+      obs = `meta lançada e nenhum realizado no mês (${m.dias_sem_lancamento} dias em branco)${fora.includes(m.nome) ? "; a meta desta máquina não entra no total da área" : ""}`;
+    } else { est = chip("ne", "Sem meta lançada"); obs = `produziu ${T(m.real, 1)} sem meta no mês`; }
+    return `<tr><td><b>${E(m.nome)}</b></td><td class="n num" data-l="Meta">${T(m.orc, 1)}</td><td class="n num" data-l="Realizado">${T(m.real, 1)}</td>
+      <td class="nw" data-l="% da meta">${est}${m.pct != null ? ` <b class="num" style="font:700 15px var(--cond);margin-left:4px">${P(m.pct)}</b>` : ""}</td>
+      <td class="fa" data-l="Falta">${m.falta != null ? `<div class="cel"><div class="barra"><i class="f" style="width:${m.falta / mx * 100}%"></i></div><span class="num">${T(m.falta, 1)}</span></div>` : "—"}</td>
+      ${obs ? `<td data-l="Observação"><small>${obs}</small></td>` : `<td class="vz"></td>`}</tr>`;
+  };
+  let h = `<section class="painel"><h3>Ovalado por máquina</h3><div class="nota">Até ${dm(fech)}, ordenado pelo que falta para a meta. A barra mostra quanto cada máquina deve à meta do mês até aqui.</div>
+    <div style="overflow-x:auto"><table class="t maq"><thead><tr><th>Máquina</th><th class="n">Meta</th><th class="n">Realizado</th><th>% da meta</th><th>Falta</th><th>Observação</th></tr></thead><tbody>${normais.concat(outros).map(linha).join("")}</tbody></table></div>`;
+  if (conf) {
+    const li = [];
+    if (fora.length) li.push(`A meta do total da área <b>não inclui</b> ${lista(fora)} (${T(conf.dif_orc, 1)} de meta).`);
+    if (Math.abs(conf.dif_real) > 500) li.push(`O realizado do total da planilha é <b>${T(conf.dif_real, 1)} ${conf.dif_real > 0 ? "maior" : "menor"}</b> que a soma das máquinas: a planilha não detalha essa parte por máquina.`);
+    const semMeta = ms.filter(m => m.estado === "sem_meta");
+    if (semMeta.length) li.push(`${lista(semMeta.map(m => m.nome))} produziu ${T(semMeta.reduce((s, m) => s + m.real, 0), 1)} sem meta lançada; o total da planilha é o que vai para a mensagem de produção.`);
+    h += `<div class="conf"><b>Conferência com o total da planilha.</b> Total: <span class="num">${T(conf.total_real, 1)} de ${T(conf.total_orc, 1)}</span> · soma das máquinas: <span class="num">${T(conf.soma_real, 1)} de ${T(conf.soma_orc, 1)}</span>.${li.length ? "<ul>" + li.map(x => `<li>${x}</li>`).join("") + "</ul>" : ""}</div>`;
+  }
+  return h + `</section>`;
+}
+function secaoAop() {
+  const a = D.aop, det = D.entrega_det, ad = det && det.aop;
+  if (!ok(a)) return semDado("AOP do Power BI indisponível");
+  const dias = (ad && ad.dias) || [];
+  const cheios = dias.reduce((s, x) => s + x.cheios, 0), itens = dias.reduce((s, x) => s + x.itens, 0);
+  const k = estEntrega((a.acumulado || 0) / 100);
+  const graf = dias.length ? colunas({
+    itens: dias.map(x => ({rot: String(x.d).padStart(2, "0"), v: x.pct, rotulo: x.pct == null ? null : x.pct + "%", cor: COR[estEntrega((x.pct || 0) / 100)],
+      tip: `<b>${dd(x.d, fech)}</b><br>AOP do dia: ${x.pct == null ? "sem dado" : x.pct + "%"}<br>${x.cheios} de ${x.itens} itens fecharam 100%`})),
+    topo: Math.max(100, Math.ceil(Math.max(...dias.map(x => x.pct || 0)) / 25) * 25), passo: 25, yFmt: v => v + "%", aria: "AOP por dia", linhas: [{v: 100, rot: "100%", cor: "#1b6e3f"}, {v: 90, rot: "90%", cor: "#8a4b00", trac: true}]
+  }) + legenda([quad("var(--ok)", "≥ 100%"), quad("var(--atf)", "90 a 99,9%"), quad("var(--cr)", "abaixo de 90%")]) +
+    tabela(["Dia", "AOP do dia", "Itens que fecharam 100%"], dias.map(x => [dd(x.d, fech), x.pct == null ? "—" : x.pct + "%", `${x.cheios} de ${x.itens}`])) : (ad && ad.erro ? semDado("Detalhe do AOP indisponível") : "");
+  return `<section class="painel"><h3>AOP — atendimento da ordem</h3>
+    <div class="nota num">Acumulado do mês <b>${NF(a.acumulado, 1)}%</b> até ${dm(a.dia)} · ${chip(k)}${itens ? ` · ${cheios} de ${itens} itens-dia fecharam 100%` : ""}</div>${graf}</section>`;
+}
+function renderEntrega() {
+  const e = D.entrega, det = D.entrega_det;
+  if (!ok(e)) return sec("Entrega", "", semDado("Planilha de controle indisponível"));
+  let h = sec("Para onde o mês caminha", "Realizado contra a meta até o último dia fechado, o que a projeção diz e o que falta para chegar a 100%.", `<div class="decidir">${e.areas.map(cartaoArea).join("")}</div>`);
+  h += sec("Acumulado do mês", "A linha cheia é o realizado acumulado; a cinza, a meta acumulada. A tracejada projeta o restante do mês <b>com a mesma aderência já praticada</b> sobre a meta que ainda falta — a premissa está à vista, não é extrapolação de tendência.",
+    `<div class="duas">${e.areas.map((a, i) => graficoAcum(a, i)).join("")}</div>`);
+  h += sec("Dia a dia", "Onde o mês perdeu produção: cada coluna é um dia fechado, comparado à meta daquele dia. Dia sem produção com meta aparece como ✕, não como barra baixa.",
+    `<div class="duas">${e.areas.map(graficoDia).join("")}</div>`);
+  if (ok(det) && (det.maquinas || []).length) h += sec("Onde está o gap", "Cada máquina do Ovalado contra a própria meta. O total da área vem da planilha; aqui se vê quem o compõe.", tabelaMaquinas(det));
+  h += sec("AOP", "Média simples do realizado por item da ordem, como no Power BI. O dia em andamento não entra no acumulado.", secaoAop());
+  return h;
+}
+
+/* ======================================================================= SEGURANÇA */
+const FRENTES = [["cond", "Condição"], ["ats", "Atitude Segura"], ["rec", "Recusa de Tarefa"]];
+function renderSeguranca() {
+  const s = D.seguranca;
+  if (!ok(s)) return sec("Segurança", "", semDado("Base do Solvace indisponível"));
+  const [ano, mes] = s.competencia.split("-").map(Number), dMes = new Date(ano, mes, 0).getDate();
+  const diaBase = Number((s.base_ate || "").slice(0, 2)) || Number((D.gerado_em || "").slice(0, 2)) || 1, esp = diaBase / dMes;
+  let h = sec("Quem já bateu a meta do mês", `Cada pessoa tem meta de ${s.metas.cond} registros por frente no mês. O estado compara quem já bateu a meta com o ritmo do calendário (dia ${diaBase} de ${dMes} = ${P(esp, 0)} do mês).`,
+    `<div class="decidir k3">${FRENTES.map(([k, nome]) => {
+      const b = s.bateram[k], r = s.total ? b / s.total : 0, est = r >= esp ? "ok" : "at";
+      const extra = k === "rec" && s.recusas_por_tipo && Object.keys(s.recusas_por_tipo).length
+        ? " · " + Object.entries(s.recusas_por_tipo).map(([t, n]) => `${n} de ${E(t)}`).join(", ") : "";
+      return `<article class="dec"><div class="topo"><span class="pilar">${nome}</span>${chip(est, est === "ok" ? "No ritmo" : "Abaixo do ritmo")}</div>
+        <div class="kv"><div class="v num">${b} <small>de ${s.total}</small></div><div class="l">pessoas que bateram a meta de ${s.metas[k]} no mês</div></div>
+        <p class="num">A equipe fez <b>${s.registros[k]}</b> registros${extra}. Para todos baterem a meta ainda faltam <b>${s.faltam[k]}</b> registros.</p></article>`;
+    }).join("")}</div>`);
+  const dist = FRENTES.map(([k, nome]) => {
+    const [z, p, m] = s.hist[k], t = s.total || 1, w = (x) => (x / t * 100).toFixed(2);
+    const seg = (cls, x) => x ? `<span class="${cls}" style="flex:0 0 calc(${w(x)}% - 2px)">${x >= 3 ? x : ""}</span>` : "";
+    return `<div class="dist"><div class="rot"><b>${nome}</b><span class="num">${s.total} pessoas</span></div>
+      <div class="pilha" role="img" aria-label="${nome}: ${z} sem registro, ${p} com registro abaixo da meta, ${m} com a meta batida">${seg("z", z)}${seg("p", p)}${seg("m", m)}</div>
+      <div class="res num">Sem registro: <b>${z}</b> · Com registro, abaixo da meta: <b>${p}</b> · Meta batida: <b>${m}</b></div></div>`;
+  }).join("");
+  h += sec("Como a equipe se distribui", "Só contagens da área: ninguém é identificado. O que mais pesa é o grupo sem nenhum registro no mês.",
+    `<section class="painel">${dist}${legenda([quad("var(--pale)", "Sem registro"), quad("var(--mid)", "Abaixo da meta"), quad("var(--deep)", "Meta batida")])}</section>`);
+  const serieTotal = Array.isArray(s.serie) ? s.serie : null;
+  /* meses vazios no começo (a base ainda não tinha registro nenhum) saem do gráfico e ficam avisados no texto */
+  const ini = serieTotal ? serieTotal.findIndex(m => !m.sem_dado) : -1;
+  const serie = serieTotal ? (ini > 0 ? serieTotal.slice(ini) : serieTotal) : null;
+  if (serie) {
+    const mm = (c) => { const [a, m] = c.split("-"); return ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][Number(m) - 1] + (m === "01" ? "/" + a.slice(2) : ""); };
+    const mmAno = (c) => mm(c).split("/")[0] + "/" + c.slice(2, 4);
+    const par = serie.find(m => m.parcial), fechados = serie.filter(m => !m.parcial && !m.sem_dado);
+    const acima = (par && fechados.length) ? FRENTES.map(([k, n]) => { const mx = Math.max(...fechados.map(m => m[k])); return par[k] > mx ? `${n}: ${par[k]} (melhor mês fechado: ${mx})` : null; }).filter(Boolean) : [];
+    const leitura = acima.length ? ` <b>Mês em curso (dia ${diaBase} de ${dMes}) já acima de todos os meses fechados:</b> ${acima.join("; ")}.` : "";
+    const antes = ini > 0 ? ` Os ${ini} meses anteriores a ${mmAno(serie[0].comp)} não têm nenhum registro da equipe na base e ficaram de fora.` : "";
+    h += sec("Evolução nos últimos meses", `Pessoas que bateram a meta em cada mês, <b>da equipe de hoje</b> (${s.total}). Mês sem nenhum registro da equipe inteira aparece como “–” (sem dado): ${s.total} pessoas sem uma única marcação indicam falta de base, não desempenho.${antes}${leitura}`,
+      `<div class="tres">${FRENTES.map(([k, nome]) => {
+        const its = serie.map(m => m.sem_dado ? {rot: mm(m.comp), v: null, tip: `<b>${mm(m.comp)}</b><br>sem registro na base`}
+          : {rot: mm(m.comp), v: m[k], rotulo: String(m[k]), cor: m.parcial ? "var(--mid)" : "var(--deep)",
+             tip: `<b>${mm(m.comp)}${m.parcial ? " (mês em curso)" : ""}</b><br>${m[k]} de ${m.n} bateram a meta<br>${m["regs_" + (k === "cond" ? "cond" : k === "ats" ? "ats" : "rec")]} registros da equipe`});
+        return `<section class="painel"><h3>${nome}</h3><div class="nota">Pessoas que bateram a meta</div>` +
+          colunas({itens: its, yMax: Math.max(4, ...serie.map(m => m[k] || 0)), yFmt: v => NF(v), passoX: 2, W: 270, H: 210, mL: 28, mR: 8, aria: `${nome}: pessoas que bateram a meta por mês`}) +
+          tabela(["Mês", "Bateram a meta", "Registros"], serie.map(m => [mm(m.comp), m.sem_dado ? "sem dado" : m[k] + " de " + m.n, m.sem_dado ? "—" : m["regs_" + k]])) + `</section>`;
+      }).join("")}</div>${legenda([quad("var(--deep)", "Mês fechado"), quad("var(--mid)", "Mês em curso (parcial)"), `<span><b>–</b>sem dado</span>`])}`);
+  } else h += sec("Evolução nos últimos meses", "", semDado("Histórico mensal indisponível nesta geração"));
+  if (!D.publico && s.por_turma) {
+    const cel = (v, n) => `<div class="cel"><div class="barra"><i style="width:${n ? v / n * 100 : 0}%"></i></div><span class="num">${v}/${n}</span></div>`;
+    h += sec("Por turma (só local)", "O detalhe por turma não vai ao portal público (decisão de 30/09/2026).",
+      `<section class="painel"><table class="t"><thead><tr><th>Turma</th><th>Condição</th><th>Atitude Segura</th><th>Recusa</th><th class="n">Sem nenhum registro</th></tr></thead><tbody>` +
+      Object.entries(s.por_turma).map(([t, v]) => `<tr><td><b>${E(t)}</b></td><td>${cel(v.cond, v.n)}</td><td>${cel(v.ats, v.n)}</td><td>${cel(v.rec, v.n)}</td><td class="n num"><b>${v.zero}</b> de ${v.n}</td></tr>`).join("") + `</tbody></table></section>`);
+  } else if (D.publico) h += `<div class="aviso-local">O detalhe por turma e por pessoa fica na <b>Central do Coordenador</b>, para ser tratado com a equipe. Este portal mostra só o total da área.</div>`;
+  return h;
+}
+
+/* ======================================================================= QUALIDADE */
+function renderQualidade() {
+  const q = D.qualidade;
+  if (!ok(q)) return sec("Qualidade", "", semDado("Base do MES indisponível"));
+  const mq = METAS.qualidade, t = q.por_tipo || {};
+  const kp = (rot, v, n, sub) => `<article class="dec"><div class="topo"><span class="pilar">${rot}</span></div><div class="kv"><div class="v num">${P(n ? v / n : null, 0)}</div><div class="l">${sub}</div></div></article>`;
+  let h = sec("A rotina de análise está sendo cumprida?", `Em cada equipamento e turno com produção, a rotina pede metragem e enrolamento. Mês de 01/${fech.slice(5, 7)} a ${dm(q.ate)}.`,
+    `<div class="decidir k3"><article class="dec"><div class="topo"><span class="pilar">Rotina cumprida</span>${chip(estMeta(q.pct, mq))}</div>
+      <div class="kv"><div class="v num">${P(q.pct, 0)}</div><div class="l num">${q.feitas} de ${q.exigidas} análises exigidas${mq != null ? " · meta " + P(mq, 0) : ""}</div></div></article>
+      ${kp("Metragem feita", t.metragem, t.exigidas, `${t.metragem} de ${t.exigidas} exigidas`)}${kp("Enrolamento feito", t.enrolamento, t.exigidas, `${t.enrolamento} de ${t.exigidas} exigidas`)}</div>`);
+  const dias = (q.por_dia || []).filter(x => x.exigidas >= 0);
+  if (dias.length) {
+    const tot = (xs) => xs.reduce((a, x) => [a[0] + x.feitas, a[1] + x.exigidas], [0, 0]);
+    let leitura = "";
+    if (dias.length >= 5) {
+      const u = dias.slice(-3), ant = dias.slice(0, -3), [f1, e1] = tot(u), [f0, e0] = tot(ant);
+      if (e1 && e0) leitura = `Nos <b>últimos 3 dias</b> a rotina ficou em <b>${P(f1 / e1, 0)}</b> (${f1} de ${e1}); nos dias anteriores do mês foi <b>${P(f0 / e0, 0)}</b> (${f0} de ${e0}).`;
+    }
+    const itens = dias.map(x => {
+      const r = x.exigidas ? x.feitas / x.exigidas : null, rot = String(x.d).padStart(2, "0");
+      return {rot, v: r == null ? null : r * 100, rotulo: dias.length <= 14 && r != null ? Math.round(r * 100) + "%" : null, cor: "var(--deep)",
+        tip: `<b>${dd(x.d, fech)}</b><br>${r == null ? "nenhuma análise exigida (equipamentos parados)" : `${x.feitas} de ${x.exigidas} análises (${P(r, 0)})`}<br>${x.paradas} equipamentos/turnos sem produção`};
+    });
+    h += sec("Dia a dia", `Percentual das análises exigidas que foram feitas em cada dia. ${leitura}`,
+      `<section class="painel">${colunas({itens, yMax: 100, yFmt: v => v + "%", passoX: dias.length > 14 ? 2 : 1, aria: "Análises de qualidade feitas por dia", linhas: mq != null ? [{v: mq * 100, rot: "meta " + P(mq, 0), cor: "#1b6e3f"}] : []})}
+      ${legenda([`<span><b>–</b>nenhuma análise exigida no dia</span>`])}
+      ${tabela(["Dia", "Feitas", "Exigidas", "%"], dias.map(x => [dd(x.d, fech), x.feitas, x.exigidas, x.exigidas ? P(x.feitas / x.exigidas, 0) : "—"]))}</section>`);
+  }
+  if (D.publico) h += `<div class="aviso-local">O detalhe por <b>equipamento, turno e turma</b> da rotina de qualidade fica na Central do Coordenador (decisão de 30/09/2026). Este portal mostra o total da área, o dia a dia e o tipo de análise.</div>`;
+  else {
+    const barra = (m, v) => `<tr><td><b>${E(m)}</b></td><td><div class="cel"><div class="barra"><i style="width:${v.exigidas ? v.feitas / v.exigidas * 100 : 0}%"></i></div><span class="num">${P(v.exigidas ? v.feitas / v.exigidas : null, 0)} · ${v.feitas}/${v.exigidas}</span></div></td></tr>`;
+    const bloco = (tit, obj, chave) => obj ? `<section class="painel"><h3>${tit}</h3><table class="t"><thead><tr><th>${chave}</th><th>Análises feitas / exigidas</th></tr></thead><tbody>${Object.entries(obj).map(([m, v]) => barra(m, v)).join("")}</tbody></table></section>` : "";
+    const NT = {manha: "Manhã", tarde: "Tarde", noite: "Noite"};
+    const turno = q.por_turno ? Object.fromEntries(Object.entries(q.por_turno).map(([k, v]) => [NT[k] || k, v])) : null;
+    h += sec("Por equipamento, turno e turma (só local)", "Detalhe que não vai ao portal público (decisão de 30/09/2026).",
+      `<div class="tres">${bloco("Por equipamento", q.por_maquina, "Equipamento")}${bloco("Por turno", turno, "Turno")}${bloco("Por turma", q.por_turma && Object.fromEntries(Object.entries(q.por_turma).map(([k, v]) => ["Turma " + k, v])), "Turma")}</div>`);
+    if (q.grade && q.grade.length) {
+      const ds = [...new Set(q.grade.map(c => c.d))].sort((a, b) => a - b);
+      const linhas = [...new Set(q.grade.map(c => c.maq + "|" + c.turno))];
+      const ordTurno = {manha: 0, tarde: 1, noite: 2};
+      linhas.sort((a, b) => a.split("|")[0].localeCompare(b.split("|")[0], "pt", {numeric: true}) || ordTurno[a.split("|")[1]] - ordTurno[b.split("|")[1]]);
+      const cel = (m, tn, d) => { const c = q.grade.find(x => x.maq === m && x.turno === tn && x.d === d); if (!c) return "<td></td>";
+        return `<td class="g-${c.e}" title="${dd(d, fech)} · ${E(m)} · ${NT[tn] || tn} · turma ${E(c.turma)} · ${c.e === "feito" ? "feito" : c.e === "nao" ? "NÃO feito" : "sem produção"}">${c.e === "feito" ? "✓" : c.e === "nao" ? "✕" : "·"}</td>`; };
+      h += sec("Grade do mês (só local)", "Cada célula é um equipamento em um turno de um dia: ✓ feita, ✕ não feita, · sem produção (não é exigida). Passe o mouse para ver a turma.",
+        `<section class="painel" style="overflow-x:auto"><table class="grade"><thead><tr><th></th>${ds.map(d => `<th>${String(d).padStart(2, "0")}</th>`).join("")}</tr></thead><tbody>${
+          linhas.map(l => { const [m, tn] = l.split("|"); return `<tr><th class="l">${E(m)} · ${NT[tn] || tn}</th>${ds.map(d => cel(m, tn, d)).join("")}</tr>`; }).join("")}</tbody></table></section>`);
+    }
+  }
+  return h;
+}
+
+/* ======================================================================= comum às telas de detalhe (Fase 3) */
+const VIEWS = (() => { try { return window.top.PORTAL_VIEWS || []; } catch (e) { return []; } })();
+/* link para as páginas de detalhe (só dentro do portal; as abas legadas existem sempre) */
+const irLink = (v, txt) => (EMBUTIDA && (["perfil", "cruzamento", "backlog", "inspecoes"].includes(v) || VIEWS.includes(v)))
+  ? `<a data-ir="${v}" role="link" tabindex="0">${txt}</a>` : "";
+const leituras = (xs) => xs.length ? `<div class="decidir">${xs.map(x => `<article class="dec"><div class="topo"><span class="pilar">${E(x.pilar)}</span>${x.chip || ""}</div><h3>${E(x.titulo)}</h3><p>${x.texto}</p></article>`).join("")}</div>` : "";
+const kpiCard = (pilar, chipHtml, v, l, p) => `<article class="dec"><div class="topo"><span class="pilar">${pilar}</span>${chipHtml || ""}</div><div class="kv"><div class="v num">${v}</div><div class="l">${l}</div></div>${p ? `<p>${p}</p>` : ""}</article>`;
+const barraLinha = (nome, sub, v, mx, txt, cls) => `<div class="causa"><div>${E(nome)}${sub ? `<small>${sub}</small>` : ""}</div><div class="bar" role="img" aria-label="${E(nome)}: ${E(txt)}"><i class="${cls || ""}" style="width:${mx ? Math.max(0, v) / mx * 100 : 0}%"></i></div><div class="h num">${txt}</div></div>`;
+const detalheBarra = (links) => { const l = links.filter(Boolean); return l.length ? `<div class="aviso-local ver" style="margin-top:14px">Detalhe: ${l.join(" · ")}</div>` : ""; };
+
+/* ======================================================================= PERDAS */
+const NM = {"OVALADOS 2": "OV 2", "OVALADOS 3": "OV 3", "OVALADOS 4": "OV 4"};
+const nomeMaq = (n) => NM[n] || n;
+const FALHA = ["Interrupção Mecânica", "Interrupção Elétrica", "Interrupção Automação"];
+function painelTempo(a) {
+  const mx = Math.max(...a.tipos.map(t => t.horas), 1);
+  const causas = a.causas.filter(c => c.tipo !== "Tempo Livre");
+  return `<section class="painel"><h3>${E(a.nome)}</h3><div class="nota">Horas-equipamento parado no mês, por tipo</div>` +
+    a.tipos.map(t => barraLinha(t.tipo, `${NF(t.qtd)} apontamentos${t.horas_ant != null ? ` · mesmo período do mês anterior: ${NF(t.horas_ant)} h` : ""}`, t.horas, mx, NF(t.horas) + " h", t.tipo === "Tempo Livre" ? "ocio" : "")).join("") +
+    (causas.length ? `<h4>Maiores causas (fora o tempo livre)</h4>` + causas.slice(0, 4).map(c => barraLinha(c.causa || "—", `${E(c.tipo || "")} · ${NF(c.qtd)} apontamentos`, c.horas, causas[0].horas, NF(c.horas) + " h")).join("") : "") +
+    tabela(["Tipo", "Horas", "Apontamentos", "Mês anterior (h)"], a.tipos.map(t => [E(t.tipo), NF(t.horas), NF(t.qtd), t.horas_ant == null ? "—" : NF(t.horas_ant)])) + `</section>`;
+}
+function renderPerdas() {
+  const p = D.perdas, det = D.perdas_det;
+  if (!ok(p)) return sec("Perdas", "", semDado("BI de OEE indisponível"));
+  const aOv = p.areas.find(a => a.chave === "ovalado"), aL3 = p.areas.find(a => a.chave === "linha3");
+  const L = [];
+  if (ok(det)) {
+    const ov = det.areas.ovalado, l3 = det.areas.linha3, soma = (a, f) => a.tipos.filter(f).reduce((s, t) => s + t.horas, 0);
+    const baixas = (ov.maquinas || []).filter(m => m.disp != null && m.disp < 0.25), princ = (ov.maquinas || []).filter(m => ["BAO 01", "BAO 02"].includes(m.nome));
+    if (baixas.length && aOv) L.push({pilar: "Ovalado", titulo: `${lista(baixas.map(m => nomeMaq(m.nome)))} com disponibilidade abaixo de 25%`,
+      texto: `Elas puxam a disponibilidade do Ovalado para <b>${P(aOv.disp)}</b>${princ.length ? "; " + lista(princ.map(m => `${nomeMaq(m.nome)} está em ${P(m.disp, 0)}`)) : ""}. O Perfil de Perdas olha só BAO 01, BAO 02 e FAO 01; este OEE inclui todas as máquinas do Ovalado.`});
+    const tl = l3.tipos.find(t => t.tipo === "Tempo Livre");
+    if (tl && l3.total_h) L.push({pilar: "Linha 3", titulo: `${P(tl.horas / l3.total_h, 0)} do tempo parado é tempo livre (falta de programação)`,
+      texto: `${NF(tl.horas)} de ${NF(l3.total_h)} horas-equipamento no mês; falha de equipamento soma ${NF(soma(l3, t => FALHA.includes(t.tipo)))} h. Tempo livre é decisão de planejamento, não de manutenção.`});
+    const topo = [["Ovalado", ov], ["Linha 3", l3]].map(([n, a]) => [n, a.causas.find(c => c.tipo !== "Tempo Livre")]).filter(x => x[1]).sort((x, y) => y[1].horas - x[1].horas)[0];
+    if (topo) L.push({pilar: topo[0], titulo: `Maior causa de parada: ${topo[1].causa}`, texto: `${NF(topo[1].horas)} h em ${NF(topo[1].qtd)} apontamentos no mês (${E(topo[1].tipo || "")}); é a maior parada com causa registrada, excluído o tempo livre.`});
+    const fOv = soma(ov, t => FALHA.includes(t.tipo)), fL3 = soma(l3, t => FALHA.includes(t.tipo));
+    if (ov.total_h && l3.total_h && fOv / ov.total_h < 0.2 && fL3 / l3.total_h < 0.2) L.push({pilar: "Manutenção", titulo: "Falha de equipamento pesa pouco no tempo perdido do mês",
+      texto: `Ovalado ${NF(fOv)} h (${P(fOv / ov.total_h, 0)} do parado) e Linha 3 ${NF(fL3)} h (${P(fL3 / l3.total_h, 0)}). A maior parte do que se perde é tempo livre e parada operacional.`});
+  }
+  let h = sec("O que pesa no tempo perdido", `Mês de ${dm(p.periodo[0])} a ${dm(p.periodo[1])}, nas duas áreas do OEE. Cada leitura cita o número que a sustenta.`, leituras(L) || semDado("Detalhe de horas indisponível"));
+  const fatores = (a) => { const f = [["disponibilidade", a.disp], ["desempenho", a.desemp], ["qualidade", a.qual]].filter(x => x[1] != null).sort((x, y) => x[1] - y[1])[0]; return f ? f[0] : ""; };
+  const card = (a) => { const m = (METAS.oee || {})[a.chave], dp = (a.oee != null && a.oee_ant != null) ? (a.oee - a.oee_ant) * 100 : null;
+    return kpiCard(E(a.nome), chip(estMeta(a.oee, m)), P(a.oee), `OEE até ${dm(p.periodo[1])}${m != null ? " · meta " + P(m, 0) : ""}`,
+      `Disponibilidade <b>${P(a.disp)}</b> × desempenho <b>${P(a.desemp)}</b> × qualidade <b>${P(a.qual, 0)}</b>. O fator que mais limita é a ${fatores(a)}.` +
+      (dp != null ? ` Mês anterior (mesmo período): OEE ${P(a.oee_ant)}, ${dp >= 0 ? "+" : "−"}${NF(Math.abs(dp), 1)} p.p.` : "")); };
+  h += sec("Como as áreas estão rendendo", "OEE = disponibilidade × desempenho × qualidade, do Power BI. “Sem meta definida” não quer dizer bom nem ruim.", `<div class="decidir">${p.areas.map(card).join("")}</div>`);
+  if (ok(det) && (det.areas.ovalado.maquinas || []).length) {
+    const ms = det.areas.ovalado.maquinas;
+    h += sec("Ovalado por máquina", "Da pior para a melhor em OEE. A disponibilidade baixa de OV 2, OV 3 e OV 4 é o que derruba a média do Ovalado.",
+      `<section class="painel"><div style="overflow-x:auto"><table class="t maq"><thead><tr><th>Máquina</th><th>Disponibilidade</th><th class="n">Desempenho</th><th class="n">OEE</th></tr></thead><tbody>${
+        ms.map(m => `<tr><td><b>${E(nomeMaq(m.nome))}</b></td><td data-l="Disponibilidade"><div class="cel"><div class="barra"><i style="width:${(m.disp || 0) * 100}%"></i></div><span class="num">${P(m.disp)}</span></div></td><td class="n num" data-l="Desempenho">${P(m.desemp)}</td><td class="n num" data-l="OEE"><b>${P(m.oee)}</b></td></tr>`).join("")}</tbody></table></div></section>`);
+  }
+  if (ok(det)) h += sec("Para onde foi o tempo", "Horas-equipamento parado no mês. Cinza = tempo livre (falta de programação ou de espaço): é decisão de planejamento. Os tipos “Operacional Interna” e “Externa” mudam de lugar de um mês para o outro (Linha 3: 1.027 h para 140 h e 1 h para 301 h); confira a causa antes de concluir que algo melhorou.",
+    `<div class="duas">${["ovalado", "linha3"].map(k => painelTempo(det.areas[k])).join("")}</div>`);
+  else h += sec("Para onde foi o tempo", "", semDado("BI de paradas indisponível"));
+  if (ok(det) && ok(det.cruz)) {
+    const c = det.cruz, rot = c.rotulos;
+    const linhas = c.itens.map(i => `<tr><td><b>${E(i.nome)}</b><small>${E(i.area)}${i.desc ? " · " + E(i.desc) : ""}</small></td><td class="n num" data-l="Falha 30 d">${NF(i.falha_h, 1)} h</td><td class="n num" data-l="Nº de falhas">${NF(i.falha_n)}</td><td class="n num" data-l="Fila aberta">${i.fila == null ? "sem ordem própria" : NF(i.fila)}</td><td data-l="Leitura">${chip(i.quad === "ataca" ? "cr" : "at", rot[i.quad].rot)}</td></tr>`).join("");
+    h += sec("Perde muito e tem fila", `Falha de equipamento nos últimos 30 dias (${dm(c.janela[0])} a ${dm(c.janela[1])}) cruzada com as ordens abertas no SAP. <b>Atacar já</b>: ${E(rot.ataca.txt)} <b>Risco oculto</b>: ${E(rot.oculto.txt)}`,
+      `<section class="painel"><div style="overflow-x:auto"><table class="t maq"><thead><tr><th>Equipamento</th><th class="n">Falha 30 d</th><th class="n">Nº</th><th class="n">Fila aberta</th><th>Leitura</th></tr></thead><tbody>${linhas || '<tr><td colspan="5">Nenhum equipamento nessas duas situações.</td></tr>'}</tbody></table></div></section>`);
+  }
+  return h + detalheBarra([irLink("perfil", "Perfil de Perdas (por equipamento, causa e turma)"), irLink("cruzamento", "Perda × Backlog (todas as áreas)")]);
+}
+
+/* ======================================================================= MANUTENÇÃO */
+function renderManutencao() {
+  const m = D.manutencao, md = D.manutencao_det, ir = D.insp_res;
+  if (!ok(m)) return sec("Manutenção", "", semDado("Backlog do SAP indisponível"));
+  const f = ok(md) ? md.fluxo : null;
+  const pcH = m.h24 ? m.h24_vencidas / m.h24 : null;
+  const L = [];
+  if (ok(md)) {
+    const e0 = md.etapas[0], tot = md.abertas;
+    if (e0 && tot) L.push({pilar: "Fila", titulo: `${P(e0.qtd / tot, 0)} da fila está aguardando liberação`, texto: `${NF(e0.qtd)} de ${NF(tot)} ordens abertas esperam liberação (mediana ${NF(e0.mediana)} dias, 90% até ${NF(e0.p90)} dias). Só ${NF((md.etapas.find(x => /Programado/.test(x.nome)) || {}).qtd)} estão programadas.`});
+    const v = (f.vazao || []).filter(x => x.mes < D.gerado_em.slice(6, 10) + "-" + D.gerado_em.slice(3, 5));
+    const u = v[v.length - 1];
+    if (u) L.push({pilar: "Fluxo", titulo: u.saiu >= u.entrou ? `A fila encolhe: em ${mesNome(u.mes)} saíram ${NF(u.saiu)} ordens e entraram ${NF(u.entrou)}` : `A fila cresce: em ${mesNome(u.mes)} entraram ${NF(u.entrou)} ordens e saíram ${NF(u.saiu)}`,
+      texto: `Cobertura de ${NF(f.cobertura_semanas, 1)} semanas no ritmo atual de saída (${NF(f.saida_semana)} ordens por semana). Lead time mediano de ${NF(f.lead_mediana)} dias; 90% das ordens fecham em até ${NF(f.lead_p90)} dias.`});
+    const p1 = md.prioridades.find(x => x.prio === "1"), p3 = md.prioridades.find(x => x.prio === "3");
+    if (p1 && p3 && m.vencidas) L.push({pilar: "Prazo", titulo: `24 h e 1 semana concentram ${NF(p1.vencidas + p3.vencidas)} das ${NF(m.vencidas)} ordens vencidas`, texto: `${NF(p1.vencidas)} de ${NF(p1.abertas - p1.sem_prazo)} ordens de 24 h e ${NF(p3.vencidas)} de ${NF(p3.abertas - p3.sem_prazo)} de 1 semana estão fora do prazo. A prioridade vira prazo no SAP; ordens urgentes que ficam abertas viram vencidas.`});
+  }
+  let h = sec("O que decide hoje na fila", `Ordens abertas no SAP (IW39) extraídas em ${E(m.extraido_em)}. Cada leitura cita o número que a sustenta.`, leituras(L) || semDado("Detalhe da fila indisponível"));
+  const cards = [
+    kpiCard("Ordens de 24 h", chip(pcH == null ? "ne" : pcH >= 0.5 ? "cr" : pcH > 0 ? "at" : "ok"), `${NF(m.h24_vencidas)} <small>de ${NF(m.h24)}</small>`, "vencidas (a régua do portal: fora do alvo acima de 50%)"),
+    kpiCard("Fora do prazo", chip("ne"), P(m.com_prazo ? m.vencidas / m.com_prazo : null, 0), `${NF(m.vencidas)} de ${NF(m.com_prazo)} ordens abertas`)];
+  if (f) cards.push(kpiCard("Cobertura da fila", chip("ne"), `${NF(f.cobertura_semanas, 1)} <small>semanas</small>`, "fila ÷ ritmo de saída (média dos últimos 3 meses)"),
+    kpiCard("Lead time", chip("ne"), `${NF(f.lead_mediana)} <small>dias</small>`, `mediana das encerradas · 90% em até ${NF(f.lead_p90)} dias`),
+    kpiCard("No prazo", chip("ne"), `${NF(f.aderencia)}%`, "das ordens encerradas foram concluídas no prazo"));
+  h += sec("Indicadores da fila", "Sem meta definida para estes indicadores; só as ordens de 24 h têm régua.", `<div class="decidir k3">${cards.join("")}</div>`);
+  if (ok(md) && f) {
+    const hoje = D.gerado_em.slice(6, 10) + "-" + D.gerado_em.slice(3, 5);
+    const itens = (f.vazao || []).map(x => ({rot: mesNome(x.mes) + (x.mes >= hoje ? "*" : ""), vs: [x.entrou, x.saiu],
+      tip: `<b>${mesNome(x.mes)}${x.mes >= hoje ? " (mês em curso)" : ""}</b><br>Entraram: ${NF(x.entrou)}<br>Saíram: ${NF(x.saiu)}<br>Saldo: ${x.entrou - x.saiu >= 0 ? "+" : "−"}${NF(Math.abs(x.entrou - x.saiu))}`}));
+    h += sec("Fluxo da fila", E(f.aviso || "Ordens que entraram e ordens que saíram, por mês.") + " * mês em curso, parcial.",
+      `<section class="painel">${colunas({itens, yMax: Math.max(...itens.flatMap(i => i.vs)), cores: ["var(--plan)", "var(--deep)"], rotulosGrupo: true, yFmt: v => NF(v), W: 520, aria: "Ordens que entraram e saíram por mês"})}${legenda([quad("var(--plan)", "Entraram"), quad("var(--deep)", "Saíram")])}
+        ${tabela(["Mês", "Entraram", "Saíram", "Saldo"], f.vazao.map(x => [mesNome(x.mes), NF(x.entrou), NF(x.saiu), (x.entrou - x.saiu >= 0 ? "+" : "−") + NF(Math.abs(x.entrou - x.saiu))]))}</section>`);
+    const mxE = Math.max(...md.etapas.map(e => e.qtd), 1);
+    h += sec("Onde a fila trava", "Ordens abertas por etapa e o tempo que levam nela. Aguardando liberação é a primeira etapa; quanto mais à direita, mais perto de executar.",
+      `<section class="painel">${md.etapas.map(e => barraLinha(e.nome, `mediana ${NF(e.mediana)} dias · 90% até ${NF(e.p90)} dias`, e.qtd, mxE, NF(e.qtd))).join("")}</section>`);
+    const pr = md.prioridades;
+    h += sec("Prioridade × prazo", "Quantas ordens abertas de cada prioridade já passaram do prazo.",
+      `<section class="painel"><div style="overflow-x:auto"><table class="t maq"><thead><tr><th>Prioridade</th><th class="n">Abertas</th><th class="n">Vencidas</th><th>% vencidas</th></tr></thead><tbody>${
+        pr.map(x => { const base = x.abertas - x.sem_prazo; return `<tr><td><b>${E(x.txt || "—")}</b></td><td class="n num" data-l="Abertas">${NF(x.abertas)}</td><td class="n num" data-l="Vencidas">${NF(x.vencidas)}</td><td data-l="% vencidas"><div class="cel"><div class="barra"><i class="f" style="width:${base ? x.vencidas / base * 100 : 0}%"></i></div><span class="num">${P(base ? x.vencidas / base : null, 0)}</span></div></td></tr>`; }).join("")}</tbody></table></div>${
+        pr.some(x => x.sem_prazo) ? `<div class="nota">O percentual vencido é sobre as ordens que têm prazo no SAP (${NF(pr.reduce((s, x) => s + x.sem_prazo, 0))} ordem${pr.reduce((s, x) => s + x.sem_prazo, 0) > 1 ? "s" : ""} sem prazo ficam fora da conta).</div>` : ""}</section>`);
+    const mxC = Math.max(...md.celulas.map(c => c.abertas), 1), mxK = Math.max(...md.cronicas.map(c => c.tot), 1);
+    h += sec("Onde estão as ordens", "Por célula, e os locais com mais corretivas acumuladas.",
+      `<div class="duas"><section class="painel"><h3>Ordens abertas por célula</h3><div class="nota">A parte escura são as vencidas</div>${md.celulas.map(c => `<div class="causa"><div>${E(c.nome)}<small>${NF(c.vencidas)} vencidas de ${NF(c.abertas)}</small></div><div class="bar" role="img" aria-label="${E(c.nome)}: ${NF(c.abertas)} abertas"><i style="width:${c.abertas / mxC * 100}%;background:var(--mid)"></i></div><div class="h num">${NF(c.abertas)}</div></div>`).join("")}</section>
+        <section class="painel"><h3>Locais crônicos</h3><div class="nota">Corretivas já abertas no local, contra o total de ordens dele</div>${md.cronicas.map(c => barraLinha(c.nome || c.local, `${E(c.local || "")} · ${NF(c.corr)} corretivas de ${NF(c.tot)} ordens`, c.corr, mxK, NF(c.corr))).join("")}</section></div>`);
+  }
+  /* inspeções */
+  if (ok(ir)) {
+    const rp = ir.rondas.exigidas ? ir.rondas.feitas / ir.rondas.exigidas : null, vel = ir.horas != null && ir.horas > 36;
+    const cardsI = [
+      kpiCard("Rondas executadas", chip(rp == null ? "ne" : rp >= 0.9 ? "ok" : rp >= 0.75 ? "at" : "cr"), P(rp, 0), `${NF(ir.rondas.feitas)} de ${NF(ir.rondas.exigidas)} em 90 dias · ${NF(ir.rondas.bloqueadas)} bloqueadas`),
+      kpiCard("Planos atrasados", chip(ir.planos.atrasados ? "at" : "ok"), `${NF(ir.planos.atrasados)} <small>de ${NF(ir.planos.total)}</small>`, "ciclo até 90 dias e última ronda há mais de 1,5 ciclo"),
+      kpiCard("Inspeção operacional (ZM05)", chip(ir.zm05.feitas === 0 ? "cr" : "at"), `${NF(ir.zm05.feitas)} <small>de ${NF(ir.zm05.exigidas)}</small>`, "rotina diária do operador, T2 inteira, 90 dias"),
+      kpiCard("Achados abertos", chip("ne"), NF(ir.achados.abertos), `${NF(ir.achados.nao_planejados)} corretivas não planejadas · idade mediana ${NF(ir.achados.idade_mediana)} dias · ${NF(ir.achados.mais_1_ano)} com mais de 1 ano`)];
+    const MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+    const tIt = ir.tendencia.map(t => ({rot: MES[+t.mes.slice(5) - 1], pilha: [{v: t.ex, cor: "#0f6d7d"}, {v: t.pe, cor: "#9b291f"}, {v: t.ci, cor: "#93a9bd"}, {v: t.bl - t.ci, cor: "#5c6b7a"}],
+      tip: `<b>${MES[+t.mes.slice(5) - 1]}/${t.mes.slice(2, 4)}</b><br>Executadas: ${NF(t.ex)}<br>Pendentes: ${NF(t.pe)}<br>Bloqueadas por ciclo: ${NF(t.ci)}<br>Outras bloqueadas: ${NF(t.bl - t.ci)}`}));
+    h += sec("Inspeções", `Rondas e planos de inspeção do SAP. Dado extraído em ${dtBr(ir.extraido_em)}${vel ? " — <b>defasado</b>" : ""}. As rondas estão sendo executadas, mas isso não esvazia a fila de achados: o detalhe por máquina está na página Inspeções.`,
+      `<div class="decidir k3">${cardsI.join("")}</div>
+       <section class="painel" style="margin-top:14px"><h3>Ordens de inspeção por mês</h3><div class="nota">Executadas, pendentes e bloqueadas</div>${colunas({itens: tIt, yMax: Math.max(...ir.tendencia.map(t => t.ex + t.pe + t.bl)), yFmt: v => NF(v), W: 520, passoX: 1, aria: "Ordens de inspeção por mês"})}
+       ${legenda([quad("#0f6d7d", "Executadas"), quad("#9b291f", "Pendentes"), quad("#93a9bd", "Bloqueadas por troca de ciclo"), quad("#5c6b7a", "Outras bloqueadas")])}
+       ${tabela(["Mês", "Executadas", "Pendentes", "Bloq. por ciclo", "Outras bloq."], ir.tendencia.map(t => [t.mes, NF(t.ex), NF(t.pe), NF(t.ci), NF(t.bl - t.ci)]))}</section>`);
+  } else h += sec("Inspeções", "", semDado("Cache das inspeções indisponível"));
+  return h + detalheBarra([irLink("backlog", "Backlog (filtros por área, local e tipo)"), irLink("inspecoes", "Inspeções × Achados (por máquina e roteiro)")]);
+}
+const dtBr = (s) => { const m = /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}:\d{2})/.exec(s || ""); return m ? `${m[3]}/${m[2]}/${m[1]} às ${m[4]}` : E(s); };
+const mesNome = (m) =>["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][Number(m.slice(5, 7)) - 1] + "/" + m.slice(2, 4);
+
+/* ======================================================================= FONTES E LIMITES */
+function fontesELimites() {
+  const linha = (nome, ref, quando, estado, k) => `<tr><td><b>${nome}</b><br><span style="color:var(--muted);font-size:12.5px">${ref}</span></td><td>${quando}</td><td>${chip(k, estado)}</td></tr>`;
+  const r = [], lim = [];
+  const falhou = (k, nome) => { if (D[k] && D[k].erro) r.push(linha(nome, "—", "—", "Sem dado nesta geração", "cr")); };
+  if (PAG === "entrega") {
+    if (ok(D.entrega)) r.push(linha("Produção × meta", "Planilha de controle (SharePoint)", "fechamento de " + dm(fech), "Atual até o último dia lançado", "ok")); else falhou("entrega", "Produção × meta");
+    if (ok(D.aop)) r.push(linha("AOP", "Power BI · atendimento à ordem", "até " + dm(D.aop.dia), "Atual", "ok")); else falhou("aop", "AOP");
+    lim.push("<b>Projeção:</b> realizado até aqui mais a meta que falta × a aderência acumulada do mês. Se o resto do mês for melhor ou pior que a média, a projeção muda.");
+    lim.push("<b>Dia sem produção:</b> real igual a zero num dia com meta. Dia sem meta (sem programação) não entra na conta de dias fechados.");
+    lim.push("<b>Total × máquinas:</b> o total do Ovalado vem da linha de total da planilha (a mesma da mensagem de produção); a soma das máquinas pode diferir, e a diferença aparece na conferência.");
+    lim.push("<b>Metas de OEE e disponibilidade</b> ainda não definidas: ficam na aba de perdas como “sem meta”.");
+  } else if (PAG === "seguranca") {
+    const s = D.seguranca;
+    if (ok(s)) r.push(linha("Segurança proativa", "Solvace via Power BI", E(s.base_ate), s.base_ok ? "Atual" : "Defasada", s.base_ok ? "ok" : "cr")); else falhou("seguranca", "Segurança proativa");
+    lim.push("<b>Meta:</b> " + (ok(s) ? `${s.metas.cond} registros por pessoa e por frente no mês (Condição, Atitude Segura e Recusa de Tarefa)` : "indisponível") + ". Pessoas, nomes e turmas não aparecem no portal.");
+    lim.push("<b>Meses anteriores</b> usam a equipe de hoje; quem entrou ou saiu depois não é refeito para trás.");
+    lim.push("<b>Ritmo:</b> compara a parcela da equipe que já bateu a meta com a parcela do mês que já passou. É uma régua de acompanhamento, não uma meta oficial da área.");
+    if (ok(s) && !s.base_ok) lim.push("<b>Base defasada:</b> o Solvace não atualizou no prazo; os números abaixo podem estar atrás da realidade.");
+  } else if (PAG === "perdas") {
+    if (ok(D.perdas)) r.push(linha("OEE e paradas", "Power BI ExOp · indicadores do dataset de OEE", dm(D.perdas.periodo[0]) + " a " + dm(D.perdas.periodo[1]), "Atual", "ok")); else falhou("perdas", "OEE e paradas");
+    if (ok(D.perdas_det) && ok(D.perdas_det.cruz)) r.push(linha("Perda × Backlog", "Falha de equipamento (BI) × ordens abertas (SAP)", dm(D.perdas_det.cruz.janela[0]) + " a " + dm(D.perdas_det.cruz.janela[1]), "Atual", "ok"));
+    else if (ok(D.perdas_det)) r.push(linha("Perda × Backlog", "—", "—", "Sem dado nesta geração", "cr"));
+    lim.push("<b>Dois recortes de “Ovalado”.</b> O OEE (Power BI) conta todas as máquinas do Ovalado (BAO 01, BAO 02, FAO 01, OV 2, OV 3 e OV 4). A página Perfil de Perdas olha só BAO 01, BAO 02 e FAO 01. Por isso a disponibilidade do Ovalado aqui é menor.");
+    lim.push("<b>Tempo livre</b> é horário de equipamento sem ordem para produzir; vem do apontamento do BI e não é falha. Os tipos “Operacional Interna” e “Externa” mudam de lugar entre meses na Linha 3, então compare o total parado antes de comparar o tipo.");
+    lim.push("<b>Meta de OEE e de disponibilidade</b> ainda não definida: o estado é “sem meta”, nem verde nem vermelho.");
+    lim.push("<b>Esta página não traz pessoa nem a divisão por turma.</b> O detalhe por turma continua só na página Perfil de Perdas, que já existia no portal.");
+  } else if (PAG === "manutencao") {
+    const m = D.manutencao;
+    if (ok(m)) r.push(linha("Backlog de manutenção", "SAP IW39 · centro 1400, locais 1400-TR2*", E(m.extraido_em), "Atual", "ok")); else falhou("manutencao", "Backlog de manutenção");
+    const ir = D.insp_res;
+    if (ok(ir)) r.push(linha("Inspeções", "SAP IW39, IW47, IW29, IP24 e IW49", dtBr(ir.extraido_em), ir.horas != null && ir.horas > 36 ? "Defasada" : "Atual", ir.horas != null && ir.horas > 36 ? "cr" : "ok")); else falhou("insp_res", "Inspeções");
+    lim.push("<b>Prazo da ordem:</b> é a data-base do fim que o SAP calcula na abertura, pela prioridade (24 h, 3 dias, 1 semana…). Ordem vencida é ordem aberta com prazo anterior a hoje.");
+    lim.push("<b>Cobertura e lead time</b> usam o histórico de encerradas dos últimos 24 meses; o gráfico de fluxo mostra só os quatro meses mais recentes, onde a saída está bem representada.");
+    lim.push("<b>Meta do backlog</b> (prazo, cobertura, vencidas) ainda não definida: só as ordens de 24 h têm régua no portal.");
+    lim.push("<b>Sem dado pessoal:</b> o portal não traz nome, matrícula nem login de quem criou a ordem ou confirmou a inspeção.");
+  } else {
+    if (ok(D.qualidade)) r.push(linha("Rotina de qualidade", "MES · análises por equipamento e turno", "até " + dm(D.qualidade.ate), "Atual", "ok")); else falhou("qualidade", "Rotina de qualidade");
+    lim.push("<b>Regra:</b> em cada equipamento e turno com produção, metragem e enrolamento devem ser feitos. Equipamento parado no turno não é exigido.");
+    lim.push("<b>Meta de aderência</b> ainda não definida: por isso o estado é “sem meta”, nem verde nem vermelho.");
+    lim.push("<b>Limite do MES:</b> a medição “fora de faixa” do MES depende de digitação e não é usada aqui como falha de qualidade.");
+  }
+  if ((D.avisos || []).length) lim.push("<b>Fontes com falha na geração:</b> " + D.avisos.map(E).join("; "));
+  $("fontes").innerHTML = `<thead><tr><th>Fonte</th><th>Dado de</th><th>Situação</th></tr></thead><tbody>${r.join("")}</tbody>`;
+  $("limites").innerHTML = "<b>Limites conhecidos</b><ul>" + lim.map(x => "<li>" + x + "</li>").join("") + "</ul>";
+  $("como-ler").innerHTML = "<b>Como ler os estados.</b> Entrega e AOP: No alvo ≥ 100%, Atenção de 90 a 99,9%, Fora do alvo abaixo de 90% (mesma régua das mensagens do WhatsApp). “Sem meta definida” não significa bom nem ruim. Página sem nome de pessoa, matrícula ou login.";
+}
+
+/* ---------- montagem ---------- */
+$("sub").textContent = {
+  entrega: "Fechamento de produção em " + dm(fech) + " · mês até " + dm(fech) + " · atualizado " + D.gerado_em,
+  seguranca: "Registros proativos do mês · base de " + (ok(D.seguranca) ? D.seguranca.base_ate : "—") + " · atualizado " + D.gerado_em,
+  qualidade: "Rotina de análise · mês até " + (ok(D.qualidade) ? dm(D.qualidade.ate) : "—") + " · atualizado " + D.gerado_em,
+  perdas: "OEE, paradas e falhas · mês até " + (ok(D.perdas) ? dm(D.perdas.periodo[1]) : "—") + " · atualizado " + D.gerado_em,
+  manutencao: "Fila de manutenção e inspeções · SAP " + (ok(D.manutencao) ? D.manutencao.extraido_em : "—") + " · atualizado " + D.gerado_em
+}[PAG];
+$("app").innerHTML = {entrega: renderEntrega, seguranca: renderSeguranca, qualidade: renderQualidade, perdas: renderPerdas, manutencao: renderManutencao}[PAG]();
+BIND.forEach(f => f());
+document.querySelectorAll("[data-ir]").forEach(a => {            /* links para as páginas de detalhe do portal */
+  const ir = () => { try { window.top.location.hash = a.dataset.ir; } catch (e) { /* outro domínio: ignora */ } };
+  a.addEventListener("click", ir);
+  a.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); ir(); } });
+});
+fontesELimites();
+</script>
+</body>
+</html>
+
+</body>
+</html>

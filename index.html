@@ -69,6 +69,18 @@ body{
 .aba[aria-selected="true"]{color:#fff;border-bottom-color:var(--accent)}
 .aba:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 
+/* sub-abas: as páginas de detalhe que ficam sob um pilar (Perdas, Manutenção) */
+.subwrap{background:var(--chrome-2)}
+.sub{display:flex;gap:6px;padding:8px 22px 9px;max-width:1500px;margin:0 auto;overflow-x:auto;scrollbar-width:none}
+.sub::-webkit-scrollbar{display:none}
+.subb{
+  appearance:none;border:0;background:transparent;cursor:pointer;color:var(--chrome-mut);
+  font:600 13px/1 var(--sans);padding:7px 14px;border-radius:999px;white-space:nowrap;
+}
+.subb:hover{color:#fff}
+.subb[aria-selected="true"]{background:#fff;color:var(--chrome)}
+.subb:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+
 /* ---------------- área de conteúdo ---------------- */
 main{flex:1 1 auto;min-height:0;position:relative}
 .quadro{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:var(--ground)}
@@ -124,6 +136,8 @@ main{flex:1 1 auto;min-height:0;position:relative}
   .marca b{font-size:21px}
   .selo{display:none}
   .abas{padding:0 8px}
+  .sub{padding:8px 10px 9px;gap:3px}
+  .subb{padding:7px 10px;font-size:12.5px}
   .inicio-in{padding:30px 16px 44px}
   .lead h1{font-size:27px}
 }
@@ -142,12 +156,16 @@ main{flex:1 1 auto;min-height:0;position:relative}
     <button class="aba" role="tab" data-view="seguranca" aria-selected="false" id="aba-seguranca" hidden>Segurança</button>
     <button class="aba" role="tab" data-view="qualidade" aria-selected="false" id="aba-qualidade" hidden>Qualidade</button>
     <button class="aba" role="tab" data-view="entrega" aria-selected="false" id="aba-entrega" hidden>Entrega</button>
+    <button class="aba" role="tab" data-view="perdas" aria-selected="false" id="aba-perdas" hidden>Perdas</button>
+    <button class="aba" role="tab" data-view="manutencao" aria-selected="false" id="aba-manutencao" hidden>Manutenção</button>
     <button class="aba" role="tab" data-view="inicio" aria-selected="true" id="aba-inicio">Início</button>
-    <button class="aba" role="tab" data-view="perfil" aria-selected="false">Perfil de Perdas</button>
-    <button class="aba" role="tab" data-view="backlog" aria-selected="false">Backlog</button>
-    <button class="aba" role="tab" data-view="cruzamento" aria-selected="false">Perda &times; Backlog</button>
-    <button class="aba" role="tab" data-view="inspecoes" aria-selected="false">Inspeções</button>
+    <button class="aba" role="tab" data-view="perfil" aria-selected="false" id="aba-perfil">Perfil de Perdas</button>
+    <button class="aba" role="tab" data-view="backlog" aria-selected="false" id="aba-backlog">Backlog</button>
+    <button class="aba" role="tab" data-view="cruzamento" aria-selected="false" id="aba-cruzamento">Perda &times; Backlog</button>
+    <button class="aba" role="tab" data-view="inspecoes" aria-selected="false" id="aba-inspecoes">Inspeções</button>
   </nav>
+  <!-- páginas de detalhe de um pilar (Perdas: perfil e cruzamento; Manutenção: backlog e inspeções) -->
+  <div class="subwrap" id="subwrap" hidden><nav class="sub" id="subnav" aria-label="Páginas deste pilar"></nav></div>
 </header>
 
 <main>
@@ -205,6 +223,38 @@ main{flex:1 1 auto;min-height:0;position:relative}
           <div class="pe">
             <button class="btn" data-abrir="entrega">Abrir Entrega</button>
             <a class="lnk" href="entrega.html" target="_blank" rel="noopener">abrir em nova aba</a>
+          </div>
+        </div>
+
+        <div class="card" data-extra="perdas" hidden>
+          <div class="olho">Perdas &middot; OEE e paradas</div>
+          <h2>Perdas</h2>
+          <p>O resumo do pilar: como as áreas estão rendendo e para onde foi o
+             tempo. O Perfil de Perdas e o Perda &times; Backlog ficam dentro dele.</p>
+          <ul>
+            <li>OEE por área e por máquina do Ovalado</li>
+            <li>Horas paradas por tipo e as maiores causas</li>
+            <li>Equipamentos que perdem muito e têm fila</li>
+          </ul>
+          <div class="pe">
+            <button class="btn" data-abrir="perdas">Abrir Perdas</button>
+            <a class="lnk" href="perdas.html" target="_blank" rel="noopener">abrir em nova aba</a>
+          </div>
+        </div>
+
+        <div class="card" data-extra="manutencao" hidden>
+          <div class="olho">Manutenção &middot; SAP</div>
+          <h2>Manutenção</h2>
+          <p>O resumo do pilar: a fila de ordens, o que está vencido e as
+             inspeções. O Backlog e as Inspeções ficam dentro dele.</p>
+          <ul>
+            <li>Ordens de 24 h e vencidas, cobertura e lead time</li>
+            <li>Fluxo da fila e onde ela trava</li>
+            <li>Rondas, planos e achados de inspeção</li>
+          </ul>
+          <div class="pe">
+            <button class="btn" data-abrir="manutencao">Abrir Manutenção</button>
+            <a class="lnk" href="manutencao.html" target="_blank" rel="noopener">abrir em nova aba</a>
           </div>
         </div>
 
@@ -289,17 +339,24 @@ main{flex:1 1 auto;min-height:0;position:relative}
 <script>
 (function(){
   var FONTES = {visao:"visao.html", seguranca:"seguranca.html", qualidade:"qualidade-area.html",
-                entrega:"entrega.html", perfil:"perfil.html", backlog:"backlog.html",
+                entrega:"entrega.html", perdas:"perdas.html", manutencao:"manutencao.html",
+                perfil:"perfil.html", backlog:"backlog.html",
                 cruzamento:"cruzamento.html", inspecoes:"inspecoes.html"};
   var NOMES  = {visao:"Visão da área", seguranca:"Segurança", qualidade:"Qualidade", entrega:"Entrega",
+                perdas:"Perdas", manutencao:"Manutenção",
                 perfil:"Perfil de Perdas", backlog:"Backlog",
                 cruzamento:"Perda × Backlog", inspecoes:"Inspeções × Achados"};
+  // Pilares com resumo + páginas de detalhe. Quando o resumo existe nesta publicação, as páginas de detalhe
+  // saem da barra principal e viram sub-abas do pilar (os endereços antigos #perfil, #backlog… continuam valendo).
+  var GRUPOS = {perdas:[["perdas","Resumo"],["perfil","Perfil de Perdas"],["cruzamento","Perda × Backlog"]],
+                manutencao:[["manutencao","Resumo"],["backlog","Backlog"],["inspecoes","Inspeções"]]};
+  var PAI = {perfil:"perdas", cruzamento:"perdas", backlog:"manutencao", inspecoes:"manutencao"};
   // Na publicação isto vira true SÓ se visao.html vai junto: sem a página, a aba nem aparece
   // (uma aba apontando para página inexistente é pior que nenhuma).
   var COM_VISAO = true;
   // Abas de pilar (Segurança, Qualidade, Entrega): a publicação lista aqui só as que vão junto.
-  var PAGINAS = ["seguranca", "qualidade", "entrega"];
-  var OPCIONAIS = {visao:1, seguranca:1, qualidade:1, entrega:1};
+  var PAGINAS = ["seguranca", "qualidade", "entrega", "perdas", "manutencao"];
+  var OPCIONAIS = {visao:1, seguranca:1, qualidade:1, entrega:1, perdas:1, manutencao:1};
   var LIGADAS = {};                       // views opcionais que existem nesta publicação
   if(COM_VISAO){
     LIGADAS.visao = true;
@@ -311,6 +368,9 @@ main{flex:1 1 auto;min-height:0;position:relative}
     document.getElementById("aba-" + v).hidden = false;
     var cartao = document.querySelector('[data-extra="' + v + '"]');
     if(cartao) cartao.hidden = false;
+  });
+  Object.keys(PAI).forEach(function(v){             // detalhe sob um pilar com resumo: sai da barra principal
+    if(LIGADAS[PAI[v]]) document.getElementById("aba-" + v).hidden = true;
   });
   window.PORTAL_VIEWS = Object.keys(LIGADAS);       // as páginas internas só oferecem "Ver detalhe" para o que existe
   if(COM_VISAO){                                      // a Visão vira a entrada; o antigo Início passa a ser o Mapa, no fim
@@ -338,11 +398,28 @@ main{flex:1 1 auto;min-height:0;position:relative}
       quadros[v] = f;
     }
     Object.keys(quadros).forEach(function(k){ quadros[k].hidden = (k !== v); });
+    // pilar a que a página pertence (se o resumo dele existe nesta publicação): a aba principal é a dele
+    var pai = (PAI[v] && LIGADAS[PAI[v]]) ? PAI[v] : ((GRUPOS[v] && LIGADAS[v]) ? v : null);
     abas.forEach(function(b){
-      b.setAttribute("aria-selected", String(b.dataset.view === v));
+      b.setAttribute("aria-selected", String(b.dataset.view === (pai || v)));
     });
+    montaSub(pai, v);
     document.title = (v === "inicio" ? "Portal Trefila 2"
       : (NOMES[v] || v) + " · Portal Trefila 2");
+  }
+
+  function montaSub(pai, v){
+    var wrap = document.getElementById("subwrap"), nav = document.getElementById("subnav");
+    if(!pai){ wrap.hidden = true; return; }
+    nav.innerHTML = "";
+    GRUPOS[pai].forEach(function(x){
+      var b = document.createElement("button");
+      b.className = "subb"; b.type = "button"; b.textContent = x[1];
+      b.setAttribute("aria-selected", String(x[0] === v));
+      b.addEventListener("click", function(){ ir(x[0]); });
+      nav.appendChild(b);
+    });
+    wrap.hidden = false;
   }
 
   function ir(v){

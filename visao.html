@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Portal Trefila 2 · Visão da Área</title>
+</head>
+<body>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Portal Trefila 2 · Visão da Área</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Visão da Área — protótipo (07/10/2026).
+   Mesma família do Portal Trefila 2: ardósia + turquesa, Barlow Condensed nos números, IBM Plex Sans no texto.
+   Regras do desenho:
+   - estado nunca só por cor: ícone + palavra;
+   - 'sem meta' é um estado próprio (cinza), não é 'bom';
+   - dado velho ou ausente aparece como 'sem dado', jamais como zero. */
+:root{
+  color-scheme: light;
+  --chrome:#16202b; --chrome-mut:#93a9bd;
+  --accent:#2aa3b8; --deep:#0f6d7d;
+  --ground:#eef2f6; --surface:#fff; --soft:#f6f8fb;
+  --ink:#141b22; --ink2:#3d4c5a; --muted:#566677; --line:#dde4ec; --line2:#c9d3de;
+  --plan:#7d8b9a;
+  --ok:#1b6e3f;  --ok-bg:#e4f3ea;
+  --at:#8a4b00;  --at-bg:#fdf0d6;
+  --cr:#a8261b;  --cr-bg:#fce6e3;
+  --ne:#4a5866;  --ne-bg:#e9edf2;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  --cond:"Barlow Condensed","IBM Plex Sans",system-ui,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+
+/* chrome */
+.chrome{background:var(--chrome);color:#fff}
+.chrome-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 22px 12px;max-width:1280px;margin:0 auto}
+.marca{display:flex;align-items:baseline;gap:12px}
+.marca b{font:700 26px/1 var(--cond);letter-spacing:.055em;text-transform:uppercase}
+.marca span{font-size:12px;color:var(--chrome-mut)}
+.selo{font:500 11px/1.3 var(--sans);color:var(--chrome-mut);text-align:right}
+.selo b{display:block;color:#c9d8e5;font-weight:600}
+.abas{display:flex;gap:2px;padding:0 22px;max-width:1280px;margin:0 auto;overflow-x:auto;scrollbar-width:none}
+.aba{border:0;background:transparent;color:var(--chrome-mut);font:600 14px/1 var(--cond);letter-spacing:.07em;text-transform:uppercase;
+  padding:13px 16px 11px;border-bottom:3px solid transparent;white-space:nowrap;cursor:default}
+.aba[aria-selected="true"]{color:#fff;border-bottom-color:var(--accent)}
+.aba[aria-disabled="true"]{opacity:.55}
+.aba small{font:500 9px/1 var(--sans);letter-spacing:.06em;margin-left:6px;color:#7f96ab;text-transform:none}
+.amostra{background:#fff4d6;color:#6b4300;border-bottom:1px solid #ecd9a4;font-size:13px}
+.amostra div{max-width:1280px;margin:0 auto;padding:8px 22px}
+/* dentro do portal (iframe) a moldura é a do portal; a versão local mostra a sua */
+body.embed .chrome,body.embed .amostra{display:none}
+body.embed main{padding-top:20px}
+.ver a{color:var(--deep);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line2);cursor:pointer}
+.ver a:hover{border-bottom-color:var(--deep)}
+.aviso-local{margin:14px 0 0;padding:10px 14px;background:var(--soft);border:1px dashed var(--line2);border-radius:8px;font-size:13px;color:var(--ink2)}
+
+/* layout */
+main{max-width:1280px;margin:0 auto;padding:26px 22px 60px}
+.titulo{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 24px}
+h1{margin:0;font:700 34px/1.1 var(--cond);letter-spacing:.02em;text-transform:uppercase}
+.sub{color:var(--muted);font-size:14px;margin-top:6px}
+.legenda{display:flex;flex-wrap:wrap;gap:8px}
+h2.sec{margin:34px 0 4px;font:700 22px/1.2 var(--cond);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.sec-sub{margin:0 0 14px;color:var(--muted);font-size:13.5px;max-width:78ch}
+
+/* chip de estado */
+.chip{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--sans);padding:5px 9px 5px 7px;border-radius:999px;white-space:nowrap}
+.chip svg{width:13px;height:13px;flex:none}
+.chip.ok{background:var(--ok-bg);color:var(--ok)} .chip.at{background:var(--at-bg);color:var(--at)}
+.chip.cr{background:var(--cr-bg);color:var(--cr)} .chip.ne{background:var(--ne-bg);color:var(--ne)}
+
+/* decidir hoje */
+.decidir{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.dec{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.dec .topo{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.dec .pilar{font:600 10.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--deep)}
+.dec h3{margin:0;font:600 17px/1.3 var(--sans)}
+.dec p{margin:0;color:var(--ink2);font-size:14px}
+.dec .ver{margin-top:auto;padding-top:6px;font-size:13px;color:var(--muted)}
+
+/* pilares */
+.pilares{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(236px,1fr))}
+.pil{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px;min-height:268px}
+.pil header{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.pil h3{margin:0;font:700 17px/1 var(--cond);letter-spacing:.09em;text-transform:uppercase;color:var(--ink2)}
+.kv{display:grid;gap:2px}
+.kv .v{font:700 38px/1 var(--cond);letter-spacing:.01em}
+.kv .l{font-size:12.5px;color:var(--muted)}
+.linha{display:grid;gap:3px}
+.linha .r{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.linha .r b{font:700 24px/1 var(--cond)}
+.linha .r span{font-size:12.5px;color:var(--muted)}
+.barra{position:relative;height:8px;border-radius:4px;background:var(--ne-bg);overflow:visible}
+.barra i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--deep)}
+.barra u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);text-decoration:none}
+.pil .fonte{margin-top:auto;padding-top:9px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);line-height:1.45}
+.vazio{color:var(--muted);font-size:13px;background:var(--soft);border:1px dashed var(--line2);border-radius:8px;padding:10px 12px}
+
+/* painéis */
+.painel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.duas{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(500px,1fr))}
+.hal{paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.painel h3{margin:0;font:600 17px/1.3 var(--sans)}
+.painel .nota{margin:3px 0 8px;font-size:13px;color:var(--muted)}
+svg.grafico{width:100%;height:auto;display:block;overflow:visible}
+.tip{position:fixed;z-index:10;pointer-events:none;background:var(--chrome);color:#fff;font-size:12.5px;line-height:1.5;padding:8px 10px;border-radius:7px;box-shadow:0 4px 14px rgba(0,0,0,.25);display:none;max-width:240px}
+.tip b{font-weight:600}
+details.tab{margin-top:8px;font-size:13px;color:var(--muted)}
+details.tab summary{cursor:pointer;width:max-content}
+details.tab table{margin-top:8px;border-collapse:collapse;width:100%;font-size:12.5px}
+details.tab th,details.tab td{padding:4px 8px;border-bottom:1px solid var(--line);text-align:right}
+details.tab th:first-child,details.tab td:first-child{text-align:left}
+details.tab div{max-height:260px;overflow:auto}
+
+/* causas */
+.causa{display:grid;grid-template-columns:minmax(150px,1.2fr) 2fr 70px;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.causa:last-child{border-bottom:0}
+.causa small{display:block;color:var(--muted);font-size:11.5px}
+.causa .bar{height:10px;border-radius:5px;background:var(--ne-bg)}
+.causa .bar i{display:block;height:100%;border-radius:5px;background:var(--deep)}
+.causa .bar i.ocio{background:var(--plan)}
+.causa .h{text-align:right;font:600 15px var(--cond)}
+
+/* tabela por turma */
+table.t{width:100%;border-collapse:collapse;font-size:13.5px}
+table.t th{font:600 11px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:2px solid var(--line)}
+table.t td{padding:8px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.t td.c{width:25%}
+.cel{display:flex;align-items:center;gap:8px}
+.cel .barra{flex:1;min-width:50px}
+.cel span{font:600 14px var(--cond);min-width:44px;text-align:right}
+
+/* fontes */
+table.f{width:100%;border-collapse:collapse;font-size:13.5px}
+table.f th{font:600 11px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:2px solid var(--line)}
+table.f td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+.limites{margin:14px 0 0;padding:14px 18px;background:var(--soft);border:1px solid var(--line);border-radius:10px;font-size:13.5px;color:var(--ink2)}
+.limites b{color:var(--ink)} .limites ul{margin:8px 0 0;padding-left:20px} .limites li{margin:4px 0}
+footer{margin-top:30px;color:var(--muted);font-size:12.5px;max-width:90ch}
+
+@media (max-width:620px){
+  main{padding:18px 14px 44px} h1{font-size:27px} .duas{grid-template-columns:1fr}
+  .causa{grid-template-columns:1fr 60px} .causa .bar{grid-column:1/-1;order:3}
+  .chrome-top{padding:12px 14px 10px} .selo{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+:focus-visible{outline:2px solid var(--deep);outline-offset:2px}
+</style>
+</head>
+<body>
+<header class="chrome">
+  <div class="chrome-top">
+    <div class="marca"><b>Portal Trefila&nbsp;2</b><span>Cosigua &middot; Produção</span></div>
+    <div class="selo"><b>Dados</b><span id="selo"></span></div>
+  </div>
+  <nav class="abas" aria-label="Dimensões">
+    <button class="aba" aria-selected="true">Visão da área</button>
+  </nav>
+</header>
+<div class="amostra" id="amostra" hidden><div><b>Amostra do novo formato</b> — dados reais de <span id="amostra-data"></span>.</div></div>
+
+<main>
+  <div class="titulo">
+    <div>
+      <h1>Visão da área</h1>
+      <div class="sub" id="sub"></div>
+    </div>
+    <div class="legenda" id="legenda"></div>
+  </div>
+
+  <h2 class="sec">Para decidir hoje</h2>
+  <p class="sec-sub">Itens ordenados por gravidade. Cada um traz o número que o sustenta; nenhum nome de pessoa aparece nesta página.</p>
+  <div class="decidir" id="decidir"></div>
+
+  <h2 class="sec">Os cinco pilares</h2>
+  <p class="sec-sub">Segurança, qualidade, entrega, perdas e manutenção na mesma régua: valor do período, estado e a data de cada fonte.</p>
+  <div class="pilares" id="pilares"></div>
+
+  <h2 class="sec" id="entrega">Entrega — acumulado do mês</h2>
+  <p class="sec-sub">A linha cheia é o realizado acumulado; a cinza, a meta acumulada. A linha tracejada projeta o restante do mês <b>com a mesma aderência já praticada</b> sobre a meta que ainda falta (premissa à vista, não uma extrapolação de tendência).</p>
+  <div class="duas" id="graficos"></div>
+
+  <h2 class="sec" id="perdas">Perdas — onde o tempo foi embora</h2>
+  <p class="sec-sub" id="perdas-sub"></p>
+  <div class="duas" id="perdas-corpo"></div>
+
+  <h2 class="sec" id="turmas">Segurança e qualidade — por turma</h2>
+  <p class="sec-sub" id="turmas-sub">Só agregados por turma. O detalhe por pessoa continua na Central do Coordenador, local.</p>
+  <div class="duas" id="turmas-corpo"></div>
+
+  <h2 class="sec">Fontes e limites</h2>
+  <div class="painel"><div style="overflow-x:auto"><table class="f" id="fontes"></table></div>
+    <div class="limites" id="limites"></div></div>
+  <footer id="como-ler"></footer>
+</main>
+<div class="tip" id="tip" role="status"></div>
+
+<script>
+const D = {"gerado_em": "07/10/2026 10:13", "fechamento": "2026-10-06", "avisos": [], "publico": true, "modo": "", "metas": {}, "entrega": {"fechamento": "2026-10-06", "areas": [{"chave": "ovalado", "nome": "Ovalado", "dias": [{"d": 1, "orc": 45840.0, "real": 82759.0, "acm_meta": 45840.0, "acm_real": 82759}, {"d": 2, "orc": 82307.0, "real": 81999.0, "acm_meta": 128147.0, "acm_real": 164758}, {"d": 3, "orc": 81091.0, "real": 65018.0, "acm_meta": 209238.0, "acm_real": 229776}, {"d": 4, "orc": 25604.0, "real": 24987.0, "acm_meta": 234842.0, "acm_real": 254763}, {"d": 5, "orc": 67972.0, "real": 17693.0, "acm_meta": 302814.0, "acm_real": 272456}, {"d": 6, "orc": 81091.0, "real": 18381.0, "acm_meta": 383905.0, "acm_real": 290837}, {"d": 7, "orc": 81091.0, "real": null, "acm_meta": 464996.0, "acm_real": null}, {"d": 8, "orc": 81091.0, "real": null, "acm_meta": 546087.0, "acm_real": null}, {"d": 9, "orc": 81091.0, "real": null, "acm_meta": 627178.0, "acm_real": null}, {"d": 10, "orc": 81091.0, "real": null, "acm_meta": 708269.0, "acm_real": null}, {"d": 11, "orc": 81091.0, "real": null, "acm_meta": 789360.0, "acm_real": null}, {"d": 12, "orc": 0, "real": null, "acm_meta": 789360.0, "acm_real": null}, {"d": 13, "orc": 12567.0, "real": null, "acm_meta": 801927.0, "acm_real": null}, {"d": 14, "orc": 81091.0, "real": null, "acm_meta": 883018.0, "acm_real": null}, {"d": 15, "orc": 81091.0, "real": null, "acm_meta": 964109.0, "acm_real": null}, {"d": 16, "orc": 81091.0, "real": null, "acm_meta": 1045200.0, "acm_real": null}, {"d": 17, "orc": 78203.0, "real": null, "acm_meta": 1123403.0, "acm_real": null}, {"d": 18, "orc": 80687.0, "real": null, "acm_meta": 1204090.0, "acm_real": null}, {"d": 19, "orc": 67568.0, "real": null, "acm_meta": 1271658.0, "acm_real": null}, {"d": 20, "orc": 80687.0, "real": null, "acm_meta": 1352345.0, "acm_real": null}, {"d": 21, "orc": 4123.0, "real": null, "acm_meta": 1356468.0, "acm_real": null}, {"d": 22, "orc": 17242.0, "real": null, "acm_meta": 1373710.0, "acm_real": null}, {"d": 23, "orc": 88482.0, "real": null, "acm_meta": 1462192.0, "acm_real": null}, {"d": 24, "orc": 88482.0, "real": null, "acm_meta": 1550674.0, "acm_real": null}, {"d": 25, "orc": 16592.0, "real": null, "acm_meta": 1567266.0, "acm_real": null}, {"d": 26, "orc": 68803.0, "real": null, "acm_meta": 1636069.0, "acm_real": null}, {"d": 27, "orc": 88482.0, "real": null, "acm_meta": 1724551.0, "acm_real": null}, {"d": 28, "orc": 88482.0, "real": null, "acm_meta": 1813033.0, "acm_real": null}, {"d": 29, "orc": 87919.0, "real": null, "acm_meta": 1900952.0, "acm_real": null}, {"d": 30, "orc": 55121.0, "real": null, "acm_meta": 1956073.0, "acm_real": null}, {"d": 31, "orc": 84639.0, "real": null, "acm_meta": 2040712.0, "acm_real": null}], "meta_mes": 2040712.0, "real_acum": 290837.0, "meta_acum": 383905.0, "aderencia": 0.7575754418410805, "projecao": 1545993.295070395, "meta_restante": 1656807.0, "dias_restantes": 24, "aderencia_necessaria": 1.0561731088774975, "falta_kg": 1749875.0, "ultimo_dia_real": "2026-10-06"}, {"chave": "galv_l3", "nome": "Galvanização Linha 3", "dias": [{"d": 1, "orc": 45840.0, "real": 67857.0, "acm_meta": 45840.0, "acm_real": 67857}, {"d": 2, "orc": 75315.0, "real": 73499.0, "acm_meta": 121155.0, "acm_real": 141356}, {"d": 3, "orc": 75315.0, "real": 68481.0, "acm_meta": 196470.0, "acm_real": 209837}, {"d": 4, "orc": 25604.0, "real": 55955.0, "acm_meta": 222074.0, "acm_real": 265792}, {"d": 5, "orc": 62196.0, "real": 0, "acm_meta": 284270.0, "acm_real": 265792}, {"d": 6, "orc": 75315.0, "real": 0, "acm_meta": 359585.0, "acm_real": 265792}, {"d": 7, "orc": 75315.0, "real": null, "acm_meta": 434900.0, "acm_real": null}, {"d": 8, "orc": 75315.0, "real": null, "acm_meta": 510215.0, "acm_real": null}, {"d": 9, "orc": 75315.0, "real": null, "acm_meta": 585530.0, "acm_real": null}, {"d": 10, "orc": 75315.0, "real": null, "acm_meta": 660845.0, "acm_real": null}, {"d": 11, "orc": 75315.0, "real": null, "acm_meta": 736160.0, "acm_real": null}, {"d": 12, "orc": 0, "real": null, "acm_meta": 736160.0, "acm_real": null}, {"d": 13, "orc": 12567.0, "real": null, "acm_meta": 748727.0, "acm_real": null}, {"d": 14, "orc": 75315.0, "real": null, "acm_meta": 824042.0, "acm_real": null}, {"d": 15, "orc": 75315.0, "real": null, "acm_meta": 899357.0, "acm_real": null}, {"d": 16, "orc": 75315.0, "real": null, "acm_meta": 974672.0, "acm_real": null}, {"d": 17, "orc": 75315.0, "real": null, "acm_meta": 1049987.0, "acm_real": null}, {"d": 18, "orc": 77799.0, "real": null, "acm_meta": 1127786.0, "acm_real": null}, {"d": 19, "orc": 64680.0, "real": null, "acm_meta": 1192466.0, "acm_real": null}, {"d": 20, "orc": 77799.0, "real": null, "acm_meta": 1270265.0, "acm_real": null}, {"d": 21, "orc": 0, "real": null, "acm_meta": 1270265.0, "acm_real": null}, {"d": 22, "orc": 13119.0, "real": null, "acm_meta": 1283384.0, "acm_real": null}, {"d": 23, "orc": 84359.0, "real": null, "acm_meta": 1367743.0, "acm_real": null}, {"d": 24, "orc": 84359.0, "real": null, "acm_meta": 1452102.0, "acm_real": null}, {"d": 25, "orc": 16592.0, "real": null, "acm_meta": 1468694.0, "acm_real": null}, {"d": 26, "orc": 64680.0, "real": null, "acm_meta": 1533374.0, "acm_real": null}, {"d": 27, "orc": 84359.0, "real": null, "acm_meta": 1617733.0, "acm_real": null}, {"d": 28, "orc": 84359.0, "real": null, "acm_meta": 1702092.0, "acm_real": null}, {"d": 29, "orc": 81079.0, "real": null, "acm_meta": 1783171.0, "acm_real": null}, {"d": 30, "orc": 48281.0, "real": null, "acm_meta": 1831452.0, "acm_real": null}, {"d": 31, "orc": 77799.0, "real": null, "acm_meta": 1909251.0, "acm_real": null}], "meta_mes": 1909251.0, "real_acum": 265792.0, "meta_acum": 359585.0, "aderencia": 0.7391632020245561, "projecao": 1411248.0826285859, "meta_restante": 1549666.0, "dias_restantes": 23, "aderencia_necessaria": 1.0605246549901721, "falta_kg": 1643459.0, "ultimo_dia_real": "2026-10-06"}]}, "aop": {"acumulado": 82.3, "dia": "2026-10-06", "dia_valor": 75}, "perdas": {"periodo": ["2026-10-01", "2026-10-06"], "areas": [{"chave": "ovalado", "nome": "Ovalado", "oee": 0.25578774270277826, "disp": 0.4206418234935694, "desemp": 0.6080891828073027, "qual": 1.0, "disp_ant": 0.6848599072313755, "oee_ant": 0.23962310622059688}, {"chave": "linha3", "nome": "Galvanização Linha 3", "oee": 0.6924695824955633, "disp": 0.7251402664826675, "desemp": 0.9549457043041133, "qual": 1.0, "disp_ant": 0.736982708836495, "oee_ant": 0.6955413396614679}], "causas": [{"area": "Galvanização Linha 3", "tipo": "Tempo Livre", "causa": "Falta de programação", "horas": 1440.5982811111112, "qtd": 199}, {"area": "Galvanização Linha 3", "tipo": "Operacional Externa", "causa": "OPX - Falta de Carretel", "horas": 158.29932666666667, "qtd": 64}, {"area": "Galvanização Linha 3", "tipo": "Operacional Externa", "causa": "OPX - Falta de matéria-prima (arame)", "horas": 155.5842377777778, "qtd": 42}, {"area": "Galvanização Linha 3", "tipo": "Operacional Interna", "causa": "Solda de matéria prima", "horas": 111.57432999999999, "qtd": 102}, {"area": "Ovalado", "tipo": "Tempo Livre", "causa": "EXT- Falta de espaço para Estocagem", "horas": 107.51433527777777, "qtd": 14}, {"area": "Galvanização Linha 3", "tipo": "Operacional Interna", "causa": "Limpeza de Campânula", "horas": 69.30902888888889, "qtd": 13}, {"area": "Galvanização Linha 3", "tipo": "Causa Externa", "causa": "EXT- Falta de ponte (manutenção)", "horas": 49.06111555555555, "qtd": 17}, {"area": "Ovalado", "tipo": "Operacional Externa", "causa": "OPE - Retirada de produção", "horas": 18.653819722222224, "qtd": 7}, {"area": "Ovalado", "tipo": "Operacional Interna", "causa": "OPE -Limpeza de máquina", "horas": 18.18221388888889, "qtd": 24}, {"area": "Ovalado", "tipo": "Tempo Livre", "causa": "Falta de programação", "horas": 16.348333333333333, "qtd": 3}, {"area": "Ovalado", "tipo": "Causa Externa", "causa": "EXT - Falta de ponte (manutenção)", "horas": 13.494619444444444, "qtd": 2}, {"area": "Ovalado", "tipo": "Operacional Interna", "causa": "OPE - Abastecimento de Máquina", "horas": 13.166993611111112, "qtd": 32}], "janela_causas": ["2026-09-30", "2026-10-06"]}, "manutencao": {"extraido_em": "07/10/2026 às 09:55", "abertas": 1254, "com_prazo": 1253, "h24": 330, "h24_vencidas": 318, "vencidas": 763, "prazo_derivado": false, "funil": [{"nome": "Aguardando liberação", "qtd": 837, "mediana": 16, "p90": 76}, {"nome": "Liberado p/ planejamento", "qtd": 107, "mediana": 69, "p90": 111}, {"nome": "Liberado p/ programação", "qtd": 2, "mediana": 55, "p90": 55}, {"nome": "Programado", "qtd": 306, "mediana": 30, "p90": 97}], "linha3": {"abertas": 272, "venc": 136, "h24": 28, "h24_venc": 28}, "ovalado": {"abertas": 48, "venc": 33, "h24": 21, "h24_venc": 21}, "fluxo_ok": true}, "seguranca": {"competencia": "2026-10", "total": 39, "metas": {"cond": 2, "ats": 2, "rec": 2}, "bateram": {"cond": 7, "ats": 3, "rec": 1, "tudo": 0}, "registros": {"cond": 19, "ats": 13, "rec": 4}, "sem_registro": 27, "por_turma": null, "base_ate": "07/10 07:22", "base_horas": 2.8, "base_ok": true}, "qualidade": {"base_gerada": "2026-10-07", "ate": "2026-10-06", "feitas": 36, "exigidas": 72, "pct": 0.5, "por_turma": null}, "decisoes": [{"sev": "critico", "pilar": "Entrega", "aba": "entrega", "titulo": "Ovalado: 75,8% da meta no mês", "texto": "Faltam 1.750 t para a meta de 2.041 t. Para fechar o mês é preciso produzir 106% da programação diária nos 24 dias que restam; hoje o ritmo é 76%."}, {"sev": "critico", "pilar": "Entrega", "aba": "entrega", "titulo": "Galvanização Linha 3: 73,9% da meta no mês", "texto": "Faltam 1.643 t para a meta de 1.909 t. Para fechar o mês é preciso produzir 106% da programação diária nos 23 dias que restam; hoje o ritmo é 74%."}, {"sev": "critico", "pilar": "Manutenção", "aba": "manutencao", "titulo": "318 de 330 ordens de 24 h estão vencidas", "texto": "São 96% das ordens de prioridade máxima; no total, 763 de 1253 ordens estão fora do prazo. Linha 3: 28 de 28 (24 h) vencidas; Ovalado: 21 de 21."}, {"sev": "atencao", "pilar": "Perdas", "aba": "perdas", "titulo": "Galvanização Linha 3: maior parcela do tempo parado é falta de programação", "texto": "Últimos 7 dias, em horas-equipamento: Falta de programação (1441 h); OPX - Falta de Carretel (158 h); OPX - Falta de matéria-prima (arame) (156 h). Ociosidade por programação é decisão de PCP, não de manutenção."}, {"sev": "atencao", "pilar": "Segurança", "aba": "seguranca", "titulo": "27 de 39 pessoas ainda sem nenhum registro no mês", "texto": "Bateram a meta de 2: Condição 7, Atitude Segura 3, Recusa de Tarefa 1."}, {"sev": "atencao", "pilar": "Qualidade", "aba": "qualidade", "titulo": "Rotina de qualidade em 50% das análises exigidas", "texto": "36 de 72 análises (metragem e enrolamento) no mês."}]};
+
+/* ---------- utilidades ---------- */
+const $ = (id) => document.getElementById(id);
+const NF = (n, d = 0) => (n == null || isNaN(n)) ? "—" : Number(n).toLocaleString("pt-BR", {minimumFractionDigits: d, maximumFractionDigits: d});
+const T = (kg, d = 0) => kg == null ? "—" : NF(kg / 1000, d) + " t";
+const P = (x, d = 1) => x == null ? "—" : NF(x * 100, d) + "%";
+const dm = (iso) => iso ? iso.slice(8, 10) + "/" + iso.slice(5, 7) : "—";
+const E = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+const ok = (b) => b && !b.erro;
+
+const ICON = {
+  ok: '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  at: '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1.6L13 12H1z" fill="currentColor"/><path d="M7 5.4v3.2M7 10v.1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  cr: '<svg viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="currentColor"/><path d="M4.6 4.6l4.8 4.8M9.4 4.6L4.6 9.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>',
+  ne: '<svg viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.6 7h4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
+};
+const NOME = {ok: "No alvo", at: "Atenção", cr: "Fora do alvo", ne: "Sem meta definida"};
+const chip = (k, txt) => `<span class="chip ${k}">${ICON[k]}${E(txt || NOME[k])}</span>`;
+const sevK = (s) => s === "critico" ? "cr" : "at";
+/* regra de entrega (a mesma da mensagem do WhatsApp): ≥100 verde, 90–99,9 amarelo, <90 vermelho */
+/* o estado usa o número como ele é MOSTRADO (1 casa): 89,97% aparece 90,0% e não pode virar vermelho */
+const estEntrega = (r) => { if (r == null) return "ne"; r = Math.round(r * 1000) / 1000; return r >= 1 ? "ok" : r >= 0.9 ? "at" : "cr"; };
+
+/* ---------- cabeçalho ---------- */
+const fech = D.fechamento;
+const EMBUTIDA = window.parent !== window;            // dentro do portal (iframe)
+if (EMBUTIDA) document.body.classList.add("embed");
+if (D.modo === "amostra") $("amostra").hidden = false;
+const METAS = D.metas || {};
+/* estado contra uma meta definida pelo coordenador: ≥ meta verde; até 5 p.p. abaixo amarelo; senão vermelho */
+const estMeta = (v, m) => (v == null || m == null) ? "ne" : v >= m ? "ok" : v >= m - 0.05 ? "at" : "cr";
+$("selo").textContent = "gerado " + D.gerado_em;
+$("amostra-data").textContent = D.gerado_em;
+$("sub").textContent = "Fechamento de produção em " + dm(fech) + " · mês até " + dm(fech) + " · atualizado " + D.gerado_em;
+$("legenda").innerHTML = chip("ok") + chip("at") + chip("cr") + chip("ne");
+
+/* ---------- decidir hoje ---------- */
+const ABA_VIEW = {perdas: "perfil", manutencao: "backlog"};      // abas do portal que já existem
+$("decidir").innerHTML = (D.decisoes || []).map(d => {
+  const v = ABA_VIEW[d.aba];
+  const ver = (v && EMBUTIDA) ? `<a data-ir="${v}" role="link" tabindex="0">Ver detalhe em ${E(d.pilar)} →</a>`
+                              : (D.publico ? "" : `Pilar: <b>${E(d.pilar)}</b>`);
+  return `
+  <article class="dec">
+    <div class="topo"><span class="pilar">${E(d.pilar)}</span>${chip(sevK(d.sev), d.sev === "critico" ? "Crítico" : "Atenção")}</div>
+    <h3>${E(d.titulo)}</h3><p>${E(d.texto)}</p>${ver ? `<div class="ver">${ver}</div>` : ""}
+  </article>`;
+}).join("") || '<div class="vazio">Nenhum item crítico hoje.</div>';
+document.querySelectorAll("[data-ir]").forEach(a => {
+  const ir = () => { try { window.top.location.hash = a.dataset.ir; } catch (e) { /* outro domínio: ignora */ } };
+  a.addEventListener("click", ir);
+  a.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); ir(); } });
+});
+
+/* ---------- pilares ---------- */
+function pilEntrega() {
+  const e = D.entrega, a = D.aop;
+  if (!ok(e)) return semDado("Planilha de controle indisponível");
+  const linhas = e.areas.map(x => {
+    const k = estEntrega(x.aderencia);
+    return `<div class="linha"><div class="r"><span>${E(x.nome)}</span>${chip(k)}</div>
+      <div class="r"><b class="num">${P(x.aderencia)}</b><span class="num">${T(x.real_acum)} de ${T(x.meta_acum)}</span></div>
+      <div class="barra" role="img" aria-label="${E(x.nome)}: ${P(x.aderencia)} da meta acumulada"><i style="width:${Math.min(100, (x.aderencia || 0) * 100)}%"></i><u style="left:100%" title="meta"></u></div></div>`;
+  }).join("");
+  const aop = ok(a) ? `<div class="linha"><div class="r"><span>AOP acumulado (BI)</span>${chip(estEntrega((a.acumulado || 0) / 100))}</div>
+      <div class="r"><b class="num">${NF(a.acumulado, 1)}%</b><span>até ${dm(a.dia)}</span></div></div>` : "";
+  return linhas + aop;
+}
+function pilPerdas() {
+  const p = D.perdas;
+  if (!ok(p)) return semDado("BI de OEE indisponível");
+  let algumSemMeta = false;
+  const linhas = p.areas.map(x => {
+    const dd = (x.disp != null && x.disp_ant != null) ? (x.disp - x.disp_ant) * 100 : null;
+    const seta = dd == null ? "" : (dd < -0.5 ? "▼" : dd > 0.5 ? "▲" : "▬");
+    const m = (METAS.disponibilidade || {})[x.chave];
+    if (m == null) algumSemMeta = true;
+    return `<div class="linha"><div class="r"><span>${E(x.nome)}</span>${m != null ? chip(estMeta(x.disp, m)) : ""}</div>
+      <div class="r"><b class="num">${P(x.disp)}</b><span>disponibilidade${m != null ? " · meta " + P(m, 0) : ""}</span></div>
+      <div class="r"><span class="num">OEE ${P(x.oee)}</span><span class="num">${seta} ${dd == null ? "" : NF(Math.abs(dd), 1) + " p.p. vs. mês anterior"}</span></div></div>`;
+  }).join("");
+  return linhas + (algumSemMeta ? `<div>${chip("ne")}</div>` : "");
+}
+function pilManut() {
+  const m = D.manutencao;
+  if (!ok(m)) return semDado("Backlog do SAP indisponível");
+  const pc = m.h24 ? m.h24_vencidas / m.h24 : null;
+  const k = pc == null ? "ne" : pc >= 0.5 ? "cr" : pc > 0 ? "at" : "ok";
+  const ag = (m.funil || [])[0];
+  return `<div class="kv"><div class="v num">${NF(m.h24_vencidas)} <span style="font-size:20px;color:var(--muted)">de ${NF(m.h24)}</span></div>
+      <div class="l">ordens de 24 h vencidas</div></div><div>${chip(k)}</div>
+    <div class="linha"><div class="r"><span>Fora do prazo (todas)</span><b class="num">${NF(m.vencidas)} de ${NF(m.com_prazo)}</b></div>
+      <div class="r"><span>Aguardando liberação</span><b class="num">${ag ? NF(ag.qtd) : "—"}</b></div></div>`;
+}
+function pilSeg() {
+  const s = D.seguranca;
+  if (!ok(s)) return semDado("Base do Solvace indisponível");
+  const diaMes = Number((D.gerado_em || "").slice(0, 2)) || 1;
+  const [a, m] = [new Date().getFullYear(), Number(D.gerado_em.slice(3, 5))];
+  const dMes = new Date(a, m, 0).getDate();
+  const esp = diaMes / dMes;
+  const f = (rot, v, meta) => {
+    const r = s.total ? v / s.total : 0;
+    return `<div class="linha"><div class="r"><span>${rot}</span><span class="num"><b style="font:700 18px var(--cond)">${v}</b> de ${s.total}</span></div>
+      <div class="barra" role="img" aria-label="${rot}: ${v} de ${s.total} bateram a meta"><i style="width:${r * 100}%"></i><u style="left:${esp * 100}%" title="ritmo esperado"></u></div></div>`;
+  };
+  const abaixo = ["cond", "ats", "rec"].every(k => (s.bateram[k] / s.total) < esp);
+  return f("Condição (meta " + s.metas.cond + ")", s.bateram.cond) + f("Atitude Segura (meta " + s.metas.ats + ")", s.bateram.ats) +
+    f("Recusa de Tarefa (meta " + s.metas.rec + ")", s.bateram.rec) +
+    `<div>${chip(abaixo ? "at" : "ok", abaixo ? "Abaixo do ritmo" : "No ritmo")}</div>`;
+}
+function pilQual() {
+  const q = D.qualidade;
+  if (!ok(q)) return semDado("Base do MES indisponível");
+  const linhas = Object.entries(q.por_turma || {}).map(([t, v]) => {
+    const r = v.exigidas ? v.feitas / v.exigidas : 0;
+    return `<div class="linha"><div class="r"><span>Turma ${t}</span><span class="num"><b style="font:700 18px var(--cond)">${P(r, 0)}</b> · ${v.feitas}/${v.exigidas}</span></div>
+      <div class="barra"><i style="width:${r * 100}%"></i></div></div>`;
+  }).join("");
+  const mq = METAS.qualidade;
+  return `<div class="kv"><div class="v num">${P(q.pct, 0)}</div><div class="l">${q.feitas} de ${q.exigidas} análises exigidas${mq != null ? " · meta " + P(mq, 0) : ""}</div></div>${linhas}<div>${chip(estMeta(q.pct, mq))}</div>`;
+}
+const semDado = (m) => `<div class="vazio"><b>Sem dado.</b> ${E(m)}. Nada foi preenchido com zero.</div>`;
+const fonteTxt = {
+  entrega: () => ok(D.entrega) ? "Planilha de controle · fechamento " + dm(fech) + (ok(D.aop) ? " · AOP no BI até " + dm(D.aop.dia) : "") : "",
+  perdas: () => ok(D.perdas) ? "Power BI ExOp · " + dm(D.perdas.periodo[0]) + " a " + dm(D.perdas.periodo[1]) : "",
+  manut: () => ok(D.manutencao) ? "SAP IW39 · extraído " + E(D.manutencao.extraido_em) : "",
+  seg: () => ok(D.seguranca) ? "Solvace via Power BI · base de " + E(D.seguranca.base_ate) : "",
+  qual: () => ok(D.qualidade) ? "MES · análises até " + dm(D.qualidade.ate) : ""
+};
+const PILARES = [
+  ["Segurança", pilSeg, "seg"], ["Qualidade", pilQual, "qual"], ["Entrega", pilEntrega, "entrega"],
+  ["Perdas", pilPerdas, "perdas"], ["Manutenção", pilManut, "manut"]
+];
+$("pilares").innerHTML = PILARES.map(([nome, fn, f]) => `<section class="pil"><header><h3>${nome}</h3></header>${fn()}<div class="fonte">${fonteTxt[f]()}</div></section>`).join("");
+
+/* ---------- gráficos de entrega (acumulado) ---------- */
+const tip = $("tip");
+function mostraTip(ev, html) {
+  tip.innerHTML = html; tip.style.display = "block";
+  const w = tip.offsetWidth, x = Math.min(innerWidth - w - 10, ev.clientX + 14);
+  tip.style.left = Math.max(8, x) + "px"; tip.style.top = (ev.clientY + 14) + "px";
+}
+const someTip = () => { tip.style.display = "none"; };
+function nice(max, n = 5) {
+  const raw = max / n, mag = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / mag;
+  const s = (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * mag;
+  return {passo: s, topo: Math.ceil(max / s) * s};
+}
+function grafico(a, idx) {
+  const W = 600, H = 300, mL = 52, mR = 96, mT = 16, mB = 30, iw = W - mL - mR, ih = H - mT - mB;
+  const dias = a.dias, n = dias.length, dFech = Number(fech.slice(8, 10));
+  const metaDia = (i) => dias[i].acm_meta;
+  const proj = dias.map((x, i) => (x.d <= dFech) ? x.acm_real : a.real_acum + (x.acm_meta - dias[dFech - 1].acm_meta) * (a.aderencia || 0));
+  const topo = nice(Math.max(a.meta_mes, ...proj) / 1000).topo * 1000, passo = nice(Math.max(a.meta_mes, ...proj) / 1000).passo * 1000;
+  const X = (d) => mL + iw * ((d - 1) / (n - 1)), Y = (v) => mT + ih * (1 - v / topo);
+  let g = "";
+  for (let v = 0; v <= topo + 1; v += passo) g += `<line x1="${mL}" x2="${W - mR}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e6ebf1"/><text x="${mL - 8}" y="${Y(v) + 4}" text-anchor="end" font-size="11" fill="#566677" class="num">${NF(v / 1000)}</text>`;
+  g += `<text x="${mL - 8}" y="${mT - 6}" text-anchor="end" font-size="10.5" fill="#566677">t</text>`;
+  [1, 8, 15, 22, 29].filter(d => d <= n).forEach(d => g += `<text x="${X(d)}" y="${H - 9}" text-anchor="middle" font-size="11" fill="#566677">${String(d).padStart(2, "0")}/${fech.slice(5, 7)}</text>`);
+  const pts = (fn, de, ate) => dias.filter(x => x.d >= de && x.d <= ate).map(x => `${X(x.d).toFixed(1)},${Y(fn(x)).toFixed(1)}`).join(" ");
+  const gapKg = a.real_acum - dias[dFech - 1].acm_meta;
+  const yR = Y(a.real_acum), yM = Y(dias[dFech - 1].acm_meta), xF = X(dFech);
+  g += `<polyline points="${pts(x => x.acm_meta, 1, n)}" fill="none" stroke="var(--plan)" stroke-width="2"/>`;
+  g += `<polyline points="${pts(x => proj[x.d - 1], dFech, n)}" fill="none" stroke="var(--deep)" stroke-width="2.2" stroke-dasharray="6 5"/>`;
+  g += `<polyline points="${pts(x => x.acm_real, 1, dFech)}" fill="none" stroke="var(--deep)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  g += `<line x1="${xF}" x2="${xF}" y1="${Math.min(yR, yM)}" y2="${Math.max(yR, yM)}" stroke="var(--cr)" stroke-width="2"/>`;
+  g += `<circle cx="${xF}" cy="${yR}" r="4.6" fill="var(--deep)" stroke="#fff" stroke-width="2"/>`;
+  g += `<text x="${xF + 6}" y="${Math.min(yR, yM) - 12}" text-anchor="start" font-size="12" font-weight="600" fill="var(--cr)" class="num hal">${gapKg >= 0 ? "+" : "−"}${NF(Math.abs(gapKg) / 1000, 1)} t vs. meta em ${dm(fech)}</text>`;
+  /* rótulos diretos nas pontas — nunca um número por ponto */
+  const yMeta = Y(a.meta_mes), yProj = Y(proj[n - 1]);
+  const sep = Math.abs(yMeta - yProj) < 15 ? 15 : 0;
+  g += `<text x="${W - mR + 8}" y="${Math.min(yMeta, yProj) - (sep ? 0 : 0) + 4}" font-size="12" fill="var(--ink2)" font-weight="600" class="num">${yMeta <= yProj ? "Meta " + T(a.meta_mes) : "Proj. " + T(proj[n - 1])}</text>`;
+  g += `<text x="${W - mR + 8}" y="${Math.max(yMeta, yProj) + 4 + sep / 2}" font-size="12" fill="${yMeta <= yProj ? "var(--deep)" : "var(--ink2)"}" font-weight="600" class="num">${yMeta <= yProj ? "Proj. " + T(proj[n - 1]) : "Meta " + T(a.meta_mes)}</text>`;
+  g += `<g id="hov${idx}"></g><rect id="cap${idx}" x="${mL}" y="${mT}" width="${iw}" height="${ih}" fill="transparent"/>`;
+  const k = estEntrega(a.aderencia);
+  const nec = a.aderencia_necessaria;
+  const html = `<section class="painel"><h3>${E(a.nome)}</h3>
+    <div class="nota num">Realizado ${T(a.real_acum)} de ${T(a.meta_acum)} previstos até ${dm(fech)} — <b>${P(a.aderencia)}</b> · ${chip(k)}</div>
+    <svg class="grafico" viewBox="0 0 ${W} ${H}" role="img" aria-label="${E(a.nome)}: realizado acumulado ${T(a.real_acum)} contra meta acumulada ${T(a.meta_acum)} em ${dm(fech)}; projeção de ${T(proj[n - 1])} para meta mensal de ${T(a.meta_mes)}">${g}</svg>
+    <div class="nota num" style="margin-top:6px"><b>Para fechar o mês:</b> ${nec == null ? "—" : P(nec, 0)} da programação diária nos ${a.dias_restantes} dias com meta que restam (hoje: ${P(a.aderencia, 0)}).</div>
+    <details class="tab"><summary>Ver como tabela</summary><div><table><thead><tr><th>Dia</th><th>Meta do dia</th><th>Real do dia</th><th>Meta acum.</th><th>Real acum.</th></tr></thead><tbody>${
+      dias.filter(x => x.d <= dFech).map(x => `<tr><td>${String(x.d).padStart(2, "0")}/${fech.slice(5, 7)}</td><td>${NF(x.orc)}</td><td>${NF(x.real)}</td><td>${NF(x.acm_meta)}</td><td>${NF(x.acm_real)}</td></tr>`).join("")}</tbody></table></div></details></section>`;
+  return {html, bind() {
+    const cap = $("cap" + idx), hov = $("hov" + idx), svg = cap.ownerSVGElement;
+    cap.addEventListener("mousemove", (ev) => {
+      const r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) / r.width * W;
+      const d = Math.max(1, Math.min(n, Math.round(1 + (px - mL) / iw * (n - 1)))), x = dias[d - 1];
+      hov.innerHTML = `<line x1="${X(d)}" x2="${X(d)}" y1="${mT}" y2="${mT + ih}" stroke="#16202b" stroke-opacity=".35"/>`;
+      const feito = d <= dFech;
+      mostraTip(ev, `<b>${String(d).padStart(2, "0")}/${fech.slice(5, 7)}</b><br>Meta do dia: ${T(x.orc, 1)}<br>` +
+        (feito ? `Real do dia: ${T(x.real, 1)}<br>Real acumulado: ${T(x.acm_real, 1)}` : `Projeção acumulada: ${T(proj[d - 1], 1)}`) +
+        `<br>Meta acumulada: ${T(x.acm_meta, 1)}`);
+    });
+    cap.addEventListener("mouseleave", () => { hov.innerHTML = ""; someTip(); });
+  }};
+}
+if (ok(D.entrega)) {
+  const gs = D.entrega.areas.map((a, i) => grafico(a, i));
+  $("graficos").innerHTML = gs.map(g => g.html).join("");
+  gs.forEach(g => g.bind());
+} else $("graficos").innerHTML = semDado("Planilha de controle indisponível");
+
+/* ---------- perdas ---------- */
+(function () {
+  const p = D.perdas;
+  if (!ok(p)) { $("perdas-corpo").innerHTML = semDado("BI de OEE indisponível"); return; }
+  $("perdas-sub").textContent = "Horas-equipamento: soma das horas de cada máquina/cabeça parada, de " + dm(p.janela_causas[0]) + " a " + dm(p.janela_causas[1]) +
+    ". Cinza = tempo livre (falta de programação ou de espaço): é decisão de planejamento, não de manutenção.";
+  const por = {};
+  p.causas.forEach(c => (por[c.area] = por[c.area] || []).push(c));
+  $("perdas-corpo").innerHTML = Object.entries(por).map(([area, cs]) => {
+    const mx = Math.max(...cs.map(c => c.horas || 0));
+    return `<section class="painel"><h3>${E(area)}</h3><div class="nota">Maiores causas · últimos 7 dias</div>` + cs.slice(0, 5).map(c => `
+      <div class="causa"><div>${E(c.causa)}<small>${E(c.tipo)} · ${NF(c.qtd)} apontamentos</small></div>
+      <div class="bar" role="img" aria-label="${E(c.causa)}: ${NF(c.horas)} horas"><i class="${c.tipo === "Tempo Livre" ? "ocio" : ""}" style="width:${(c.horas / mx) * 100}%"></i></div>
+      <div class="h num">${NF(c.horas)} h</div></div>`).join("") + `</section>`;
+  }).join("");
+})();
+
+/* ---------- turmas ---------- */
+(function () {
+  const s = D.seguranca, q = D.qualidade;
+  let h1 = "", h2 = "";
+  if (D.publico) {            // portal público: nada por turma nem por pessoa (decisão de 30/09/2026)
+    $("turmas").textContent = "Segurança e qualidade — detalhe";
+    $("turmas-sub").textContent = "";
+    $("turmas-corpo").innerHTML = '<div class="aviso-local" style="grid-column:1/-1">O detalhe por turma e por pessoa da segurança e da rotina de qualidade fica na <b>Central do Coordenador</b> (no computador dele), para ser tratado com a equipe. Este portal mostra só o total da área.</div>';
+    return;
+  }
+  if (ok(s)) {
+    const cel = (v, n) => `<div class="cel"><div class="barra"><i style="width:${n ? v / n * 100 : 0}%"></i></div><span class="num">${v}/${n}</span></div>`;
+    h1 = `<section class="painel"><h3>Segurança — pessoas que bateram a meta do mês</h3><div class="nota">Meta de ${s.metas.cond} registros por pessoa em cada frente · base do Solvace de ${E(s.base_ate)}</div>
+      <table class="t"><thead><tr><th>Turma</th><th>Condição</th><th>Atitude Segura</th><th>Recusa</th><th>Sem nenhum registro</th></tr></thead><tbody>` +
+      Object.entries(s.por_turma).map(([t, v]) => `<tr><td><b>${E(t)}</b></td><td class="c">${cel(v.cond, v.n)}</td><td class="c">${cel(v.ats, v.n)}</td><td class="c">${cel(v.rec, v.n)}</td><td class="num"><b>${v.zero}</b> de ${v.n}</td></tr>`).join("") +
+      `</tbody></table></section>`;
+  } else h1 = `<section class="painel">${semDado("Base do Solvace indisponível")}</section>`;
+  if (ok(q)) {
+    h2 = `<section class="painel"><h3>Qualidade — rotina de análise cumprida</h3><div class="nota">Metragem e enrolamento em cada equipamento e turno com produção · de 01/${fech.slice(5, 7)} a ${dm(q.ate)}</div>
+      <table class="t"><thead><tr><th>Turma</th><th>Análises feitas / exigidas</th></tr></thead><tbody>` +
+      Object.entries(q.por_turma).map(([t, v]) => `<tr><td><b>${E(t)}</b></td><td><div class="cel"><div class="barra"><i style="width:${v.exigidas ? v.feitas / v.exigidas * 100 : 0}%"></i></div><span class="num">${P(v.exigidas ? v.feitas / v.exigidas : null, 0)} · ${v.feitas}/${v.exigidas}</span></div></td></tr>`).join("") +
+      `</tbody></table></section>`;
+  } else h2 = `<section class="painel">${semDado("Base do MES indisponível")}</section>`;
+  $("turmas-corpo").innerHTML = h1 + h2;
+})();
+
+/* ---------- fontes e limites ---------- */
+(function () {
+  const L = [];
+  const ontem = new Date(); ontem.setDate(ontem.getDate() - 1);
+  const linha = (nome, ref, quando, estado, k) => `<tr><td><b>${nome}</b><br><span style="color:var(--muted);font-size:12.5px">${ref}</span></td><td>${quando}</td><td>${chip(k, estado)}</td></tr>`;
+  const r = [];
+  if (ok(D.entrega)) r.push(linha("Produção × meta", "Planilha de controle (SharePoint)", "fechamento de " + dm(fech), "Atual até o último dia lançado", "ok"));
+  if (ok(D.aop)) r.push(linha("AOP", "Power BI · atendimento à ordem", "até " + dm(D.aop.dia), "Atual", "ok"));
+  if (ok(D.perdas)) r.push(linha("OEE e paradas", "Power BI ExOp", dm(D.perdas.periodo[0]) + " a " + dm(D.perdas.periodo[1]), "Atual", "ok"));
+  if (ok(D.manutencao)) r.push(linha("Backlog de manutenção", "SAP IW39", E(D.manutencao.extraido_em), "Atual · fluxo e lead time indisponíveis", "at"));
+  if (ok(D.seguranca)) r.push(linha("Segurança proativa", "Solvace via Power BI", E(D.seguranca.base_ate), D.seguranca.base_ok ? "Atual" : "Defasada", D.seguranca.base_ok ? "ok" : "cr"));
+  /* fonte que falhou na geração: aparece como falha, nunca some em silêncio */
+  [["entrega", "Produção × meta"], ["aop", "AOP"], ["perdas", "OEE e paradas"], ["manutencao", "Backlog de manutenção"],
+   ["seguranca", "Segurança proativa"], ["qualidade", "Qualidade"]].forEach(([k, nome]) => {
+    if (D[k] && D[k].erro) r.push(linha(nome, "—", "—", "Sem dado nesta geração", "cr"));
+  });
+  if (ok(D.qualidade)) r.push(linha("Qualidade", "MES · análises por turno", "até " + dm(D.qualidade.ate), "Atual", "ok"));
+  $("fontes").innerHTML = `<thead><tr><th>Fonte</th><th>Dado de</th><th>Situação</th></tr></thead><tbody>${r.join("")}</tbody>`;
+  const lim = [];
+  if (ok(D.manutencao) && D.manutencao.prazo_derivado) lim.push("<b>Prazo das ordens:</b> o SAP não está entregando a data-base. O prazo mostrado é a data de criação mais o prazo da prioridade (24 h, 3 dias, 1 semana…), como o próprio SAP monta na abertura.");
+  if (ok(D.manutencao) && !D.manutencao.fluxo_ok) lim.push("<b>Vazão, cobertura em semanas e lead time</b> do backlog estão indisponíveis desde que a extração do SAP deixou de trazer a data de encerramento. Não aparecem aqui para não mostrar zero no lugar de um número.");
+  lim.push("<b>Metas ainda não definidas</b> para disponibilidade, OEE, aderência de qualidade e backlog: por isso esses pilares mostram o estado “sem meta”, e não verde ou vermelho.");
+  lim.push("<b>Projeção de entrega:</b> realizado até aqui mais a meta que falta × a aderência acumulada do mês. Se o resto do mês for melhor ou pior que a média, a projeção muda.");
+  if ((D.avisos || []).length) lim.push("<b>Fontes com falha na geração:</b> " + D.avisos.map(E).join("; "));
+  $("limites").innerHTML = "<b>Limites conhecidos</b><ul>" + lim.map(x => "<li>" + x + "</li>").join("") + "</ul>";
+  $("como-ler").innerHTML = "<b>Como ler os estados.</b> Entrega e AOP: No alvo ≥ 100%, Atenção de 90 a 99,9%, Fora do alvo abaixo de 90% (mesma régua das mensagens do WhatsApp). Manutenção: ordens de 24 h vencidas — Fora do alvo quando passam de 50%. Segurança: a marca vertical é o ritmo esperado (dia do mês ÷ dias do mês). “Sem meta definida” não significa bom nem ruim. Página sem nome de pessoa, matrícula ou login.";
+})();
+</script>
+</body>
+</html>
+
+</body>
+</html>

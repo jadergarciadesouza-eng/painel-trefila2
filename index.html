@@ -139,6 +139,9 @@ main{flex:1 1 auto;min-height:0;position:relative}
   </div>
   <nav class="abas" role="tablist" aria-label="Dimensões">
     <button class="aba" role="tab" data-view="visao" aria-selected="false" id="aba-visao" hidden>Visão da área</button>
+    <button class="aba" role="tab" data-view="seguranca" aria-selected="false" id="aba-seguranca" hidden>Segurança</button>
+    <button class="aba" role="tab" data-view="qualidade" aria-selected="false" id="aba-qualidade" hidden>Qualidade</button>
+    <button class="aba" role="tab" data-view="entrega" aria-selected="false" id="aba-entrega" hidden>Entrega</button>
     <button class="aba" role="tab" data-view="inicio" aria-selected="true" id="aba-inicio">Início</button>
     <button class="aba" role="tab" data-view="perfil" aria-selected="false">Perfil de Perdas</button>
     <button class="aba" role="tab" data-view="backlog" aria-selected="false">Backlog</button>
@@ -158,6 +161,53 @@ main{flex:1 1 auto;min-height:0;position:relative}
       </div>
 
       <div class="grade">
+        <div class="card" data-extra="seguranca" hidden>
+          <div class="olho">Segurança &middot; Solvace</div>
+          <h2>Segurança</h2>
+          <p>A equipe está registrando? Quantas pessoas já bateram a meta do mês
+             e como isso evolui mês a mês.</p>
+          <ul>
+            <li>Condição, Atitude Segura e Recusa de Tarefa</li>
+            <li>Quem ainda está sem nenhum registro (só contagem)</li>
+            <li>Evolução dos últimos meses</li>
+          </ul>
+          <div class="pe">
+            <button class="btn" data-abrir="seguranca">Abrir Segurança</button>
+            <a class="lnk" href="seguranca.html" target="_blank" rel="noopener">abrir em nova aba</a>
+          </div>
+        </div>
+
+        <div class="card" data-extra="qualidade" hidden>
+          <div class="olho">Qualidade &middot; MES</div>
+          <h2>Qualidade</h2>
+          <p>A rotina de análise de metragem e enrolamento está sendo cumprida,
+             dia a dia?</p>
+          <ul>
+            <li>Percentual das análises exigidas que foram feitas</li>
+            <li>Evolução diária e tipo de análise</li>
+          </ul>
+          <div class="pe">
+            <button class="btn" data-abrir="qualidade">Abrir Qualidade</button>
+            <a class="lnk" href="qualidade-area.html" target="_blank" rel="noopener">abrir em nova aba</a>
+          </div>
+        </div>
+
+        <div class="card" data-extra="entrega" hidden>
+          <div class="olho">Produção &middot; Planilha e AOP</div>
+          <h2>Entrega</h2>
+          <p>Vamos fechar o mês? Realizado contra a meta, projeção e onde está
+             o gap.</p>
+          <ul>
+            <li>Acumulado do mês e dia a dia, por linha</li>
+            <li>Ovalado por máquina e conferência do total</li>
+            <li>AOP dia a dia</li>
+          </ul>
+          <div class="pe">
+            <button class="btn" data-abrir="entrega">Abrir Entrega</button>
+            <a class="lnk" href="entrega.html" target="_blank" rel="noopener">abrir em nova aba</a>
+          </div>
+        </div>
+
         <div class="card">
           <div class="olho">Produção &middot; OEE</div>
           <h2>Perfil de Perdas</h2>
@@ -238,16 +288,35 @@ main{flex:1 1 auto;min-height:0;position:relative}
 
 <script>
 (function(){
-  var FONTES = {visao:"visao.html", perfil:"perfil.html", backlog:"backlog.html",
+  var FONTES = {visao:"visao.html", seguranca:"seguranca.html", qualidade:"qualidade-area.html",
+                entrega:"entrega.html", perfil:"perfil.html", backlog:"backlog.html",
                 cruzamento:"cruzamento.html", inspecoes:"inspecoes.html"};
-  var NOMES  = {visao:"Visão da área", perfil:"Perfil de Perdas", backlog:"Backlog",
+  var NOMES  = {visao:"Visão da área", seguranca:"Segurança", qualidade:"Qualidade", entrega:"Entrega",
+                perfil:"Perfil de Perdas", backlog:"Backlog",
                 cruzamento:"Perda × Backlog", inspecoes:"Inspeções × Achados"};
   // Na publicação isto vira true SÓ se visao.html vai junto: sem a página, a aba nem aparece
   // (uma aba apontando para página inexistente é pior que nenhuma).
   var COM_VISAO = true;
+  // Abas de pilar (Segurança, Qualidade, Entrega): a publicação lista aqui só as que vão junto.
+  var PAGINAS = ["seguranca", "qualidade", "entrega"];
+  var OPCIONAIS = {visao:1, seguranca:1, qualidade:1, entrega:1};
+  var LIGADAS = {};                       // views opcionais que existem nesta publicação
   if(COM_VISAO){
+    LIGADAS.visao = true;
     document.getElementById("aba-visao").hidden = false;
-    document.getElementById("aba-inicio").textContent = "Mapa";
+  }
+  PAGINAS.forEach(function(v){
+    if(!OPCIONAIS[v]) return;
+    LIGADAS[v] = true;
+    document.getElementById("aba-" + v).hidden = false;
+    var cartao = document.querySelector('[data-extra="' + v + '"]');
+    if(cartao) cartao.hidden = false;
+  });
+  window.PORTAL_VIEWS = Object.keys(LIGADAS);       // as páginas internas só oferecem "Ver detalhe" para o que existe
+  if(COM_VISAO){                                      // a Visão vira a entrada; o antigo Início passa a ser o Mapa, no fim
+    var inicioBtn = document.getElementById("aba-inicio");
+    inicioBtn.textContent = "Mapa";
+    inicioBtn.parentNode.appendChild(inicioBtn);
   }
   var main = document.querySelector("main");
   var inicio = document.getElementById("v-inicio");
@@ -256,8 +325,7 @@ main{flex:1 1 auto;min-height:0;position:relative}
 
   function mostrar(v){
     if(v === "inicio" && COM_VISAO && !location.hash) v = "visao";       // a entrada do portal é a Visão da área
-    if(v !== "inicio" && !FONTES[v]) v = COM_VISAO ? "visao" : "inicio";
-    if(v === "visao" && !COM_VISAO) v = "inicio";
+    if(v !== "inicio" && (!FONTES[v] || (OPCIONAIS[v] && !LIGADAS[v]))) v = LIGADAS.visao ? "visao" : "inicio";
     inicio.hidden = (v !== "inicio");
     // cria o quadro na primeira vez; depois só alterna, preservando os filtros
     if(v !== "inicio" && !quadros[v]){

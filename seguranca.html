@@ -158,6 +158,28 @@ table.f td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
 .limites b{color:var(--ink)} .limites ul{margin:8px 0 0;padding-left:20px} .limites li{margin:4px 0}
 footer{margin-top:30px;color:var(--muted);font-size:12.5px;max-width:90ch}
 
+/* filtros da Segurança (área · célula · período · frente) e comparação com o histórico — 13/10/2026 */
+.filtros{display:grid;gap:10px 14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));background:var(--surface);border:1px solid var(--line);
+  border-radius:12px;padding:14px 16px;margin:18px 0 0;position:sticky;top:0;z-index:5;box-shadow:0 3px 10px rgba(20,27,34,.07)}
+.filtros label{display:flex;flex-direction:column;gap:6px;font:600 11px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.filtros select,.colfil select,.colfil input{font:500 14.5px var(--sans);color:var(--ink);background:#fff;border:1px solid var(--line2);border-radius:8px;
+  padding:9px 10px;text-transform:none;letter-spacing:0;min-width:0}
+.filtros select:disabled{background:var(--soft);color:var(--muted)}
+.escopo{margin:10px 2px 0;font-size:13.5px;color:var(--ink2);display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.btn{font:600 13px var(--sans);border:1px solid var(--line2);background:var(--surface);color:var(--deep);border-radius:8px;padding:7px 12px;cursor:pointer}
+.btn:hover{border-color:var(--deep)}
+.hist{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:13px;color:var(--ink2);display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.colfil{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;margin:0 0 12px}
+.colfil input{min-width:220px}
+table.t th.ord{cursor:pointer;user-select:none}
+table.t th.ord:hover{color:var(--deep)}
+table.t td.z{color:var(--muted)}
+table.t td .mini{display:block;font-size:11.5px;color:var(--muted)}
+.linkbtn{background:none;border:0;padding:0;font:600 14px var(--sans);color:var(--deep);cursor:pointer;text-align:left;border-bottom:1px solid var(--line2)}
+.linkbtn:hover{border-bottom-color:var(--deep)}
+.peq{color:var(--muted);font-size:13px}
+@media (max-width:620px){.filtros{position:static;grid-template-columns:1fr 1fr;padding:12px}.filtros label:first-child{grid-column:1/-1}.colfil input{min-width:0;flex:1 1 100%}}
+
 @media (max-width:620px){
   main{padding:18px 14px 44px} h1{font-size:27px} .duas{grid-template-columns:1fr} .decidir{grid-template-columns:1fr}
   .causa{grid-template-columns:1fr 64px} .causa .bar{grid-column:1/-1;order:3}
@@ -204,7 +226,7 @@ footer{margin-top:30px;color:var(--muted);font-size:12.5px;max-width:90ch}
 <div class="tip" id="tip" role="status"></div>
 
 <script>
-const D = {"gerado_em": "13/10/2026 08:45", "fechamento": "2026-10-11", "avisos": [], "publico": true, "modo": "", "metas": {}, "seguranca": {"competencia": "2026-10", "total": 39, "metas": {"cond": 2, "ats": 2, "rec": 2}, "bateram": {"cond": 10, "ats": 4, "rec": 1, "tudo": 0}, "registros": {"cond": 28, "ats": 16, "rec": 7}, "sem_registro": 23, "hist": {"cond": [24, 5, 10], "ats": [30, 5, 4], "rec": [34, 4, 1]}, "faltam": {"cond": 53, "ats": 65, "rec": 72}, "recusas_por_tipo": {"Segurança": 3, "Qualidade": 4}, "serie": [{"comp": "2025-11", "n": 39, "cond": 0, "ats": 0, "rec": 0, "regs_cond": 0, "regs_ats": 0, "regs_rec": 0, "sem_dado": true, "parcial": false}, {"comp": "2025-12", "n": 39, "cond": 0, "ats": 0, "rec": 0, "regs_cond": 0, "regs_ats": 0, "regs_rec": 0, "sem_dado": true, "parcial": false}, {"comp": "2026-01", "n": 39, "cond": 0, "ats": 0, "rec": 0, "regs_cond": 0, "regs_ats": 0, "regs_rec": 0, "sem_dado": true, "parcial": false}, {"comp": "2026-02", "n": 39, "cond": 0, "ats": 0, "rec": 0, "regs_cond": 0, "regs_ats": 0, "regs_rec": 0, "sem_dado": true, "parcial": false}, {"comp": "2026-03", "n": 39, "cond": 0, "ats": 0, "rec": 0, "regs_cond": 0, "regs_ats": 3, "regs_rec": 0, "sem_dado": false, "parcial": false}, {"comp": "2026-04", "n": 39, "cond": 0, "ats": 1, "rec": 0, "regs_cond": 0, "regs_ats": 8, "regs_rec": 0, "sem_dado": false, "parcial": false}, {"comp": "2026-05", "n": 39, "cond": 2, "ats": 1, "rec": 1, "regs_cond": 9, "regs_ats": 5, "regs_rec": 5, "sem_dado": false, "parcial": false}, {"comp": "2026-06", "n": 39, "cond": 3, "ats": 1, "rec": 0, "regs_cond": 10, "regs_ats": 5, "regs_rec": 4, "sem_dado": false, "parcial": false}, {"comp": "2026-07", "n": 39, "cond": 3, "ats": 1, "rec": 1, "regs_cond": 12, "regs_ats": 5, "regs_rec": 12, "sem_dado": false, "parcial": false}, {"comp": "2026-08", "n": 39, "cond": 1, "ats": 2, "rec": 1, "regs_cond": 9, "regs_ats": 5, "regs_rec": 6, "sem_dado": false, "parcial": false}, {"comp": "2026-09", "n": 39, "cond": 3, "ats": 5, "rec": 4, "regs_cond": 14, "regs_ats": 12, "regs_rec": 11, "sem_dado": false, "parcial": false}, {"comp": "2026-10", "n": 39, "cond": 10, "ats": 4, "rec": 1, "regs_cond": 28, "regs_ats": 16, "regs_rec": 7, "sem_dado": false, "parcial": true}], "por_turma": null, "base_ate": "13/10 07:21", "base_horas": 1.4, "base_ok": true}, "pagina": "seguranca", "paginas": {"seguranca": "seguranca.html", "qualidade": "qualidade-area.html", "entrega": "entrega.html", "perdas": "perdas.html", "manutencao": "manutencao.html"}};
+const D = {"gerado_em": "13/10/2026 09:48", "fechamento": "2026-10-11", "avisos": [], "publico": true, "modo": "", "metas": {}, "seguranca": {"competencia": "2026-10", "total": 39, "metas": {"cond": 2, "ats": 2, "rec": 2}, "bateram": {"cond": 10, "ats": 4, "rec": 1, "tudo": 0}, "registros": {"cond": 28, "ats": 16, "rec": 7}, "sem_registro": 23, "hist": {"cond": [24, 5, 10], "ats": [30, 5, 4], "rec": [34, 4, 1]}, "faltam": {"cond": 53, "ats": 65, "rec": 72}, "recusas_por_tipo": {"Segurança": 3, "Qualidade": 4}, "serie": [{"comp": "2025-11", "n": 39, "cond": 0, "ats": 0, "rec": 0, "regs_cond": 0, "regs_ats": 0, "regs_rec": 0, "sem_dado": true, "parcial": false}, {"comp": "2025-12", "n": 39, "cond": 0, "ats": 0, "rec": 0, "regs_cond": 0, "regs_ats": 0, "regs_rec": 0, "sem_dado": true, "parcial": false}, {"comp": "2026-01", "n": 39, "cond": 0, "ats": 0, "rec": 0, "regs_cond": 0, "regs_ats": 0, "regs_rec": 0, "sem_dado": true, "parcial": false}, {"comp": "2026-02", "n": 39, "cond": 0, "ats": 0, "rec": 0, "regs_cond": 0, "regs_ats": 0, "regs_rec": 0, "sem_dado": true, "parcial": false}, {"comp": "2026-03", "n": 39, "cond": 0, "ats": 0, "rec": 0, "regs_cond": 0, "regs_ats": 3, "regs_rec": 0, "sem_dado": false, "parcial": false}, {"comp": "2026-04", "n": 39, "cond": 0, "ats": 1, "rec": 0, "regs_cond": 0, "regs_ats": 8, "regs_rec": 0, "sem_dado": false, "parcial": false}, {"comp": "2026-05", "n": 39, "cond": 2, "ats": 1, "rec": 1, "regs_cond": 9, "regs_ats": 5, "regs_rec": 5, "sem_dado": false, "parcial": false}, {"comp": "2026-06", "n": 39, "cond": 3, "ats": 1, "rec": 0, "regs_cond": 10, "regs_ats": 5, "regs_rec": 4, "sem_dado": false, "parcial": false}, {"comp": "2026-07", "n": 39, "cond": 3, "ats": 1, "rec": 1, "regs_cond": 12, "regs_ats": 5, "regs_rec": 12, "sem_dado": false, "parcial": false}, {"comp": "2026-08", "n": 39, "cond": 1, "ats": 2, "rec": 1, "regs_cond": 9, "regs_ats": 5, "regs_rec": 6, "sem_dado": false, "parcial": false}, {"comp": "2026-09", "n": 39, "cond": 3, "ats": 5, "rec": 4, "regs_cond": 14, "regs_ats": 12, "regs_rec": 11, "sem_dado": false, "parcial": false}, {"comp": "2026-10", "n": 39, "cond": 10, "ats": 4, "rec": 1, "regs_cond": 28, "regs_ats": 16, "regs_rec": 7, "sem_dado": false, "parcial": true}], "por_turma": null, "base_ate": "13/10 07:21", "base_horas": 2.5, "base_ok": true}, "seg_painel": {"meses": ["2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09", "2026-10"], "mes_atual": "2026-10", "dia_ref": 12, "metas": {"c": 2, "a": 2, "r": 2}, "base_ate": "13/10 07:21", "campos": ["c_reg", "c_pes", "c_bat", "a_reg", "a_pes", "a_bat", "r_reg", "r_pes", "r_bat", "pessoas", "tudo", "c_dia", "a_dia", "r_dia", "rt_seg", "rt_qual", "rt_ma", "rt_outra"], "k_min": 5, "primeiro_mes": "2026-04", "formacao_ate": "2026-05", "equipe": {"dia_ref": 12, "total": 39, "meses": {"2026-04": {"c": {"bat_dia": 0, "reg_dia": 0, "bat": 0, "reg": 0, "hist": [39, 0, 0], "faltam": 78}, "a": {"bat_dia": 0, "reg_dia": 1, "bat": 1, "reg": 8, "hist": [35, 3, 1], "faltam": 73}, "r": {"bat_dia": 0, "reg_dia": 0, "bat": 0, "reg": 0, "hist": [39, 0, 0], "faltam": 78}}, "2026-05": {"c": {"bat_dia": 1, "reg_dia": 4, "bat": 2, "reg": 9, "hist": [34, 3, 2], "faltam": 71}, "a": {"bat_dia": 0, "reg_dia": 3, "bat": 1, "reg": 5, "hist": [35, 3, 1], "faltam": 73}, "r": {"bat_dia": 0, "reg_dia": 1, "bat": 1, "reg": 5, "hist": [35, 3, 1], "faltam": 73}}, "2026-06": {"c": {"bat_dia": 2, "reg_dia": 8, "bat": 3, "reg": 10, "hist": [32, 4, 3], "faltam": 68}, "a": {"bat_dia": 0, "reg_dia": 2, "bat": 1, "reg": 5, "hist": [35, 3, 1], "faltam": 73}, "r": {"bat_dia": 0, "reg_dia": 1, "bat": 0, "reg": 4, "hist": [35, 4, 0], "faltam": 74}}, "2026-07": {"c": {"bat_dia": 0, "reg_dia": 2, "bat": 3, "reg": 12, "hist": [35, 1, 3], "faltam": 71}, "a": {"bat_dia": 0, "reg_dia": 2, "bat": 1, "reg": 5, "hist": [35, 3, 1], "faltam": 73}, "r": {"bat_dia": 0, "reg_dia": 1, "bat": 1, "reg": 12, "hist": [36, 2, 1], "faltam": 74}}, "2026-08": {"c": {"bat_dia": 0, "reg_dia": 2, "bat": 1, "reg": 9, "hist": [33, 5, 1], "faltam": 71}, "a": {"bat_dia": 1, "reg_dia": 2, "bat": 2, "reg": 5, "hist": [37, 0, 2], "faltam": 74}, "r": {"bat_dia": 0, "reg_dia": 0, "bat": 1, "reg": 6, "hist": [35, 3, 1], "faltam": 73}}, "2026-09": {"c": {"bat_dia": 0, "reg_dia": 1, "bat": 3, "reg": 14, "hist": [31, 5, 3], "faltam": 67}, "a": {"bat_dia": 0, "reg_dia": 1, "bat": 5, "reg": 12, "hist": [34, 0, 5], "faltam": 68}, "r": {"bat_dia": 0, "reg_dia": 2, "bat": 4, "reg": 11, "hist": [32, 3, 4], "faltam": 67}}, "2026-10": {"c": {"bat_dia": 10, "reg_dia": 28, "bat": 10, "reg": 28, "hist": [24, 5, 10], "faltam": 53}, "a": {"bat_dia": 4, "reg_dia": 16, "bat": 4, "reg": 16, "hist": [30, 5, 4], "faltam": 65}, "r": {"bat_dia": 1, "reg_dia": 7, "bat": 1, "reg": 7, "hist": [34, 4, 1], "faltam": 72}}}}, "areas": [{"id": "A0", "nome": "Trefila 2", "reg": 2320, "celulas": [{"id": "C0", "nome": "TREFILAÇÃO ARAME INDUSTRIAL", "reg": 603}, {"id": "C1", "nome": "FARPARIA", "reg": 422}, {"id": "C2", "nome": "ACABAMENTO", "reg": 298}, {"id": "C3", "nome": "GALVANIZAÇÃO LINHA 1 E 2", "reg": 287}, {"id": "C4", "nome": "GALVANIZAÇÃO LINHA 3", "reg": 187}, {"id": "C5", "nome": "DECAPAGEM QUÍMICA E MOVIMENTAÇÃO", "reg": 84}, {"id": "C6", "nome": "OVALADO", "reg": 80}, {"id": "C7", "nome": "RECOZIMENTO", "reg": 31}, {"id": "C8", "nome": "MANUTENÇÃO ELÉTRICA", "reg": 22}, {"id": "C9", "nome": "MANUTENÇÃO MECÂNICA", "reg": 9}, {"id": "C10", "nome": "GERÊNCIA ADM", "reg": 8}, {"id": "C11", "nome": "DECAPAGEM QUÍMICA", "reg": 7}, {"id": "C12", "nome": "CONTROLE DE QUALIDADE", "reg": 6}, {"id": "C13", "nome": "OFICINA DE FIEIRAS", "reg": 4}, {"id": "C14", "nome": "RETREFILAÇÃO", "reg": 1}, {"id": "C15", "nome": "Sem célula informada", "reg": 271}]}], "dados": {"A0": {"2026-04": [43, 25, 9, 74, 26, 15, 32, 14, 6, 48, 0, 10, 18, 10, 16, 9, 7, 0], "2026-05": [87, 37, 19, 67, 22, 13, 42, 19, 6, 57, 1, 31, 21, 8, 16, 26, 0, 0], "2026-06": [127, 54, 27, 121, 38, 20, 79, 28, 16, 82, 1, 30, 36, 23, 25, 47, 7, 0], "2026-07": [237, 72, 45, 151, 44, 31, 65, 37, 12, 98, 3, 58, 56, 15, 38, 25, 2, 0], "2026-08": [277, 78, 52, 115, 42, 24, 116, 46, 23, 102, 4, 97, 51, 37, 74, 35, 7, 0], "2026-09": [234, 74, 43, 144, 43, 30, 102, 49, 23, 89, 4, 95, 36, 41, 66, 31, 5, 0], "2026-10": [92, 46, 23, 59, 32, 12, 56, 39, 12, 68, 0, 92, 59, 55, 42, 14, 0, 0], "wt": [1097, 150, null, 731, 106, null, 492, 114, null, 175, null, null, null, null, 277, 187, 28, 0], "w3": [748, 120, null, 410, 77, null, 283, 86, null, 144, null, null, null, null, 178, 91, 14, 0]}, "C4": {"2026-04": [6, 5, 1, 0, 0, 0, 1, 1, 0, 6, 0, 1, 0, 0, 0, 0, 1, 0], "2026-05": [19, 11, 5, 2, 1, 1, 3, 2, 1, 12, 0, 9, 0, 0, 1, 2, 0, 0], "2026-06": [12, 11, 1, 2, 2, 0, 1, 1, 0, 14, 0, 5, 0, 0, 1, 0, 0, 0], "2026-07": [33, 15, 7, 4, 2, 2, 13, 4, 1, 15, 1, 7, 0, 2, 3, 10, 0, 0], "2026-08": [9, 8, 1, 5, 5, 0, 3, 3, 0, 14, 0, 5, 2, 0, 2, 1, 0, 0], "2026-09": [41, 18, 9, 10, 5, 3, 12, 8, 4, 20, 1, 27, 1, 7, 8, 3, 1, 0], "2026-10": [8, 5, 1, 1, 1, 0, 2, 2, 0, 6, 0, 8, 1, 2, 1, 1, 0, 0], "wt": [128, 35, null, 24, 11, null, 35, 16, null, 42, null, null, null, null, 16, 17, 2, 0], "w3": [83, 26, null, 19, 9, null, 28, 12, null, 30, null, null, null, null, 13, 14, 1, 0]}, "C2": {"2026-04": [5, 4, 1, 0, 0, 0, 7, 1, 1, 5, 0, 1, 0, 4, 4, 2, 1, 0], "2026-05": [7, 5, 2, 3, 3, 0, 13, 6, 2, 11, 0, 2, 1, 3, 4, 9, 0, 0], "2026-06": [31, 13, 7, 15, 5, 3, 24, 8, 6, 17, 0, 5, 5, 5, 13, 9, 2, 0], "2026-07": [23, 9, 5, 22, 10, 4, 20, 11, 5, 20, 1, 6, 2, 3, 9, 10, 1, 0], "2026-08": [17, 11, 4, 9, 8, 1, 25, 8, 3, 19, 0, 4, 4, 8, 15, 9, 1, 0], "2026-09": [19, 14, 3, 7, 4, 2, 25, 8, 6, 18, 0, 8, 2, 15, 14, 11, 0, 0], "2026-10": [8, 4, 3, 4, 1, 1, 14, 7, 4, 8, 0, 8, 4, 14, 9, 5, 0, 0], "wt": [110, 29, null, 60, 21, null, 128, 16, null, 42, null, null, null, null, 68, 55, 5, 0], "w3": [59, 20, null, 38, 17, null, 70, 14, null, 35, null, null, null, null, 38, 30, 2, 0]}, "C1": {"2026-04": [11, 8, 3, 9, 4, 1, 8, 5, 2, 14, 0, 1, 1, 3, 2, 3, 3, 0], "2026-05": [10, 7, 1, 23, 7, 3, 16, 2, 2, 11, 0, 5, 2, 3, 1, 15, 0, 0], "2026-06": [10, 7, 2, 55, 9, 5, 40, 9, 7, 18, 0, 5, 17, 16, 2, 36, 2, 0], "2026-07": [21, 13, 4, 34, 8, 4, 12, 7, 2, 22, 0, 11, 26, 6, 9, 3, 0, 0], "2026-08": [23, 13, 6, 13, 9, 4, 19, 7, 5, 19, 0, 7, 6, 4, 13, 4, 2, 0], "2026-09": [31, 15, 6, 26, 9, 6, 22, 8, 6, 20, 1, 11, 7, 3, 13, 8, 1, 0], "2026-10": [9, 8, 1, 14, 10, 3, 16, 13, 3, 16, 0, 9, 14, 15, 14, 2, 0, 0], "wt": [115, 35, null, 174, 21, null, 133, 22, null, 42, null, null, null, null, 54, 71, 8, 0], "w3": [75, 25, null, 73, 16, null, 53, 13, null, 35, null, null, null, null, 35, 15, 3, 0]}, "C3": {"2026-04": [13, 8, 1, 8, 6, 2, 13, 6, 3, 15, 0, 4, 0, 2, 9, 2, 2, 0], "2026-05": [20, 11, 4, 5, 2, 1, 5, 4, 1, 15, 0, 9, 1, 1, 5, 0, 0, 0], "2026-06": [11, 7, 3, 3, 3, 0, 5, 3, 2, 10, 0, 0, 1, 0, 2, 0, 3, 0], "2026-07": [44, 17, 8, 12, 6, 5, 4, 3, 1, 22, 0, 6, 2, 2, 2, 1, 1, 0], "2026-08": [64, 20, 12, 6, 5, 1, 3, 3, 0, 25, 0, 12, 1, 0, 2, 1, 0, 0], "2026-09": [37, 20, 10, 9, 6, 2, 9, 5, 2, 23, 0, 9, 1, 3, 9, 0, 0, 0], "2026-10": [10, 7, 2, 4, 4, 0, 2, 2, 0, 10, 0, 10, 4, 2, 2, 0, 0, 0], "wt": [199, 46, null, 47, 19, null, 41, 17, null, 53, null, null, null, null, 31, 4, 6, 0], "w3": [145, 33, null, 27, 12, null, 16, 9, null, 41, null, null, null, null, 13, 2, 1, 0]}, "C0": {"2026-04": [5, 4, 1, 11, 5, 3, 3, 3, 0, 9, 0, 3, 4, 1, 1, 2, 0, 0], "2026-05": [25, 12, 5, 3, 2, 1, 3, 3, 0, 15, 0, 6, 1, 1, 3, 0, 0, 0], "2026-06": [39, 15, 7, 9, 4, 3, 3, 1, 1, 18, 0, 12, 3, 1, 2, 1, 0, 0], "2026-07": [88, 34, 21, 24, 14, 6, 15, 12, 2, 41, 1, 18, 2, 1, 14, 1, 0, 0], "2026-08": [132, 40, 25, 21, 12, 4, 47, 22, 9, 51, 0, 57, 11, 22, 32, 12, 3, 0], "2026-09": [80, 27, 16, 18, 8, 4, 18, 14, 2, 33, 0, 30, 6, 7, 9, 7, 2, 0], "2026-10": [39, 18, 7, 4, 3, 1, 16, 10, 4, 22, 0, 39, 4, 16, 10, 6, 0, 0], "wt": [408, 59, null, 90, 28, null, 105, 40, null, 69, null, null, null, null, 71, 29, 5, 0], "w3": [300, 54, null, 63, 22, null, 80, 34, null, 64, null, null, null, null, 55, 20, 5, 0]}, "C5": {"2026-04": [1, null, null, 0, null, null, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0], "2026-06": [8, null, null, 1, null, null, 1, null, null, null, null, 0, 0, 0, 1, 0, 0, 0], "2026-07": [15, 7, 3, 2, 1, 1, 0, 0, 0, 7, 0, 6, 0, 0, 0, 0, 0, 0], "2026-08": [18, 8, 6, 3, 2, 1, 12, 4, 4, 9, 1, 9, 1, 2, 4, 8, 0, 0], "2026-09": [6, 5, 1, 7, 2, 2, 4, 2, 1, 6, 0, 0, 0, 0, 2, 2, 0, 0], "2026-10": [2, 2, 0, 0, 0, 0, 3, 3, 0, 5, 0, 2, 0, 3, 3, 0, 0, 0], "2026-05": [0, null, null, 1, null, null, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0], "wt": [50, 16, null, 14, 5, null, 20, 7, null, 17, null, null, null, null, 10, 10, 0, 0], "w3": [39, 13, null, 12, 3, null, 16, 4, null, 13, null, null, null, null, 6, 10, 0, 0]}, "C8": {"2026-04": [2, null, null, 1, null, null, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0], "2026-05": [3, null, null, 0, null, null, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0], "2026-06": [1, null, null, 0, null, null, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0], "2026-07": [4, null, null, 0, null, null, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0], "2026-08": [2, null, null, 0, null, null, 1, null, null, null, null, 0, 0, 0, 0, 0, 1, 0], "2026-09": [5, null, null, 1, null, null, 1, null, null, null, null, 4, 1, 0, 0, 0, 1, 0], "2026-10": [0, null, null, 0, null, null, 1, null, null, null, null, 0, 0, 1, 1, 0, 0, 0], "wt": [17, 5, null, 2, 2, null, 3, 2, null, 6, null, null, null, null, 1, 0, 2, 0], "w3": [11, null, null, 1, null, null, 2, null, null, null, null, null, null, null, 0, 0, 2, 0]}, "C6": {"2026-05": [3, 2, 1, 4, 3, 1, 1, 1, 0, 5, 0, 0, 3, 0, 1, 0, 0, 0], "2026-06": [5, 4, 1, 4, 4, 0, 4, 4, 0, 11, 0, 3, 1, 1, 3, 1, 0, 0], "2026-07": [4, 3, 1, 1, 1, 0, 1, 1, 0, 5, 0, 1, 1, 1, 1, 0, 0, 0], "2026-08": [7, 4, 1, 8, 4, 4, 3, 2, 1, 7, 0, 2, 2, 0, 3, 0, 0, 0], "2026-09": [3, 2, 1, 4, 3, 1, 7, 5, 2, 8, 0, 0, 0, 2, 7, 0, 0, 0], "2026-10": [13, 7, 5, 6, 4, 1, 2, 2, 0, 8, 0, 13, 6, 2, 2, 0, 0, 0], "wt": [35, 14, null, 27, 14, null, 18, 12, null, 27, null, null, null, null, 17, 1, 0, 0], "w3": [14, 7, null, 13, 6, null, 11, 7, null, 15, null, null, null, null, 11, 0, 0, 0]}, "C10": {"2026-05": [0, null, null, 0, null, null, 1, null, null, null, null, 0, 0, 0, 1, 0, 0, 0], "2026-06": [1, null, null, 0, null, null, 1, null, null, null, null, 0, 0, 0, 1, 0, 0, 0], "2026-09": [1, null, null, 0, null, null, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0], "2026-10": [3, null, null, 0, null, null, 0, null, null, null, null, 3, 0, 0, 0, 0, 0, 0], "2026-04": [0, null, null, 1, null, null, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0], "wt": [5, null, null, 1, null, null, 2, null, null, null, null, null, null, null, 2, 0, 0, 0], "w3": [1, null, null, 0, null, null, 0, null, null, null, null, null, null, null, 0, 0, 0, 0]}, "C7": {"2026-06": [9, null, null, 0, null, null, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0], "2026-07": [4, 4, 0, 1, 1, 0, 0, 0, 0, 5, 0, 2, 0, 0, 0, 0, 0, 0], "2026-08": [5, 4, 1, 0, 0, 0, 1, 1, 0, 5, 0, 1, 0, 1, 1, 0, 0, 0], "2026-09": [7, null, null, 2, null, null, 0, null, null, null, null, 4, 1, 0, 0, 0, 0, 0], "2026-04": [0, null, null, 1, null, null, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0], "2026-05": [0, null, null, 1, null, null, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0], "wt": [25, 9, null, 5, 1, null, 1, 1, null, 11, null, null, null, null, 1, 0, 0, 0], "w3": [16, 7, null, 3, 1, null, 1, 1, null, 9, null, null, null, null, 1, 0, 0, 0]}, "C13": {"2026-07": [1, null, null, 0, null, null, 0, null, null, null, null, 1, 0, 0, 0, 0, 0, 0], "2026-08": [0, null, null, 0, null, null, 2, null, null, null, null, 0, 0, 0, 2, 0, 0, 0], "2026-09": [0, null, null, 0, null, null, 1, null, null, null, null, 0, 0, 1, 1, 0, 0, 0], "w3": [1, null, null, 0, null, null, 3, null, null, null, null, null, null, null, 3, 0, 0, 0], "wt": [1, null, null, 0, null, null, 3, null, null, null, null, null, null, null, 3, 0, 0, 0]}, "C11": {"2026-09": [4, 4, 0, 0, 0, 0, 3, 2, 1, 6, 0, 2, 0, 3, 3, 0, 0, 0], "w3": [4, 4, null, 0, 0, null, 3, 2, null, 6, null, null, null, null, 3, 0, 0, 0], "wt": [4, 4, null, 0, 0, null, 3, 2, null, 6, null, null, null, null, 3, 0, 0, 0]}, "C15": {"2026-04": [0, 0, 0, 39, 17, 8, 0, 0, 0, 17, 0, 0, 11, 0, 0, 0, 0, 0], "2026-05": [0, 0, 0, 20, 12, 4, 0, 0, 0, 12, 0, 0, 10, 0, 0, 0, 0, 0], "2026-06": [0, 0, 0, 30, 20, 9, 0, 0, 0, 20, 0, 0, 7, 0, 0, 0, 0, 0], "2026-07": [0, 0, 0, 51, 27, 11, 0, 0, 0, 27, 0, 0, 23, 0, 0, 0, 0, 0], "2026-08": [0, 0, 0, 49, 15, 7, 0, 0, 0, 15, 0, 0, 24, 0, 0, 0, 0, 0], "2026-09": [0, 0, 0, 57, 20, 12, 0, 0, 0, 20, 0, 0, 15, 0, 0, 0, 0, 0], "2026-10": [0, 0, 0, 25, 12, 4, 0, 0, 0, 12, 0, 0, 25, 0, 0, 0, 0, 0], "wt": [0, 0, null, 271, 58, null, 0, 0, null, 58, null, null, null, null, 0, 0, 0, 0], "w3": [0, 0, null, 157, 42, null, 0, 0, null, 42, null, null, null, null, 0, 0, 0, 0]}, "C9": {"2026-04": [0, null, null, 2, null, null, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0], "2026-05": [0, null, null, 1, null, null, 0, null, null, null, null, 0, 1, 0, 0, 0, 0, 0], "2026-06": [0, null, null, 2, null, null, 0, null, null, null, null, 0, 2, 0, 0, 0, 0, 0], "2026-08": [0, null, null, 1, null, null, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0], "2026-09": [0, null, null, 3, null, null, 0, null, null, null, null, 0, 2, 0, 0, 0, 0, 0], "wt": [0, 0, null, 9, 6, null, 0, 0, null, 6, null, null, null, null, 0, 0, 0, 0], "w3": [0, null, null, 4, null, null, 0, null, null, null, null, null, null, null, 0, 0, 0, 0]}, "C12": {"2026-04": [0, null, null, 2, null, null, 0, null, null, null, null, 0, 2, 0, 0, 0, 0, 0], "2026-05": [0, null, null, 4, null, null, 0, null, null, null, null, 0, 2, 0, 0, 0, 0, 0], "wt": [0, null, null, 6, null, null, 0, null, null, null, null, null, null, null, 0, 0, 0, 0]}, "C14": {"2026-10": [0, null, null, 1, null, null, 0, null, null, null, null, 0, 1, 0, 0, 0, 0, 0], "wt": [0, null, null, 1, null, null, 0, null, null, null, null, null, null, null, 0, 0, 0, 0]}}, "area_equipe": "A0", "publico_todas": false}, "pagina": "seguranca", "paginas": {"seguranca": "seguranca.html", "qualidade": "qualidade-area.html", "entrega": "entrega.html", "perdas": "perdas.html", "manutencao": "manutencao.html"}};
 
 /* ---------- utilidades ---------- */
 const $ = (id) => document.getElementById(id);
@@ -442,7 +464,307 @@ function renderEntrega() {
 
 /* ======================================================================= SEGURANÇA */
 const FRENTES = [["cond", "Condição"], ["ats", "Atitude Segura"], ["rec", "Recusa de Tarefa"]];
+/* ---- filtros, recorte por área/célula/período e comparação com o histórico (13/10/2026) ---- */
+const FK = {cond: "c", ats: "a", rec: "r"}, FN = {c: "Condição", a: "Atitude Segura", r: "Recusa de Tarefa"};
+const MES3 = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+const mesRot = (c) => MES3[Number(c.slice(5, 7)) - 1] + "/" + c.slice(2, 4);
+const SP = D.seg_painel, SPOK = ok(SP);
+const IX = SPOK ? Object.fromEntries(SP.campos.map((c, i) => [c, i])) : {};
+const val = (sid, per, campo) => { const v = (SP.dados[sid] || {})[per]; return v ? v[IX[campo]] : 0; };   // recorte sem registro = 0; null = grupo pequeno
+const areaDe = (id) => SP.areas.find(a => a.id === id);
+const mesesDe = (per) => per === "wt" ? SP.meses.slice() : per === "w3" ? SP.meses.slice(-4, -1) : [per];
+const soma = (xs) => xs.reduce((a, b) => a + b, 0);
+const norm = (t) => String(t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+let FIL = {area: "equipe", cel: "", per: SPOK ? SP.mes_atual : "", fr: "todas", busca: "", sit: "", turma: "", ord: null, lim: 80}, POSR = null;
+/* a página sempre ABRE na visão da equipe, no mês em curso (a visão de sempre); o filtro só dura enquanto a página está aberta */
+function valida() {            /* garante que o filtro aponta para algo que existe (área liberada, mês, janela) */
+  if (FIL.area !== "equipe" && !(FIL.area === "P" && SP.dados.P) && !areaDe(FIL.area)) FIL.area = "equipe";
+  const a = areaDe(FIL.area);
+  if (!a || !a.celulas.some(c => c.id === FIL.cel)) FIL.cel = "";
+  if (!(SP.meses.includes(FIL.per) || (FIL.area !== "equipe" && (FIL.per === "w3" || FIL.per === "wt")))) FIL.per = SP.mes_atual;
+  if (!["todas", "c", "a", "r"].includes(FIL.fr)) FIL.fr = "todas";
+}
+function nomeEscopo() {
+  if (FIL.area === "equipe") return `Equipe da Trefila 2 (${D.seguranca.total} pessoas)`;
+  if (FIL.area === "P") return "Toda a planta (Cosigua)";
+  const a = areaDe(FIL.area), c = a.celulas.find(x => x.id === FIL.cel);
+  return a.nome + (c ? " › " + c.nome : "");
+}
+function nomePer(p) {
+  if (p === "wt") return `todo o período (desde ${mesRot(SP.meses[0])})`;
+  if (p === "w3") { const m = mesesDe("w3"); return m.length ? `últimos 3 meses fechados (${mesRot(m[0])} a ${mesRot(m[m.length - 1])})` : "últimos 3 meses fechados"; }
+  return p === SP.mes_atual ? `mês em curso (${mesRot(p)}${SP.dia_ref > 0 ? ", até o dia " + SP.dia_ref : ""})` : mesRot(p);
+}
+function filtrosHtml() {
+  const opt = (v, t, at) => `<option value="${E(v)}"${v === at ? " selected" : ""}>${E(t)}</option>`;
+  const areas = [opt("equipe", `Equipe da Trefila 2 (${D.seguranca.total} pessoas)`, FIL.area)];
+  if (SP.dados.P) areas.push(opt("P", "Toda a planta (Cosigua)", FIL.area));
+  SP.areas.forEach(a => areas.push(opt(a.id, a.nome + (a.id === SP.area_equipe ? " — toda a área" : ""), FIL.area)));
+  const a = areaDe(FIL.area), eq = FIL.area === "equipe";
+  const cels = a ? [opt("", "Todas as células", FIL.cel)].concat(a.celulas.map(c => opt(c.id, c.nome, FIL.cel))) : [opt("", "—", "")];
+  const pers = SP.meses.slice().reverse().map(m => opt(m, (m === SP.mes_atual ? "Mês em curso — " : "") + mesRot(m) + (m === SP.mes_atual && SP.dia_ref > 0 ? ` (até o dia ${SP.dia_ref})` : ""), FIL.per));
+  if (!eq) pers.push(opt("w3", "Últimos 3 meses fechados", FIL.per), opt("wt", `Todo o período (desde ${mesRot(SP.meses[0])})`, FIL.per));
+  const frs = [["todas", "Todas as frentes"], ["c", "Condição"], ["a", "Atitude Segura"], ["r", "Recusa de Tarefa"]].map(([v, t]) => opt(v, t, FIL.fr));
+  return `<label>Área<select id="f-area">${areas.join("")}</select></label>
+    <label>Célula<select id="f-cel"${a ? "" : " disabled"}>${cels.join("")}</select></label>
+    <label>Período<select id="f-per">${pers.join("")}</select></label>
+    <label>Frente<select id="f-fr">${frs.join("")}</select></label>`;
+}
+function refaz(foco) { valida(); $("seg-filtros").innerHTML = filtrosHtml(); ligaFiltros(); desenha(); const el = foco && $(foco); if (el) el.focus(); }
+function ligaFiltros() {
+  $("f-area").onchange = () => { FIL.area = $("f-area").value; FIL.cel = ""; if (FIL.area === "equipe" && !SP.meses.includes(FIL.per)) FIL.per = SP.mes_atual; refaz("f-area"); };
+  $("f-cel").onchange = () => { FIL.cel = $("f-cel").value; refaz("f-cel"); };
+  $("f-per").onchange = () => { FIL.per = $("f-per").value; refaz("f-per"); };
+  $("f-fr").onchange = () => { FIL.fr = $("f-fr").value; refaz("f-fr"); };
+}
+const avisoPublico = () => `<div class="aviso-local">${SP.publico_todas ? "A lista por colaborador fica" : "As outras áreas da planta e a lista por colaborador ficam"} na <b>Central do Coordenador</b>, para ser tratada com a equipe. Este portal mostra só agregados: nenhum nome, matrícula ou turma.</div>`;
+function desenha() {
+  BIND.length = 0;
+  const eq = FIL.area === "equipe", sid = FIL.cel || FIL.area;
+  $("seg-escopo").innerHTML = `<span>Mostrando <b>${E(nomeEscopo())}</b> · <b>${E(nomePer(FIL.per))}</b> · ${FIL.fr === "todas" ? "todas as frentes" : E(FN[FIL.fr])}</span>`
+    + (eq ? "" : `<button type="button" class="btn" id="f-volta">Voltar à equipe</button>`);
+  $("seg-corpo").innerHTML = (eq ? segEquipe(FIL.per) : segRecorte(sid)) + (D.publico ? avisoPublico() : secColaboradores());
+  BIND.forEach(f => f());
+  if ($("f-volta")) $("f-volta").onclick = () => { FIL.area = "equipe"; FIL.cel = ""; if (!SP.meses.includes(FIL.per)) FIL.per = SP.mes_atual; refaz(); };
+  document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => {      /* "ver" numa linha do comparativo: entra na área/célula */
+    const id = b.dataset.go;
+    if (id[0] === "C") { const c = (SP.areas.flatMap(a => a.celulas.map(x => [a.id, x.id]))).find(x => x[1] === id); FIL.area = c[0]; FIL.cel = id; } else { FIL.area = id; FIL.cel = ""; }
+    refaz(); window.scrollTo(0, 0);
+  });
+  if (!D.publico) colInit();
+}
+
+/* comparação com o histórico, no MESMO ponto do mês: o mês em curso só vai até o último dia completo da base */
+function histLinha(h, unid) {
+  if (!h || (h.ant == null && h.media == null)) return `<div class="hist">${chip("ne", "Sem base de comparação")}<span>Ainda não há meses anteriores suficientes.</span></div>`;
+  const ref = h.media != null ? h.media : h.ant;
+  let k, t;
+  if (ref > 0) { const r = h.at / ref; k = r >= 1 ? "ok" : r >= 0.8 ? "at" : "cr"; t = r >= 1 ? "Acima do histórico" : r >= 0.8 ? "Perto do histórico" : "Abaixo do histórico"; }
+  else if (h.at > 0) { k = "ok"; t = "Acima do histórico"; } else { k = "ne"; t = "Sem base de comparação"; }
+  const p = [`${h.ate != null ? "Até o dia " + h.ate : "No mês"}: <b>${NF(h.at)}</b>`];
+  if (h.ant != null) p.push(`${h.antRot}: <b>${NF(h.ant)}</b>`);
+  if (h.media != null) p.push(`média ${h.mRot}: <b>${NF(h.media, 1)}</b>`);
+  return `<div class="hist">${chip(k, t)}<span class="num">${p.join(" · ")}${unid ? " " + unid : ""}</span></div>`;
+}
+function cmpReg(sid, f) {      /* registros do recorte: este mês × mês anterior × média dos 3 anteriores */
+  const i = SP.meses.indexOf(FIL.per), cur = FIL.per === SP.mes_atual;
+  if (cur && !(SP.dia_ref > 0)) return null;
+  const campo = f + (cur ? "_dia" : "_reg"), g = (m) => val(sid, m, campo), ult = SP.meses.slice(Math.max(0, i - 3), i);
+  return {at: g(FIL.per), ant: i > 0 ? g(SP.meses[i - 1]) : null, antRot: i > 0 ? mesRot(SP.meses[i - 1]) : null,
+          media: ult.length >= 2 ? soma(ult.map(g)) / ult.length : null, mRot: ult.length >= 2 ? `${mesRot(ult[0])} a ${mesRot(ult[ult.length - 1])}` : null, ate: cur ? SP.dia_ref : null};
+}
+function eqNum(mes, k) {
+  const s = D.seguranca;
+  if (mes === s.competencia) return {bat: s.bateram[k], reg: s.registros[k], hist: s.hist[k], faltam: s.faltam[k]};
+  const m = SP.equipe.meses[mes][FK[k]];
+  return {bat: m.bat, reg: m.reg, hist: m.hist, faltam: m.faltam};
+}
+function eqHist(mes, f) {      /* equipe: quantas pessoas tinham batido a meta no mesmo ponto dos meses anteriores */
+  const cur = mes === D.seguranca.competencia, i = SP.meses.indexOf(mes);
+  if (i < 0 || (cur && !(SP.dia_ref > 0))) return null;
+  const campo = cur ? "bat_dia" : "bat", g = (m) => SP.equipe.meses[m][f][campo], ult = SP.meses.slice(Math.max(0, i - 3), i);
+  return {at: g(mes), ant: i > 0 ? g(SP.meses[i - 1]) : null, antRot: i > 0 ? mesRot(SP.meses[i - 1]) : null,
+          media: ult.length >= 2 ? soma(ult.map(g)) / ult.length : null, mRot: ult.length >= 2 ? `${mesRot(ult[0])} a ${mesRot(ult[ult.length - 1])}` : null, ate: cur ? SP.dia_ref : null};
+}
+
+/* ---- visão da EQUIPE (a de sempre, agora com o histórico ao lado e qualquer mês) ---- */
+function segEquipe(mes) {
+  const s = D.seguranca, cur = mes === s.competencia, T = s.total;
+  const ks = FRENTES.filter(([k]) => FIL.fr === "todas" || FK[k] === FIL.fr);
+  const [ano, mn] = mes.split("-").map(Number), dMes = new Date(ano, mn, 0).getDate();
+  const diaBase = Number((s.base_ate || "").slice(0, 2)) || Number((D.gerado_em || "").slice(0, 2)) || 1, esp = diaBase / dMes;
+  let h = sec(cur ? "Quem já bateu a meta do mês" : `Quem bateu a meta em ${mesRot(mes)}`,
+    cur ? `Cada pessoa tem meta de ${s.metas.cond} registros por frente no mês. O estado compara quem já bateu a meta com o ritmo do calendário (dia ${diaBase} de ${dMes} = ${P(esp, 0)} do mês). Abaixo de cada número, a comparação com os meses anteriores <b>no mesmo ponto do mês</b>${SP.dia_ref > 0 ? ` (até o dia ${SP.dia_ref}, último dia completo da base)` : ""}.`
+        : `Mês fechado, com a equipe de hoje (${T} pessoas): cada pessoa tem meta de ${s.metas.cond} registros por frente no mês. Abaixo de cada número, a comparação com os meses anteriores.`,
+    `<div class="decidir k3">${ks.map(([k, nome]) => {
+      const d = eqNum(mes, k), r = T ? d.bat / T : 0, est = r >= esp ? "ok" : "at";
+      const extra = k === "rec" && cur && s.recusas_por_tipo && Object.keys(s.recusas_por_tipo).length
+        ? " · " + Object.entries(s.recusas_por_tipo).map(([t, n]) => `${n} de ${E(t)}`).join(", ") : "";
+      return `<article class="dec"><div class="topo"><span class="pilar">${nome}</span>${cur ? chip(est, est === "ok" ? "No ritmo" : "Abaixo do ritmo") : chip("ne", "Mês fechado")}</div>
+        <div class="kv"><div class="v num">${d.bat} <small>de ${T}</small></div><div class="l">pessoas que bateram a meta de ${s.metas[k]} no mês</div></div>
+        <p class="num">A equipe fez <b>${d.reg}</b> registros${extra}. ${cur ? "Para todos baterem a meta ainda faltam" : "Para todos baterem a meta teriam faltado"} <b>${d.faltam}</b> registros.</p>
+        ${histLinha(eqHist(mes, FK[k]), "pessoas")}</article>`;
+    }).join("")}</div>`);
+  const dist = ks.map(([k, nome]) => {
+    const [z, p, m] = eqNum(mes, k).hist, t = T || 1, w = (x) => (x / t * 100).toFixed(2);
+    const seg = (cls, x) => x ? `<span class="${cls}" style="flex:0 0 calc(${w(x)}% - 2px)">${x >= 3 ? x : ""}</span>` : "";
+    return `<div class="dist"><div class="rot"><b>${nome}</b><span class="num">${T} pessoas</span></div>
+      <div class="pilha" role="img" aria-label="${nome}: ${z} sem registro, ${p} com registro abaixo da meta, ${m} com a meta batida">${seg("z", z)}${seg("p", p)}${seg("m", m)}</div>
+      <div class="res num">Sem registro: <b>${z}</b> · Com registro, abaixo da meta: <b>${p}</b> · Meta batida: <b>${m}</b></div></div>`;
+  }).join("");
+  h += sec("Como a equipe se distribui", "Só contagens da área: ninguém é identificado. O que mais pesa é o grupo sem nenhum registro no mês.",
+    `<section class="painel">${dist}${legenda([quad("var(--pale)", "Sem registro"), quad("var(--mid)", "Abaixo da meta"), quad("var(--deep)", "Meta batida")])}</section>`);
+  const serieTotal = Array.isArray(s.serie) ? s.serie : null;
+  const ini = serieTotal ? serieTotal.findIndex(m => !m.sem_dado) : -1;       /* meses vazios do começo saem do gráfico e ficam avisados */
+  const serie = serieTotal ? (ini > 0 ? serieTotal.slice(ini) : serieTotal) : null;
+  if (serie) {
+    const mm = (c) => { const [a, m] = c.split("-"); return MES3[Number(m) - 1] + (m === "01" ? "/" + a.slice(2) : ""); };
+    const mmAno = (c) => mm(c).split("/")[0] + "/" + c.slice(2, 4);
+    const par = serie.find(m => m.parcial), fechados = serie.filter(m => !m.parcial && !m.sem_dado);
+    const acima = (par && fechados.length) ? FRENTES.map(([k, n]) => { const mx = Math.max(...fechados.map(m => m[k])); return par[k] > mx ? `${n}: ${par[k]} (melhor mês fechado: ${mx})` : null; }).filter(Boolean) : [];
+    const leitura = acima.length ? ` <b>Mês em curso (dia ${diaBase} de ${dMes}) já acima de todos os meses fechados:</b> ${acima.join("; ")}.` : "";
+    const antes = ini > 0 ? ` Os ${ini} meses anteriores a ${mmAno(serie[0].comp)} não têm nenhum registro da equipe na base e ficaram de fora.` : "";
+    h += sec("Evolução nos últimos meses", `Pessoas que bateram a meta em cada mês, <b>da equipe de hoje</b> (${T}). A linha tracejada é a média dos meses fechados. Mês sem nenhum registro da equipe inteira aparece como “–” (sem dado): ${T} pessoas sem uma única marcação indicam falta de base, não desempenho.${antes}${leitura}`,
+      `<div class="tres">${ks.map(([k, nome]) => {
+        const its = serie.map(m => m.sem_dado ? {rot: mm(m.comp), v: null, tip: `<b>${mm(m.comp)}</b><br>sem registro na base`}
+          : {rot: mm(m.comp), v: m[k], rotulo: String(m[k]), cor: m.parcial ? "var(--mid)" : "var(--deep)",
+             tip: `<b>${mm(m.comp)}${m.parcial ? " (mês em curso)" : ""}</b><br>${m[k]} de ${m.n} bateram a meta<br>${m["regs_" + k]} registros da equipe`});
+        const med = fechados.length >= 2 ? soma(fechados.map(m => m[k])) / fechados.length : null;
+        return `<section class="painel"><h3>${nome}</h3><div class="nota">Pessoas que bateram a meta${med != null ? ` · média dos meses fechados: <b>${NF(med, 1)}</b>` : ""}</div>` +
+          colunas({itens: its, yMax: Math.max(4, ...serie.map(m => m[k] || 0)), yFmt: v => NF(v), passoX: 2, W: 270, H: 210, mL: 28, mR: 8, aria: `${nome}: pessoas que bateram a meta por mês`,
+                   linhas: med != null ? [{v: med, rot: "média", cor: "#566677", trac: true}] : []}) +
+          tabela(["Mês", "Bateram a meta", "Registros"], serie.map(m => [mm(m.comp), m.sem_dado ? "sem dado" : m[k] + " de " + m.n, m.sem_dado ? "—" : m["regs_" + k]])) + `</section>`;
+      }).join("")}</div>${legenda([quad("var(--deep)", "Mês fechado"), quad("var(--mid)", "Mês em curso (parcial)"), `<span><b>–</b>sem dado</span>`])}`);
+  } else h += sec("Evolução nos últimos meses", "", semDado("Histórico mensal indisponível nesta geração"));
+  if (!D.publico && s.por_turma && cur) {
+    const cel = (v, n) => `<div class="cel"><div class="barra"><i style="width:${n ? v / n * 100 : 0}%"></i></div><span class="num">${v}/${n}</span></div>`;
+    h += sec("Por turma (só local)", "O detalhe por turma não vai ao portal público (decisão de 30/09/2026).",
+      `<section class="painel"><table class="t"><thead><tr><th>Turma</th><th>Condição</th><th>Atitude Segura</th><th>Recusa</th><th class="n">Sem nenhum registro</th></tr></thead><tbody>` +
+      Object.entries(s.por_turma).map(([t, v]) => `<tr><td><b>${E(t)}</b></td><td>${cel(v.cond, v.n)}</td><td>${cel(v.ats, v.n)}</td><td>${cel(v.rec, v.n)}</td><td class="n num"><b>${v.zero}</b> de ${v.n}</td></tr>`).join("") + `</tbody></table></section>`);
+  }
+  return h;
+}
+
+/* ---- recorte por ÁREA / CÉLULA / planta, num mês ou numa janela de meses ---- */
+function segRecorte(sid) {
+  const fs = FIL.fr === "todas" ? ["c", "a", "r"] : [FIL.fr], per = FIL.per, um = SP.meses.includes(per), ms = mesesDe(per), M = SP.metas;
+  const reg = (id, p, f) => val(id, p, f + "_reg");
+  const total = soma(fs.map(f => reg(sid, per, f)));
+  const cartoes = fs.map(f => {
+    const r = reg(sid, per, f), pes = val(sid, per, f + "_pes");
+    let bat = val(sid, per, f + "_bat");
+    if (!um) { const bs = ms.map(m => val(sid, m, f + "_bat")); bat = bs.some(x => x == null) ? null : soma(bs) / (bs.length || 1); }
+    let linha;
+    if (pes == null) linha = `<span class="peq">Grupo com menos de ${SP.k_min} pessoas: o portal mostra os registros, mas não a contagem de pessoas.</span>`;
+    else if (um) linha = `<b>${pes}</b> ${pes === 1 ? "pessoa registrou" : "pessoas registraram"} · <b>${bat}</b> ${bat === 1 ? "bateu" : "bateram"} a meta de ${M[f]}${pes ? ` (${P(bat / pes, 0)} de quem registrou)` : ""}.`;
+    else linha = `<b>${pes}</b> pessoas diferentes registraram no período · em média <b>${NF(bat, 1)}</b> por mês ${bat === 1 ? "bateu" : "bateram"} a meta de ${M[f]}.`;
+    const tipos = f === "r" && r ? ` Tipos: ${[["Segurança", "rt_seg"], ["Qualidade", "rt_qual"], ["Meio Ambiente", "rt_ma"], ["Outra", "rt_outra"]].map(([n, c]) => [n, val(sid, per, c)]).filter(x => x[1]).map(x => `${x[1]} de ${x[0]}`).join(", ")}.` : "";
+    return `<article class="dec"><div class="topo"><span class="pilar">${FN[f]}</span></div>
+      <div class="kv"><div class="v num">${NF(r)}</div><div class="l">registros ${um ? (per === SP.mes_atual ? "no mês, até agora" : "no mês") : "no período"}</div></div>
+      <p class="num">${linha}${tipos}</p>${um ? histLinha(cmpReg(sid, f), "registros") : ""}</article>`;
+  }).join("");
+  let h = sec("Resumo do recorte", `Só conta <b>quem registrou</b>: a meta de ${M.c} registros por pessoa e por frente é conferida com o que a pessoa registrou <b>dentro deste recorte</b>. Quem não registrou nada não aparece, porque só a equipe da Trefila 2 tem a lista de todos os colaboradores. Base do Solvace a partir de ${mesRot(SP.primeiro_mes)} (antes, só a equipe de foco).`,
+    total || fs.some(f => val(sid, per, f + "_pes")) ? `<div class="decidir k3">${cartoes}</div>` : `<div class="vazio"><b>Nenhum registro</b> neste recorte e período.</div>`);
+  const cor = (m) => ms.includes(m) ? "var(--deep)" : "var(--mid)";
+  const charts = (titulo, sub, campo, fmt) => `<div class="tres">${fs.map(f => {
+    const its = SP.meses.map(m => { const v = val(sid, m, f + campo); const sel = ms.includes(m);
+      return v == null ? {rot: MES3[Number(m.slice(5, 7)) - 1], v: null, tip: `<b>${mesRot(m)}</b><br>grupo pequeno: contagem de pessoas não exibida`}
+        : {rot: MES3[Number(m.slice(5, 7)) - 1], v, rotulo: String(v), cor: cor(m), tip: `<b>${mesRot(m)}${m === SP.mes_atual ? " (mês em curso, parcial)" : ""}</b>${sel ? " · período escolhido" : ""}<br>${fmt(v, m, f)}`}; });
+    const mx = Math.max(4, ...SP.meses.map(m => val(sid, m, f + campo) || 0));
+    return `<section class="painel"><h3>${FN[f]}</h3><div class="nota">${sub}</div>` +
+      colunas({itens: its, yMax: mx, yFmt: v => NF(v), passoX: 1, W: 270, H: 210, mL: 40, mR: 8, aria: `${FN[f]}: ${titulo} por mês, ${nomeEscopo()}`}) +
+      tabela(["Mês", titulo], SP.meses.map(m => [mesRot(m), val(sid, m, f + campo) == null ? "—" : NF(val(sid, m, f + campo))])) + `</section>`; }).join("")}</div>${legenda([quad("var(--deep)", "Período escolhido"), quad("var(--mid)", "Demais meses"), `<span><b>–</b>sem dado / grupo pequeno</span>`])}`;
+  const formacao = SP.formacao_ate ? ` <b>${SP.meses.filter(m => m <= SP.formacao_ate).map(mesRot).join(" e ")}:</b> a base do Solvace ainda estava se formando em várias áreas (poucas pessoas registrando); leia a tendência a partir de ${mesRot(SP.meses.find(m => m > SP.formacao_ate) || SP.mes_atual)}.` : "";
+  h += sec("Registros mês a mês", `Quantos registros o recorte fez em cada mês da base. O mês em curso (${mesRot(SP.mes_atual)}) é parcial.${formacao}`, charts("registros", "Registros por mês", "_reg", (v) => `${NF(v)} registros`));
+  h += sec("Pessoas que bateram a meta mês a mês", `Entre quem registrou no recorte, quantos chegaram à meta de ${M.c} em cada mês. Grupo com menos de ${SP.k_min} pessoas fica sem contagem.`,
+    charts("pessoas na meta", "Pessoas que bateram a meta", "_bat", (v, m, f) => `${v} de ${val(sid, m, f + "_pes")} que registraram`));
+  h += tabelaComparativo(sid, fs, per, um);
+  return h;
+}
+function tabelaComparativo(sid, fs, per, um) {
+  let linhas;
+  if (FIL.area === "P") linhas = SP.areas.map(a => ({id: a.id, nome: a.nome}));
+  else if (!FIL.cel) linhas = areaDe(FIL.area).celulas.map(c => ({id: c.id, nome: c.nome}));
+  else return "";
+  const dados = linhas.map(l => {
+    const r = fs.map(f => val(l.id, per, f + "_reg")), pes = FIL.fr === "todas" ? val(l.id, per, "pessoas") : val(l.id, per, FIL.fr + "_pes");
+    const bat = ["c", "a", "r"].map(f => um ? val(l.id, per, f + "_bat") : null);
+    let delta = null;
+    if (um) { const c = [cmpReg(l.id, "c"), cmpReg(l.id, "a"), cmpReg(l.id, "r")]; const ok3 = fs.map(f => c["car".indexOf(f)]); if (ok3.every(Boolean)) { const at = soma(ok3.map(x => x.at)), an = soma(ok3.map(x => x.ant == null ? NaN : x.ant)); delta = isNaN(an) ? null : {at, an}; } }
+    return {...l, r, tot: soma(r), pes, bat, delta};
+  }).sort((a, b) => b.tot - a.tot);
+  const mx = Math.max(1, ...dados.map(d => d.tot));
+  const cab = FIL.area === "P" ? "Área" : "Célula";
+  const vs = (d) => !d.delta ? "—" : d.delta.an === 0 ? (d.delta.at ? "novo" : "—") : `${d.delta.at >= d.delta.an ? "▲ +" : "▼ −"}${NF(Math.abs(d.delta.at / d.delta.an - 1) * 100, 0)}%`;
+  const linha = (d) => `<tr><td><button type="button" class="linkbtn" data-go="${d.id}">${E(d.nome)}</button></td>
+    <td class="fa" data-l="Registros"><div class="cel"><div class="barra"><i style="width:${d.tot / mx * 100}%"></i></div><span class="num">${NF(d.tot)}</span></div></td>
+    ${["c", "a", "r"].map((f, i) => fs.includes(f) ? `<td class="n num" data-l="${FN[f]}">${NF(val(d.id, per, f + "_reg"))}</td>` : "").join("")}
+    <td class="n num" data-l="Pessoas">${d.pes == null ? "—" : NF(d.pes)}</td>
+    <td class="n num" data-l="Na meta">${um ? fs.map(f => { const b = d.bat["car".indexOf(f)]; return b == null ? "—" : NF(b); }).join(" · ") : "—"}</td>
+    ${um ? `<td class="n num nw" data-l="vs mês anterior">${vs(d)}</td>` : ""}</tr>`;
+  return sec(`${FIL.area === "P" ? "Comparativo entre áreas" : "Comparativo entre células"}`,
+    `${um ? "Registros do período" : "Registros somados no período"}, do maior para o menor. Clique no nome para entrar na ${FIL.area === "P" ? "área" : "célula"}. “Na meta” mostra, por frente, quantas pessoas que registraram bateram a meta${um ? "" : " (só vale para um mês)"}. ${FIL.area === "P" ? "As áreas têm tamanhos diferentes e a base não traz o efetivo: compare o ritmo de cada uma consigo mesma, não o volume entre áreas." : ""}`,
+    `<section class="painel"><div style="overflow-x:auto"><table class="t"><thead><tr><th>${cab}</th><th>Registros</th>${fs.map(f => `<th class="n">${FN[f]}</th>`).join("")}<th class="n">Pessoas</th><th class="n">Na meta (${fs.map(f => FN[f][0]).join(" · ")})</th>${um ? `<th class="n">vs mês anterior${per === SP.mes_atual ? " (mesmo ponto)" : ""}</th>` : ""}</tr></thead><tbody>${dados.map(linha).join("")}</tbody></table></div></section>`);
+}
+
+/* ---- colaboradores (SÓ na versão local: tem nome) ---- */
+function secColaboradores() {
+  if (!SP.pessoas) return "";
+  const eq = FIL.area === "equipe", turmas = [...new Set(SP.pessoas.filter(p => p.eq && p.t).map(p => p.t))].sort();
+  const o = (v, t, at) => `<option value="${E(v)}"${v === at ? " selected" : ""}>${E(t)}</option>`;
+  return sec("Colaboradores (só local)", eq ? `Os ${D.seguranca.total} da equipe, inclusive quem não registrou nada. Conta tudo o que a pessoa registrou, em qualquer célula (regra do controle da equipe).`
+      : `Quem registrou algo neste recorte e período, com o que registrou <b>dentro</b> dele. Nomes só aparecem aqui, na Central do Coordenador.`,
+    `<section class="painel"><div class="colfil"><input id="c-busca" type="search" placeholder="Buscar por nome" aria-label="Buscar colaborador" value="${E(FIL.busca)}">
+      <select id="c-sit" aria-label="Situação">${o("", "Todas as situações", FIL.sit)}${o("sem", "Sem nenhum registro", FIL.sit)}${o("falta", "Alguma meta ainda não batida", FIL.sit)}${o("tudo", "Todas as metas batidas", FIL.sit)}</select>
+      ${eq && turmas.length ? `<select id="c-turma" aria-label="Turma">${o("", "Todas as turmas", FIL.turma)}${turmas.map(t => o(t, "Turma " + t, FIL.turma)).join("")}</select>` : ""}
+      <button type="button" class="btn" id="c-csv">Baixar CSV</button></div><div id="col-tab" style="overflow-x:auto"></div></section>`);
+}
+function colInit() {
+  if (!$("c-busca")) return;
+  $("c-busca").oninput = () => { FIL.busca = $("c-busca").value; FIL.lim = 80; colTab(); };
+  $("c-sit").onchange = () => { FIL.sit = $("c-sit").value; FIL.lim = 80; colTab(); };
+  if ($("c-turma")) $("c-turma").onchange = () => { FIL.turma = $("c-turma").value; FIL.lim = 80; colTab(); };
+  colTab();
+}
+function colLinhas() {
+  const eq = FIL.area === "equipe", ms = eq ? [FIL.per] : mesesDe(FIL.per), mset = new Set(ms.map(m => SP.meses.indexOf(m)));
+  const celOk = (eq || FIL.area === "P") ? null : new Set(SP.celulas.map((c, i) => (FIL.cel ? c.id === FIL.cel : c.area === FIL.area) ? i : -1).filter(i => i >= 0));
+  const ag = new Map();
+  SP.linhas.forEach(([p, mi, ci, f, n]) => {
+    if (!mset.has(mi) || (celOk && !celOk.has(ci)) || (eq && !SP.pessoas[p].eq)) return;
+    let a = ag.get(p); if (!a) { a = {}; ag.set(p, a); }
+    (a[mi] = a[mi] || [0, 0, 0])[f] += n;
+  });
+  const M = [SP.metas.c, SP.metas.a, SP.metas.r], fi = FIL.fr === "todas" ? [0, 1, 2] : ["c", "a", "r"].indexOf(FIL.fr) >= 0 ? [["c", "a", "r"].indexOf(FIL.fr)] : [0, 1, 2];
+  const mk = (p) => {
+    const a = ag.get(p) || {}, tot = [0, 0, 0], nm = [0, 0, 0];
+    Object.values(a).forEach(v => v.forEach((n, f) => { tot[f] += n; if (n >= M[f]) nm[f]++; }));
+    const s = soma(fi.map(f => tot[f])), nb = fi.filter(f => ms.length === 1 ? tot[f] >= M[f] : nm[f] === ms.length).length;
+    return {p, nome: SP.pessoas[p].n, turma: SP.pessoas[p].t, tot, nm, soma: s, nb, nf: fi.length, sit: s === 0 ? "sem" : nb === fi.length ? "tudo" : "falta"};
+  };
+  let rows = [];
+  if (eq) SP.pessoas.forEach((x, p) => { if (x.eq) rows.push(mk(p)); }); else ag.forEach((_, p) => rows.push(mk(p)));
+  return {rows, ms, M, fi, eq};
+}
+function colTab() {
+  const el = $("col-tab"); if (!el) return;
+  const {rows, ms, M, fi, eq} = colLinhas(), q = norm(FIL.busca.trim());
+  let r = rows.filter(x => (!q || norm(x.nome).includes(q)) && (!FIL.turma || x.turma === FIL.turma)
+    && (!FIL.sit || (FIL.sit === "falta" ? x.sit !== "tudo" : x.sit === FIL.sit)));
+  const ord = FIL.ord || {k: "soma", d: eq ? 1 : -1};
+  const chave = {nome: x => norm(x.nome), turma: x => x.turma || "~", c: x => x.tot[0], a: x => x.tot[1], r: x => x.tot[2], soma: x => x.soma, sit: x => x.nb};
+  r.sort((a, b) => { const x = chave[ord.k](a), y = chave[ord.k](b); return (x < y ? -1 : x > y ? 1 : norm(a.nome) < norm(b.nome) ? -1 : 1) * ord.d; });
+  const mostra = r.slice(0, FIL.lim), um = ms.length === 1;
+  const th = (k, t, cls = "") => `<th class="ord ${cls}" data-o="${k}" aria-sort="${ord.k === k ? (ord.d > 0 ? "ascending" : "descending") : "none"}">${t}${ord.k === k ? (ord.d > 0 ? " ▲" : " ▼") : ""}</th>`;
+  const cel = (x, f) => { const n = x.tot[f], b = um ? n >= M[f] : false; return `<td class="n num${n ? "" : " z"}" data-l="${FN["car"[f]]}">${n}${b ? " ✓" : ""}${um ? "" : `<span class="mini">${x.nm[f]} de ${ms.length} meses na meta</span>`}</td>`; };
+  const sit = (x) => x.sit === "sem" ? chip("cr", "Sem registro") : x.nb === x.nf ? chip("ok", um ? "Meta batida" : "Meta em todos os meses") : chip("at", um ? `Bateu ${x.nb} de ${x.nf}` : `${x.nb} de ${x.nf} frentes em todos os meses`);
+  const nb = r.filter(x => x.sit === "tudo").length, nz = r.filter(x => x.sit === "sem").length;
+  el.innerHTML = `<div class="nota num">${r.length} ${r.length === 1 ? "pessoa" : "pessoas"} · ${nb} com todas as metas · ${nz} sem nenhum registro${eq ? "" : " (quem não registrou não aparece nesta lista)"}</div>
+    <table class="t"><thead><tr>${th("nome", "Colaborador")}${eq ? th("turma", "Turma") : ""}${fi.includes(0) ? th("c", "Condição", "n") : ""}${fi.includes(1) ? th("a", "Atitude Segura", "n") : ""}${fi.includes(2) ? th("r", "Recusa", "n") : ""}${th("soma", "Total", "n")}${th("sit", "Situação")}</tr></thead>
+    <tbody>${mostra.map(x => `<tr><td><b>${E(x.nome)}</b></td>${eq ? `<td>${E(x.turma || "—")}</td>` : ""}${fi.map(f => cel(x, f)).join("")}<td class="n num"><b>${x.soma}</b></td><td>${sit(x)}</td></tr>`).join("")}</tbody></table>
+    ${r.length > mostra.length ? `<p style="margin-top:10px"><button type="button" class="btn" id="c-mais">Mostrar todas (${r.length})</button></p>` : ""}`;
+  el.querySelectorAll("[data-o]").forEach(t => t.onclick = () => { const k = t.dataset.o; FIL.ord = {k, d: ord.k === k ? -ord.d : (k === "nome" || k === "turma" ? 1 : -1)}; colTab(); });
+  if ($("c-mais")) $("c-mais").onclick = () => { FIL.lim = 1e9; colTab(); };
+  $("c-csv").onclick = () => {
+    const cab = ["Colaborador", ...(eq ? ["Turma"] : []), ...fi.map(f => FN["car"[f]]), "Total", "Situação"];
+    const lin = r.map(x => [x.nome, ...(eq ? [x.turma] : []), ...fi.map(f => x.tot[f]), x.soma, x.sit === "sem" ? "Sem registro" : x.nb === x.nf ? "Meta batida" : `Bateu ${x.nb} de ${x.nf}`]);
+    const csv = [cab, ...lin].map(l => l.map(c => `"${String(c ?? "").replace(/"/g, '""')}"`).join(";")).join("\r\n");
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["﻿" + csv], {type: "text/csv;charset=utf-8"}));
+    a.download = `seguranca_colaboradores_${FIL.area}_${FIL.per}.csv`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  };
+}
+
 function renderSeguranca() {
+  const s = D.seguranca;
+  if (!ok(s)) return sec("Segurança", "", semDado("Base do Solvace indisponível"));
+  if (!SPOK) return segVisaoAntiga();                   /* sem o painel por área: a página de sempre, sem filtros */
+  valida();
+  POSR = () => { $("seg-filtros").innerHTML = filtrosHtml(); ligaFiltros(); desenha(); };
+  return `<form class="filtros" id="seg-filtros" onsubmit="return false" aria-label="Filtros da página"></form><div class="escopo" id="seg-escopo" aria-live="polite"></div><div id="seg-corpo"></div>`;
+}
+
+/* ---- a visão da equipe de antes dos filtros: fica como reserva se o painel por área não vier na geração ---- */
+function segVisaoAntiga() {
   const s = D.seguranca;
   if (!ok(s)) return sec("Segurança", "", semDado("Base do Solvace indisponível"));
   const [ano, mes] = s.competencia.split("-").map(Number), dMes = new Date(ano, mes, 0).getDate();
@@ -694,9 +1016,17 @@ function fontesELimites() {
   } else if (PAG === "seguranca") {
     const s = D.seguranca;
     if (ok(s)) r.push(linha("Segurança proativa", "Solvace via Power BI", E(s.base_ate), s.base_ok ? "Atual" : "Defasada", s.base_ok ? "ok" : "cr")); else falhou("seguranca", "Segurança proativa");
-    lim.push("<b>Meta:</b> " + (ok(s) ? `${s.metas.cond} registros por pessoa e por frente no mês (Condição, Atitude Segura e Recusa de Tarefa)` : "indisponível") + ". Pessoas, nomes e turmas não aparecem no portal.");
+    lim.push("<b>Meta:</b> " + (ok(s) ? `${s.metas.cond} registros por pessoa e por frente no mês (Condição, Atitude Segura e Recusa de Tarefa)` : "indisponível") + (D.publico ? ". Pessoas, nomes e turmas não aparecem no portal." : "."));
     lim.push("<b>Meses anteriores</b> usam a equipe de hoje; quem entrou ou saiu depois não é refeito para trás.");
     lim.push("<b>Ritmo:</b> compara a parcela da equipe que já bateu a meta com a parcela do mês que já passou. É uma régua de acompanhamento, não uma meta oficial da área.");
+    if (SPOK) {
+      lim.push(`<b>Áreas e células</b> vêm do cadastro do Solvace (cada localização pertence a uma área). A base cobre a planta toda a partir de ${mesRot(SP.primeiro_mes)}; antes disso só havia a equipe de foco, por isso o período não recua mais.`);
+      if (SP.formacao_ate) lim.push(`<b>Base em formação:</b> até ${mesRot(SP.formacao_ate)} várias áreas tinham poucas pessoas registrando no Solvace (na Aciaria, por exemplo, 6 pessoas em abril e mais de 100 nos meses seguintes). Não dá para separar adoção real de base incompleta; por isso a tendência deve ser lida a partir de ${mesRot(SP.meses.find(m => m > SP.formacao_ate) || SP.mes_atual)}.`);
+      lim.push("<b>“Quem registrou”:</b> fora da equipe da Trefila 2 não há lista de colaboradores nem efetivo, então “bateram a meta” é entre quem registrou, e não entre todos os que trabalham na área. Compare cada área com o próprio histórico.");
+      lim.push("<b>Comparação com o histórico:</b> no mês em curso, os meses anteriores são cortados no mesmo dia (a base do Solvace é das 07h, então o último dia completo é o de ontem). “Acima/Perto/Abaixo do histórico” compara com a média dos 3 meses anteriores; “perto” é até 20% abaixo.");
+      lim.push(`<b>Grupo pequeno:</b> recorte com menos de ${SP.k_min} pessoas no mês mostra os registros, mas não a contagem de pessoas${D.publico ? ", para não identificar ninguém" : ""}.`);
+      if (D.publico && !SP.publico_todas) lim.push("<b>Outras áreas da planta</b> ficam na Central do Coordenador; este portal mostra a Trefila 2 e suas células.");
+    }
     if (ok(s) && !s.base_ok) lim.push("<b>Base defasada:</b> o Solvace não atualizou no prazo; os números abaixo podem estar atrás da realidade.");
   } else if (PAG === "perdas") {
     if (ok(D.perdas)) r.push(linha("OEE e paradas", "Power BI ExOp · indicadores do dataset de OEE", dm(D.perdas.periodo[0]) + " a " + dm(D.perdas.periodo[1]), "Atual", "ok")); else falhou("perdas", "OEE e paradas");
@@ -724,19 +1054,20 @@ function fontesELimites() {
   if ((D.avisos || []).length) lim.push("<b>Fontes com falha na geração:</b> " + D.avisos.map(E).join("; "));
   $("fontes").innerHTML = `<thead><tr><th>Fonte</th><th>Dado de</th><th>Situação</th></tr></thead><tbody>${r.join("")}</tbody>`;
   $("limites").innerHTML = "<b>Limites conhecidos</b><ul>" + lim.map(x => "<li>" + x + "</li>").join("") + "</ul>";
-  $("como-ler").innerHTML = "<b>Como ler os estados.</b> Entrega e AOP: No alvo ≥ 100%, Atenção de 90 a 99,9%, Fora do alvo abaixo de 90% (mesma régua das mensagens do WhatsApp). “Sem meta definida” não significa bom nem ruim. Página sem nome de pessoa, matrícula ou login.";
+  $("como-ler").innerHTML = "<b>Como ler os estados.</b> Entrega e AOP: No alvo ≥ 100%, Atenção de 90 a 99,9%, Fora do alvo abaixo de 90% (mesma régua das mensagens do WhatsApp). “Sem meta definida” não significa bom nem ruim." + (D.publico ? " Página sem nome de pessoa, matrícula ou login." : "");
 }
 
 /* ---------- montagem ---------- */
 $("sub").textContent = {
   entrega: "Fechamento de produção em " + dm(fech) + " · mês até " + dm(fech) + " · atualizado " + D.gerado_em,
-  seguranca: "Registros proativos do mês · base de " + (ok(D.seguranca) ? D.seguranca.base_ate : "—") + " · atualizado " + D.gerado_em,
+  seguranca: (ok(D.seg_painel) ? "Registros proativos por área, célula e período" : "Registros proativos do mês") + " · base de " + (ok(D.seguranca) ? D.seguranca.base_ate : "—") + " · atualizado " + D.gerado_em,
   qualidade: "Rotina de análise · mês até " + (ok(D.qualidade) ? dm(D.qualidade.ate) : "—") + " · atualizado " + D.gerado_em,
   perdas: "OEE, paradas e falhas · mês até " + (ok(D.perdas) ? dm(D.perdas.periodo[1]) : "—") + " · atualizado " + D.gerado_em,
   manutencao: "Fila de manutenção e inspeções · SAP " + (ok(D.manutencao) ? D.manutencao.extraido_em : "—") + " · atualizado " + D.gerado_em
 }[PAG];
 $("app").innerHTML = {entrega: renderEntrega, seguranca: renderSeguranca, qualidade: renderQualidade, perdas: renderPerdas, manutencao: renderManutencao}[PAG]();
 BIND.forEach(f => f());
+if (POSR) POSR();                                                /* Segurança: monta filtros e corpo depois do esqueleto */
 document.querySelectorAll("[data-ir]").forEach(a => {            /* links para as páginas de detalhe do portal */
   const ir = () => { try { window.top.location.hash = a.dataset.ir; } catch (e) { /* outro domínio: ignora */ } };
   a.addEventListener("click", ir);

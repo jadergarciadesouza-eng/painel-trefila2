@@ -178,6 +178,16 @@ table.t td .mini{display:block;font-size:11.5px;color:var(--muted)}
 .linkbtn{background:none;border:0;padding:0;font:600 14px var(--sans);color:var(--deep);cursor:pointer;text-align:left;border-bottom:1px solid var(--line2)}
 .linkbtn:hover{border-bottom-color:var(--deep)}
 .peq{color:var(--muted);font-size:13px}
+/* por colaborador: recolhido por padrão (discreto); abre com um clique */
+details.colab > summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:13.5px;color:var(--ink2)}
+details.colab > summary::-webkit-details-marker{display:none}
+details.colab > summary .btn::after{content:" ▼";font-size:10px}
+details.colab[open] > summary .btn::after{content:" ▲"}
+details.colab > .painel{margin-top:12px}
+.colfil label.chk{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink2)}
+.hq{display:inline-block;min-width:24px;text-align:center;font:600 12.5px var(--cond);font-style:normal;padding:2px 4px;border-radius:4px;background:var(--ne-bg);color:var(--ink);margin-right:3px}
+.hq.z{background:var(--cr-bg);color:var(--cr)}
+table.t tr.af td{color:var(--muted)}
 @media (max-width:620px){.filtros{position:static;grid-template-columns:1fr 1fr;padding:12px}.filtros label:first-child{grid-column:1/-1}.colfil input{min-width:0;flex:1 1 100%}}
 
 @media (max-width:620px){
@@ -226,7 +236,7 @@ table.t td .mini{display:block;font-size:11.5px;color:var(--muted)}
 <div class="tip" id="tip" role="status"></div>
 
 <script>
-const D = {"gerado_em": "13/10/2026 09:48", "fechamento": "2026-10-11", "avisos": [], "publico": true, "modo": "", "metas": {}, "manutencao": {"extraido_em": "13/10/2026 às 08:03", "abertas": 1234, "com_prazo": 1234, "h24": 333, "h24_vencidas": 315, "vencidas": 741, "prazo_derivado": false, "funil": [{"nome": "Aguardando liberação", "qtd": 818, "mediana": 18, "p90": 73}, {"nome": "Liberado p/ planejamento", "qtd": 94, "mediana": 75, "p90": 110}, {"nome": "Liberado p/ programação", "qtd": 3, "mediana": 61, "p90": 61}, {"nome": "Programado", "qtd": 314, "mediana": 33, "p90": 96}], "linha3": {"abertas": 257, "venc": 123, "h24": 28, "h24_venc": 26}, "ovalado": {"abertas": 37, "venc": 31, "h24": 21, "h24_venc": 20}, "fluxo_ok": true}, "manutencao_det": {"extraido_em": "13/10/2026 às 08:03", "abertas": 1234, "corretivas": 557, "idade_mediana": 29, "mais_90": 71, "mais_365": 5, "prioridades": [{"prio": "1", "txt": "24 Horas", "abertas": 333, "vencidas": 315, "sem_prazo": 0}, {"prio": "2", "txt": "3 Dias", "abertas": 11, "vencidas": 11, "sem_prazo": 0}, {"prio": "3", "txt": "1 Semana", "abertas": 308, "vencidas": 280, "sem_prazo": 0}, {"prio": "4", "txt": "2 Semanas", "abertas": 57, "vencidas": 53, "sem_prazo": 0}, {"prio": "5", "txt": "1 Mês", "abertas": 398, "vencidas": 38, "sem_prazo": 0}, {"prio": "6", "txt": "2 Meses", "abertas": 27, "vencidas": 6, "sem_prazo": 0}, {"prio": "7", "txt": "3 Meses", "abertas": 35, "vencidas": 7, "sem_prazo": 0}, {"prio": "8", "txt": "6 Meses", "abertas": 34, "vencidas": 1, "sem_prazo": 0}, {"prio": "", "txt": "sem prioridade", "abertas": 31, "vencidas": 30, "sem_prazo": 0}], "celulas": [{"nome": "GALVANIZACAO", "abertas": 527, "vencidas": 349}, {"nome": "FARPARIA", "abertas": 263, "vencidas": 45}, {"nome": "TREFILARIA 2", "abertas": 223, "vencidas": 155}, {"nome": "ACABAMENTO", "abertas": 63, "vencidas": 55}, {"nome": "PONTE ROLANTE", "abertas": 61, "vencidas": 54}, {"nome": "DECAPAGEM QUIMICA", "abertas": 30, "vencidas": 28}], "fluxo": {"vazao": [{"mes": "2026-07", "entrou": 1490, "saiu": 1204}, {"mes": "2026-08", "entrou": 1432, "saiu": 2156}, {"mes": "2026-09", "entrou": 1343, "saiu": 1908}, {"mes": "2026-10", "entrou": 549, "saiu": 592}], "cobertura_semanas": 3.0, "lead_mediana": 31, "lead_p90": 242, "aderencia": 54, "saida_semana": 406, "aviso": "A base de encerradas cobre ordens abertas nos últimos 24 meses; o gráfico mostra os 4 meses mais recentes, onde a saída está bem representada. O ritmo de saída usado na cobertura é a média de 07/26, 08/26, 09/26."}, "etapas": [{"nome": "Aguardando liberação", "qtd": 818, "mediana": 18, "p90": 73}, {"nome": "Liberado p/ planejamento", "qtd": 94, "mediana": 75, "p90": 110}, {"nome": "Liberado p/ programação", "qtd": 3, "mediana": 61, "p90": 61}, {"nome": "Programado", "qtd": 314, "mediana": 33, "p90": 96}], "cronicas": [{"nome": "BOBINADOR DE CARRETEL(TRANSF.P/LINHA-2)", "local": "1400-TR2-GALV-LIN03", "corr": 428, "tot": 799}, {"nome": "LINHA 02", "local": "1400-TR2-GALV-LIN02", "corr": 187, "tot": 252}, {"nome": "TREFILARIA 2", "local": "1400-TR2-TREF", "corr": 172, "tot": 278}, {"nome": "GALVANIZACAO", "local": "1400-TR2-GALV", "corr": 152, "tot": 170}, {"nome": "LINHA 01", "local": "1400-TR2-GALV-LIN01", "corr": 112, "tot": 171}, {"nome": "ACABAMENTO", "local": "1400-TR2-ACAB", "corr": 88, "tot": 97}]}, "insp_res": {"extraido_em": "2026-10-13 08:31", "horas": 1.3, "rondas": {"feitas": 1502, "exigidas": 1622, "bloqueadas": 248}, "planos": {"total": 177, "atrasados": 30, "ciclo_alterado": 39}, "zm05": {"exigidas": 94, "feitas": 0}, "achados": {"abertos": 5414, "nao_planejados": 374, "idade_mediana": 498, "mais_1_ano": 3352}, "esquecidas": 11526, "tendencia": [{"mes": "2026-02", "ex": 500, "bl": 0, "pe": 9, "ci": 0}, {"mes": "2026-03", "ex": 583, "bl": 27, "pe": 10, "ci": 0}, {"mes": "2026-04", "ex": 537, "bl": 31, "pe": 9, "ci": 0}, {"mes": "2026-05", "ex": 529, "bl": 19, "pe": 24, "ci": 1}, {"mes": "2026-06", "ex": 571, "bl": 7, "pe": 40, "ci": 4}, {"mes": "2026-07", "ex": 571, "bl": 8, "pe": 42, "ci": 0}, {"mes": "2026-08", "ex": 562, "bl": 6, "pe": 42, "ci": 0}, {"mes": "2026-09", "ex": 495, "bl": 147, "pe": 31, "ci": 102}, {"mes": "2026-10", "ex": 128, "bl": 89, "pe": 23, "ci": 109}]}, "pagina": "manutencao", "paginas": {"seguranca": "seguranca.html", "qualidade": "qualidade-area.html", "entrega": "entrega.html", "perdas": "perdas.html", "manutencao": "manutencao.html"}};
+const D = {"gerado_em": "13/10/2026 10:18", "fechamento": "2026-10-11", "avisos": [], "publico": true, "modo": "", "metas": {}, "manutencao": {"extraido_em": "13/10/2026 às 08:03", "abertas": 1234, "com_prazo": 1234, "h24": 333, "h24_vencidas": 315, "vencidas": 741, "prazo_derivado": false, "funil": [{"nome": "Aguardando liberação", "qtd": 818, "mediana": 18, "p90": 73}, {"nome": "Liberado p/ planejamento", "qtd": 94, "mediana": 75, "p90": 110}, {"nome": "Liberado p/ programação", "qtd": 3, "mediana": 61, "p90": 61}, {"nome": "Programado", "qtd": 314, "mediana": 33, "p90": 96}], "linha3": {"abertas": 257, "venc": 123, "h24": 28, "h24_venc": 26}, "ovalado": {"abertas": 37, "venc": 31, "h24": 21, "h24_venc": 20}, "fluxo_ok": true}, "manutencao_det": {"extraido_em": "13/10/2026 às 08:03", "abertas": 1234, "corretivas": 557, "idade_mediana": 29, "mais_90": 71, "mais_365": 5, "prioridades": [{"prio": "1", "txt": "24 Horas", "abertas": 333, "vencidas": 315, "sem_prazo": 0}, {"prio": "2", "txt": "3 Dias", "abertas": 11, "vencidas": 11, "sem_prazo": 0}, {"prio": "3", "txt": "1 Semana", "abertas": 308, "vencidas": 280, "sem_prazo": 0}, {"prio": "4", "txt": "2 Semanas", "abertas": 57, "vencidas": 53, "sem_prazo": 0}, {"prio": "5", "txt": "1 Mês", "abertas": 398, "vencidas": 38, "sem_prazo": 0}, {"prio": "6", "txt": "2 Meses", "abertas": 27, "vencidas": 6, "sem_prazo": 0}, {"prio": "7", "txt": "3 Meses", "abertas": 35, "vencidas": 7, "sem_prazo": 0}, {"prio": "8", "txt": "6 Meses", "abertas": 34, "vencidas": 1, "sem_prazo": 0}, {"prio": "", "txt": "sem prioridade", "abertas": 31, "vencidas": 30, "sem_prazo": 0}], "celulas": [{"nome": "GALVANIZACAO", "abertas": 527, "vencidas": 349}, {"nome": "FARPARIA", "abertas": 263, "vencidas": 45}, {"nome": "TREFILARIA 2", "abertas": 223, "vencidas": 155}, {"nome": "ACABAMENTO", "abertas": 63, "vencidas": 55}, {"nome": "PONTE ROLANTE", "abertas": 61, "vencidas": 54}, {"nome": "DECAPAGEM QUIMICA", "abertas": 30, "vencidas": 28}], "fluxo": {"vazao": [{"mes": "2026-07", "entrou": 1490, "saiu": 1204}, {"mes": "2026-08", "entrou": 1432, "saiu": 2156}, {"mes": "2026-09", "entrou": 1343, "saiu": 1908}, {"mes": "2026-10", "entrou": 549, "saiu": 592}], "cobertura_semanas": 3.0, "lead_mediana": 31, "lead_p90": 242, "aderencia": 54, "saida_semana": 406, "aviso": "A base de encerradas cobre ordens abertas nos últimos 24 meses; o gráfico mostra os 4 meses mais recentes, onde a saída está bem representada. O ritmo de saída usado na cobertura é a média de 07/26, 08/26, 09/26."}, "etapas": [{"nome": "Aguardando liberação", "qtd": 818, "mediana": 18, "p90": 73}, {"nome": "Liberado p/ planejamento", "qtd": 94, "mediana": 75, "p90": 110}, {"nome": "Liberado p/ programação", "qtd": 3, "mediana": 61, "p90": 61}, {"nome": "Programado", "qtd": 314, "mediana": 33, "p90": 96}], "cronicas": [{"nome": "BOBINADOR DE CARRETEL(TRANSF.P/LINHA-2)", "local": "1400-TR2-GALV-LIN03", "corr": 428, "tot": 799}, {"nome": "LINHA 02", "local": "1400-TR2-GALV-LIN02", "corr": 187, "tot": 252}, {"nome": "TREFILARIA 2", "local": "1400-TR2-TREF", "corr": 172, "tot": 278}, {"nome": "GALVANIZACAO", "local": "1400-TR2-GALV", "corr": 152, "tot": 170}, {"nome": "LINHA 01", "local": "1400-TR2-GALV-LIN01", "corr": 112, "tot": 171}, {"nome": "ACABAMENTO", "local": "1400-TR2-ACAB", "corr": 88, "tot": 97}]}, "insp_res": {"extraido_em": "2026-10-13 08:31", "horas": 1.8, "rondas": {"feitas": 1502, "exigidas": 1622, "bloqueadas": 248}, "planos": {"total": 177, "atrasados": 30, "ciclo_alterado": 39}, "zm05": {"exigidas": 94, "feitas": 0}, "achados": {"abertos": 5414, "nao_planejados": 374, "idade_mediana": 498, "mais_1_ano": 3352}, "esquecidas": 11526, "tendencia": [{"mes": "2026-02", "ex": 500, "bl": 0, "pe": 9, "ci": 0}, {"mes": "2026-03", "ex": 583, "bl": 27, "pe": 10, "ci": 0}, {"mes": "2026-04", "ex": 537, "bl": 31, "pe": 9, "ci": 0}, {"mes": "2026-05", "ex": 529, "bl": 19, "pe": 24, "ci": 1}, {"mes": "2026-06", "ex": 571, "bl": 7, "pe": 40, "ci": 4}, {"mes": "2026-07", "ex": 571, "bl": 8, "pe": 42, "ci": 0}, {"mes": "2026-08", "ex": 562, "bl": 6, "pe": 42, "ci": 0}, {"mes": "2026-09", "ex": 495, "bl": 147, "pe": 31, "ci": 102}, {"mes": "2026-10", "ex": 128, "bl": 89, "pe": 23, "ci": 109}]}, "pagina": "manutencao", "paginas": {"seguranca": "seguranca.html", "qualidade": "qualidade-area.html", "entrega": "entrega.html", "perdas": "perdas.html", "manutencao": "manutencao.html"}};
 
 /* ---------- utilidades ---------- */
 const $ = (id) => document.getElementById(id);
@@ -474,18 +484,40 @@ const val = (sid, per, campo) => { const v = (SP.dados[sid] || {})[per]; return 
 const areaDe = (id) => SP.areas.find(a => a.id === id);
 const mesesDe = (per) => per === "wt" ? SP.meses.slice() : per === "w3" ? SP.meses.slice(-4, -1) : [per];
 const soma = (xs) => xs.reduce((a, b) => a + b, 0);
-const norm = (t) => String(t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
-let FIL = {area: "equipe", cel: "", per: SPOK ? SP.mes_atual : "", fr: "todas", busca: "", sit: "", turma: "", ord: null, lim: 80}, POSR = null;
+const DIAC = new RegExp("[" + String.fromCharCode(0x300) + "-" + String.fromCharCode(0x36f) + "]", "g");
+const norm = (t) => String(t || "").normalize("NFD").replace(DIAC, "").toLowerCase();
+const QLOK = SPOK && !!SP.ql;            /* lotação do RH (QL) disponível — só existe na versão local */
+let FIL = {area: "equipe", cel: "", lider: "", per: SPOK ? SP.mes_atual : "", fr: "todas", busca: "", sit: "", turma: "", celEq: "",
+           afast: false, colAberto: false, ord: null, lim: 80}, POSR = null;
+const porPessoa = () => FIL.area === "equipe" || FIL.area === "ql";      /* recortes com LISTA de pessoas: têm denominador e "sem registro" */
 /* a página sempre ABRE na visão da equipe, no mês em curso (a visão de sempre); o filtro só dura enquanto a página está aberta */
-function valida() {            /* garante que o filtro aponta para algo que existe (área liberada, mês, janela) */
-  if (FIL.area !== "equipe" && !(FIL.area === "P" && SP.dados.P) && !areaDe(FIL.area)) FIL.area = "equipe";
-  const a = areaDe(FIL.area);
-  if (!a || !a.celulas.some(c => c.id === FIL.cel)) FIL.cel = "";
-  if (!(SP.meses.includes(FIL.per) || (FIL.area !== "equipe" && (FIL.per === "w3" || FIL.per === "wt")))) FIL.per = SP.mes_atual;
+function qlIdx(o = {}) {       /* pessoas do QL no recorte (célula e líder); afast: "nao" (padrão) | "sim" (inclui) | "so" (só afastados) */
+  const u = "cel" in o ? o.cel : FIL.cel, l = "lider" in o ? o.lider : FIL.lider, af = o.afast || "nao", out = [];
+  SP.pessoas.forEach((p, i) => {
+    if (!p.ql || (af === "nao" && p.af) || (af === "so" && !p.af)) return;
+    if (u && p.u !== Number(u.slice(1))) return;
+    if (l && p.l !== Number(l.slice(1))) return;
+    out.push(i);
+  });
+  return out;
+}
+function valida() {            /* garante que o filtro aponta para algo que existe (área liberada, mês, janela, célula, líder) */
+  if (FIL.area === "ql" && !QLOK) FIL.area = "equipe";
+  if (!porPessoa() && !(FIL.area === "P" && SP.dados.P) && !areaDe(FIL.area)) FIL.area = "equipe";
+  if (FIL.area === "ql") {
+    if (!/^l\d+$/.test(FIL.lider) || !SP.ql.lideres[Number(FIL.lider.slice(1))]) FIL.lider = "";
+    if (!/^u\d+$/.test(FIL.cel) || !SP.ql.unidades[Number(FIL.cel.slice(1))] || !qlIdx().length) FIL.cel = "";
+  } else {
+    FIL.lider = "";
+    const a = areaDe(FIL.area);
+    if (!a || !a.celulas.some(c => c.id === FIL.cel)) FIL.cel = "";
+  }
+  if (!(SP.meses.includes(FIL.per) || (!porPessoa() && (FIL.per === "w3" || FIL.per === "wt")))) FIL.per = SP.mes_atual;
   if (!["todas", "c", "a", "r"].includes(FIL.fr)) FIL.fr = "todas";
 }
 function nomeEscopo() {
   if (FIL.area === "equipe") return `Equipe da Trefila 2 (${D.seguranca.total} pessoas)`;
+  if (FIL.area === "ql") return "Trefila 2 por lotação (QL do RH)" + (FIL.cel ? " › " + SP.ql.unidades[Number(FIL.cel.slice(1))] : "") + (FIL.lider ? " · líder " + SP.ql.lideres[Number(FIL.lider.slice(1))] : "");
   if (FIL.area === "P") return "Toda a planta (Cosigua)";
   const a = areaDe(FIL.area), c = a.celulas.find(x => x.id === FIL.cel);
   return a.nome + (c ? " › " + c.nome : "");
@@ -498,38 +530,48 @@ function nomePer(p) {
 function filtrosHtml() {
   const opt = (v, t, at) => `<option value="${E(v)}"${v === at ? " selected" : ""}>${E(t)}</option>`;
   const areas = [opt("equipe", `Equipe da Trefila 2 (${D.seguranca.total} pessoas)`, FIL.area)];
+  if (QLOK) areas.push(opt("ql", `Trefila 2 — por lotação (QL do RH, ${SP.ql.ativos} pessoas)`, FIL.area));
   if (SP.dados.P) areas.push(opt("P", "Toda a planta (Cosigua)", FIL.area));
-  SP.areas.forEach(a => areas.push(opt(a.id, a.nome + (a.id === SP.area_equipe ? " — toda a área" : ""), FIL.area)));
-  const a = areaDe(FIL.area), eq = FIL.area === "equipe";
-  const cels = a ? [opt("", "Todas as células", FIL.cel)].concat(a.celulas.map(c => opt(c.id, c.nome, FIL.cel))) : [opt("", "—", "")];
+  SP.areas.forEach(a => areas.push(opt(a.id, a.nome + (a.id === SP.area_equipe ? (QLOK ? " — por local do registro" : " — toda a área") : ""), FIL.area)));
+  const a = areaDe(FIL.area), ql = FIL.area === "ql";
+  let cels, lid = "";
+  if (ql) {
+    const us = SP.ql.unidades.map((n, i) => [i, n, qlIdx({cel: "u" + i}).length]).filter(x => x[2] > 0);
+    cels = [opt("", "Todas as células", FIL.cel)].concat(us.map(([i, n, q]) => opt("u" + i, `${n} (${q})`, FIL.cel)));
+    const ls = SP.ql.lideres.map((n, i) => [i, n, qlIdx({cel: "", lider: "l" + i}).length]).filter(x => x[2] > 0);
+    lid = `<label>Líder<select id="f-lider">${opt("", "Todos os líderes", FIL.lider)}${ls.map(([i, n, q]) => opt("l" + i, `${n} (${q})`, FIL.lider)).join("")}</select></label>`;
+  } else cels = a ? [opt("", "Todas as células", FIL.cel)].concat(a.celulas.map(c => opt(c.id, c.nome, FIL.cel))) : [opt("", "—", "")];
   const pers = SP.meses.slice().reverse().map(m => opt(m, (m === SP.mes_atual ? "Mês em curso — " : "") + mesRot(m) + (m === SP.mes_atual && SP.dia_ref > 0 ? ` (até o dia ${SP.dia_ref})` : ""), FIL.per));
-  if (!eq) pers.push(opt("w3", "Últimos 3 meses fechados", FIL.per), opt("wt", `Todo o período (desde ${mesRot(SP.meses[0])})`, FIL.per));
+  if (!porPessoa()) pers.push(opt("w3", "Últimos 3 meses fechados", FIL.per), opt("wt", `Todo o período (desde ${mesRot(SP.meses[0])})`, FIL.per));
   const frs = [["todas", "Todas as frentes"], ["c", "Condição"], ["a", "Atitude Segura"], ["r", "Recusa de Tarefa"]].map(([v, t]) => opt(v, t, FIL.fr));
   return `<label>Área<select id="f-area">${areas.join("")}</select></label>
-    <label>Célula<select id="f-cel"${a ? "" : " disabled"}>${cels.join("")}</select></label>
+    <label>Célula<select id="f-cel"${a || ql ? "" : " disabled"}>${cels.join("")}</select></label>${lid}
     <label>Período<select id="f-per">${pers.join("")}</select></label>
     <label>Frente<select id="f-fr">${frs.join("")}</select></label>`;
 }
 function refaz(foco) { valida(); $("seg-filtros").innerHTML = filtrosHtml(); ligaFiltros(); desenha(); const el = foco && $(foco); if (el) el.focus(); }
 function ligaFiltros() {
-  $("f-area").onchange = () => { FIL.area = $("f-area").value; FIL.cel = ""; if (FIL.area === "equipe" && !SP.meses.includes(FIL.per)) FIL.per = SP.mes_atual; refaz("f-area"); };
-  $("f-cel").onchange = () => { FIL.cel = $("f-cel").value; refaz("f-cel"); };
+  $("f-area").onchange = () => { FIL.area = $("f-area").value; FIL.cel = ""; FIL.lider = ""; FIL.ord = null; FIL.lim = 80; if (porPessoa() && !SP.meses.includes(FIL.per)) FIL.per = SP.mes_atual; refaz("f-area"); };
+  $("f-cel").onchange = () => { FIL.cel = $("f-cel").value; FIL.lim = 80; refaz("f-cel"); };
+  if ($("f-lider")) $("f-lider").onchange = () => { FIL.lider = $("f-lider").value; FIL.lim = 80; refaz("f-lider"); };
   $("f-per").onchange = () => { FIL.per = $("f-per").value; refaz("f-per"); };
   $("f-fr").onchange = () => { FIL.fr = $("f-fr").value; refaz("f-fr"); };
 }
 const avisoPublico = () => `<div class="aviso-local">${SP.publico_todas ? "A lista por colaborador fica" : "As outras áreas da planta e a lista por colaborador ficam"} na <b>Central do Coordenador</b>, para ser tratada com a equipe. Este portal mostra só agregados: nenhum nome, matrícula ou turma.</div>`;
 function desenha() {
   BIND.length = 0;
-  const eq = FIL.area === "equipe", sid = FIL.cel || FIL.area;
+  const eq = FIL.area === "equipe", ql = FIL.area === "ql", sid = FIL.cel || FIL.area;
   $("seg-escopo").innerHTML = `<span>Mostrando <b>${E(nomeEscopo())}</b> · <b>${E(nomePer(FIL.per))}</b> · ${FIL.fr === "todas" ? "todas as frentes" : E(FN[FIL.fr])}</span>`
     + (eq ? "" : `<button type="button" class="btn" id="f-volta">Voltar à equipe</button>`);
-  $("seg-corpo").innerHTML = (eq ? segEquipe(FIL.per) : segRecorte(sid)) + (D.publico ? avisoPublico() : secColaboradores());
+  $("seg-corpo").innerHTML = (eq ? segEquipe(FIL.per) : ql ? segLotacao(FIL.per) : segRecorte(sid)) + (D.publico ? avisoPublico() : secColaboradores());
   BIND.forEach(f => f());
-  if ($("f-volta")) $("f-volta").onclick = () => { FIL.area = "equipe"; FIL.cel = ""; if (!SP.meses.includes(FIL.per)) FIL.per = SP.mes_atual; refaz(); };
-  document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => {      /* "ver" numa linha do comparativo: entra na área/célula */
+  if ($("f-volta")) $("f-volta").onclick = () => { FIL.area = "equipe"; FIL.cel = ""; FIL.lider = ""; FIL.ord = null; if (!SP.meses.includes(FIL.per)) FIL.per = SP.mes_atual; refaz(); };
+  document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => {      /* clique numa linha do comparativo: entra na área/célula */
     const id = b.dataset.go;
-    if (id[0] === "C") { const c = (SP.areas.flatMap(a => a.celulas.map(x => [a.id, x.id]))).find(x => x[1] === id); FIL.area = c[0]; FIL.cel = id; } else { FIL.area = id; FIL.cel = ""; }
-    refaz(); window.scrollTo(0, 0);
+    if (id[0] === "u") { FIL.area = "ql"; FIL.cel = id; }
+    else if (id[0] === "C") { const c = (SP.areas.flatMap(a => a.celulas.map(x => [a.id, x.id]))).find(x => x[1] === id); FIL.area = c[0]; FIL.cel = id; }
+    else { FIL.area = id; FIL.cel = ""; }
+    FIL.lim = 80; refaz(); window.scrollTo(0, 0);
   });
   if (!D.publico) colInit();
 }
@@ -568,33 +610,34 @@ function eqHist(mes, f) {      /* equipe: quantas pessoas tinham batido a meta n
 }
 
 /* ---- visão da EQUIPE (a de sempre, agora com o histórico ao lado e qualquer mês) ---- */
-function segEquipe(mes) {
-  const s = D.seguranca, cur = mes === s.competencia, T = s.total;
+function segEquipe(mes, G) {      /* G = grupo de pessoas (padrão: a equipe do controle); a mesma leitura serve à lotação do QL */
+  G = G || grupoEquipe();
+  const s = D.seguranca, cur = mes === s.competencia, T = G.T;
   const ks = FRENTES.filter(([k]) => FIL.fr === "todas" || FK[k] === FIL.fr);
   const [ano, mn] = mes.split("-").map(Number), dMes = new Date(ano, mn, 0).getDate();
   const diaBase = Number((s.base_ate || "").slice(0, 2)) || Number((D.gerado_em || "").slice(0, 2)) || 1, esp = diaBase / dMes;
   let h = sec(cur ? "Quem já bateu a meta do mês" : `Quem bateu a meta em ${mesRot(mes)}`,
     cur ? `Cada pessoa tem meta de ${s.metas.cond} registros por frente no mês. O estado compara quem já bateu a meta com o ritmo do calendário (dia ${diaBase} de ${dMes} = ${P(esp, 0)} do mês). Abaixo de cada número, a comparação com os meses anteriores <b>no mesmo ponto do mês</b>${SP.dia_ref > 0 ? ` (até o dia ${SP.dia_ref}, último dia completo da base)` : ""}.`
-        : `Mês fechado, com a equipe de hoje (${T} pessoas): cada pessoa tem meta de ${s.metas.cond} registros por frente no mês. Abaixo de cada número, a comparação com os meses anteriores.`,
+        : `Mês fechado, com ${G.com} (${T} pessoas): cada pessoa tem meta de ${s.metas.cond} registros por frente no mês. Abaixo de cada número, a comparação com os meses anteriores.`,
     `<div class="decidir k3">${ks.map(([k, nome]) => {
-      const d = eqNum(mes, k), r = T ? d.bat / T : 0, est = r >= esp ? "ok" : "at";
-      const extra = k === "rec" && cur && s.recusas_por_tipo && Object.keys(s.recusas_por_tipo).length
+      const d = G.num(mes, k), r = T ? d.bat / T : 0, est = r >= esp ? "ok" : "at";
+      const extra = G.equipe && k === "rec" && cur && s.recusas_por_tipo && Object.keys(s.recusas_por_tipo).length
         ? " · " + Object.entries(s.recusas_por_tipo).map(([t, n]) => `${n} de ${E(t)}`).join(", ") : "";
       return `<article class="dec"><div class="topo"><span class="pilar">${nome}</span>${cur ? chip(est, est === "ok" ? "No ritmo" : "Abaixo do ritmo") : chip("ne", "Mês fechado")}</div>
         <div class="kv"><div class="v num">${d.bat} <small>de ${T}</small></div><div class="l">pessoas que bateram a meta de ${s.metas[k]} no mês</div></div>
-        <p class="num">A equipe fez <b>${d.reg}</b> registros${extra}. ${cur ? "Para todos baterem a meta ainda faltam" : "Para todos baterem a meta teriam faltado"} <b>${d.faltam}</b> registros.</p>
-        ${histLinha(eqHist(mes, FK[k]), "pessoas")}</article>`;
+        <p class="num">${G.quem} fez <b>${d.reg}</b> registros${extra}. ${cur ? "Para todos baterem a meta ainda faltam" : "Para todos baterem a meta teriam faltado"} <b>${d.faltam}</b> registros.</p>
+        ${histLinha(G.hist(mes, FK[k]), "pessoas")}</article>`;
     }).join("")}</div>`);
   const dist = ks.map(([k, nome]) => {
-    const [z, p, m] = eqNum(mes, k).hist, t = T || 1, w = (x) => (x / t * 100).toFixed(2);
+    const [z, p, m] = G.num(mes, k).hist, t = T || 1, w = (x) => (x / t * 100).toFixed(2);
     const seg = (cls, x) => x ? `<span class="${cls}" style="flex:0 0 calc(${w(x)}% - 2px)">${x >= 3 ? x : ""}</span>` : "";
     return `<div class="dist"><div class="rot"><b>${nome}</b><span class="num">${T} pessoas</span></div>
       <div class="pilha" role="img" aria-label="${nome}: ${z} sem registro, ${p} com registro abaixo da meta, ${m} com a meta batida">${seg("z", z)}${seg("p", p)}${seg("m", m)}</div>
       <div class="res num">Sem registro: <b>${z}</b> · Com registro, abaixo da meta: <b>${p}</b> · Meta batida: <b>${m}</b></div></div>`;
   }).join("");
-  h += sec("Como a equipe se distribui", "Só contagens da área: ninguém é identificado. O que mais pesa é o grupo sem nenhum registro no mês.",
+  h += sec(G.equipe ? "Como a equipe se distribui" : "Como o grupo se distribui", (D.publico ? "Só contagens da área: ninguém é identificado. " : "") + "O que mais pesa é o grupo sem nenhum registro no mês.",
     `<section class="painel">${dist}${legenda([quad("var(--pale)", "Sem registro"), quad("var(--mid)", "Abaixo da meta"), quad("var(--deep)", "Meta batida")])}</section>`);
-  const serieTotal = Array.isArray(s.serie) ? s.serie : null;
+  const serieTotal = Array.isArray(G.serie) ? G.serie : null;
   const ini = serieTotal ? serieTotal.findIndex(m => !m.sem_dado) : -1;       /* meses vazios do começo saem do gráfico e ficam avisados */
   const serie = serieTotal ? (ini > 0 ? serieTotal.slice(ini) : serieTotal) : null;
   if (serie) {
@@ -603,12 +646,12 @@ function segEquipe(mes) {
     const par = serie.find(m => m.parcial), fechados = serie.filter(m => !m.parcial && !m.sem_dado);
     const acima = (par && fechados.length) ? FRENTES.map(([k, n]) => { const mx = Math.max(...fechados.map(m => m[k])); return par[k] > mx ? `${n}: ${par[k]} (melhor mês fechado: ${mx})` : null; }).filter(Boolean) : [];
     const leitura = acima.length ? ` <b>Mês em curso (dia ${diaBase} de ${dMes}) já acima de todos os meses fechados:</b> ${acima.join("; ")}.` : "";
-    const antes = ini > 0 ? ` Os ${ini} meses anteriores a ${mmAno(serie[0].comp)} não têm nenhum registro da equipe na base e ficaram de fora.` : "";
-    h += sec("Evolução nos últimos meses", `Pessoas que bateram a meta em cada mês, <b>da equipe de hoje</b> (${T}). A linha tracejada é a média dos meses fechados. Mês sem nenhum registro da equipe inteira aparece como “–” (sem dado): ${T} pessoas sem uma única marcação indicam falta de base, não desempenho.${antes}${leitura}`,
+    const antes = ini > 0 ? ` Os ${ini} meses anteriores a ${mmAno(serie[0].comp)} não têm nenhum registro ${G.doGrupo} na base e ficaram de fora.` : "";
+    h += sec("Evolução nos últimos meses", `Pessoas que bateram a meta em cada mês, <b>${G.de}</b> (${T}). A linha tracejada é a média dos meses fechados. Mês sem nenhum registro ${G.inteiro} aparece como “–” (sem dado): ${T} pessoas sem uma única marcação indicam falta de base, não desempenho.${antes}${leitura}`,
       `<div class="tres">${ks.map(([k, nome]) => {
         const its = serie.map(m => m.sem_dado ? {rot: mm(m.comp), v: null, tip: `<b>${mm(m.comp)}</b><br>sem registro na base`}
           : {rot: mm(m.comp), v: m[k], rotulo: String(m[k]), cor: m.parcial ? "var(--mid)" : "var(--deep)",
-             tip: `<b>${mm(m.comp)}${m.parcial ? " (mês em curso)" : ""}</b><br>${m[k]} de ${m.n} bateram a meta<br>${m["regs_" + k]} registros da equipe`});
+             tip: `<b>${mm(m.comp)}${m.parcial ? " (mês em curso)" : ""}</b><br>${m[k]} de ${m.n} bateram a meta<br>${m["regs_" + k]} registros ${G.doGrupo}`});
         const med = fechados.length >= 2 ? soma(fechados.map(m => m[k])) / fechados.length : null;
         return `<section class="painel"><h3>${nome}</h3><div class="nota">Pessoas que bateram a meta${med != null ? ` · média dos meses fechados: <b>${NF(med, 1)}</b>` : ""}</div>` +
           colunas({itens: its, yMax: Math.max(4, ...serie.map(m => m[k] || 0)), yFmt: v => NF(v), passoX: 2, W: 270, H: 210, mL: 28, mR: 8, aria: `${nome}: pessoas que bateram a meta por mês`,
@@ -616,13 +659,79 @@ function segEquipe(mes) {
           tabela(["Mês", "Bateram a meta", "Registros"], serie.map(m => [mm(m.comp), m.sem_dado ? "sem dado" : m[k] + " de " + m.n, m.sem_dado ? "—" : m["regs_" + k]])) + `</section>`;
       }).join("")}</div>${legenda([quad("var(--deep)", "Mês fechado"), quad("var(--mid)", "Mês em curso (parcial)"), `<span><b>–</b>sem dado</span>`])}`);
   } else h += sec("Evolução nos últimos meses", "", semDado("Histórico mensal indisponível nesta geração"));
-  if (!D.publico && s.por_turma && cur) {
+  if (G.equipe && !D.publico && s.por_turma && cur) {
     const cel = (v, n) => `<div class="cel"><div class="barra"><i style="width:${n ? v / n * 100 : 0}%"></i></div><span class="num">${v}/${n}</span></div>`;
     h += sec("Por turma (só local)", "O detalhe por turma não vai ao portal público (decisão de 30/09/2026).",
       `<section class="painel"><table class="t"><thead><tr><th>Turma</th><th>Condição</th><th>Atitude Segura</th><th>Recusa</th><th class="n">Sem nenhum registro</th></tr></thead><tbody>` +
       Object.entries(s.por_turma).map(([t, v]) => `<tr><td><b>${E(t)}</b></td><td>${cel(v.cond, v.n)}</td><td>${cel(v.ats, v.n)}</td><td>${cel(v.rec, v.n)}</td><td class="n num"><b>${v.zero}</b> de ${v.n}</td></tr>`).join("") + `</tbody></table></section>`);
   }
   return h;
+}
+
+/* ---- grupos por PESSOA a partir das linhas (lotação do QL): a conta é feita aqui, com a regra da equipe
+        (vale tudo o que a pessoa registrou, em qualquer local) ---- */
+let TOT_ = null;
+function totais() {          /* pessoa -> mês -> [c, a, r, c até o dia, a até o dia, r até o dia] */
+  if (TOT_) return TOT_;
+  const t = new Map();
+  SP.linhas.forEach(([p, m, ci, f, n, nd]) => { let a = t.get(p); if (!a) { a = {}; t.set(p, a); } const x = a[m] || (a[m] = [0, 0, 0, 0, 0, 0]); x[f] += n; x[3 + f] += nd || 0; });
+  return (TOT_ = t);
+}
+function grupoDe(idxs) {     /* idxs = posições em SP.pessoas; devolve, por mês e frente, o mesmo que a equipe tem */
+  const T = totais(), M = [SP.metas.c, SP.metas.a, SP.metas.r], meses = {};
+  SP.meses.forEach((mes, mi) => {
+    const o = {sem: 0};
+    idxs.forEach(p => { const x = (T.get(p) || {})[mi]; if (!x || x[0] + x[1] + x[2] === 0) o.sem++; });
+    ["c", "a", "r"].forEach((f, fi) => {
+      let bat = 0, reg = 0, batd = 0, regd = 0, z = 0, ab = 0, falt = 0;
+      idxs.forEach(p => {
+        const x = (T.get(p) || {})[mi], v = x ? x[fi] : 0, d = x ? x[3 + fi] : 0;
+        reg += v; regd += d;
+        if (v >= M[fi]) bat++; else if (v > 0) ab++; else z++;
+        if (d >= M[fi]) batd++;
+        falt += Math.max(0, M[fi] - v);
+      });
+      o[f] = {bat, reg, bat_dia: batd, reg_dia: regd, hist: [z, ab, bat], faltam: falt};
+    });
+    meses[mes] = o;
+  });
+  return {total: idxs.length, meses};
+}
+const grupoEquipe = () => ({equipe: true, T: D.seguranca.total, num: eqNum, hist: eqHist, serie: D.seguranca.serie,
+                            quem: "A equipe", com: "a equipe de hoje", de: "da equipe de hoje", inteiro: "da equipe inteira", doGrupo: "da equipe"});
+function grupoLotacao(idxs) {
+  const g = grupoDe(idxs);
+  const hist = (mes, f) => {
+    const cur = mes === SP.mes_atual, i = SP.meses.indexOf(mes);
+    if (i < 0 || (cur && !(SP.dia_ref > 0))) return null;
+    const campo = cur ? "bat_dia" : "bat", gg = (m) => g.meses[m][f][campo], ult = SP.meses.slice(Math.max(0, i - 3), i);
+    return {at: gg(mes), ant: i > 0 ? gg(SP.meses[i - 1]) : null, antRot: i > 0 ? mesRot(SP.meses[i - 1]) : null,
+            media: ult.length >= 2 ? soma(ult.map(gg)) / ult.length : null, mRot: ult.length >= 2 ? `${mesRot(ult[0])} a ${mesRot(ult[ult.length - 1])}` : null, ate: cur ? SP.dia_ref : null};
+  };
+  return {equipe: false, T: g.total, g, num: (mes, k) => g.meses[mes][FK[k]], hist,
+          serie: SP.meses.map(m => ({comp: m, n: g.total, cond: g.meses[m].c.bat, ats: g.meses[m].a.bat, rec: g.meses[m].r.bat,
+                                     regs_cond: g.meses[m].c.reg, regs_ats: g.meses[m].a.reg, regs_rec: g.meses[m].r.reg, parcial: m === SP.mes_atual, sem_dado: false})),
+          quem: "O grupo", com: "as pessoas que estão hoje no QL", de: "das pessoas que estão hoje no QL", inteiro: "do grupo inteiro", doGrupo: "do grupo"};
+}
+function segLotacao(mes) {
+  const q = SP.ql, idxs = qlIdx(), nAf = qlIdx({afast: "so"}).length;
+  const nota = `<div class="aviso-local"><b>Lotação pelo QL do RH</b> (aba “${E(q.aba)}”, arquivo de ${E(q.arquivo_de || "—")}): cada pessoa conta na célula em que está lotada, com tudo o que registrou, em qualquer local. `
+    + (nAf ? `<b>${nAf}</b> ${nAf === 1 ? "pessoa afastada fica" : "pessoas afastadas ficam"} fora da conta. ` : "")
+    + (q.temporarios ? `Os ${q.temporarios} temporários não entram (não aparecem no Solvace). ` : "")
+    + (q.nota ? `<b>Atenção:</b> usando ${E(q.fonte)} (${E(q.nota)}).` : "") + `</div>`;
+  if (!idxs.length) return nota + `<div class="vazio" style="margin-top:14px"><b>Nenhuma pessoa ativa</b> nesta combinação de célula e líder.</div>`;
+  let h = nota + segEquipe(mes, grupoLotacao(idxs));
+  if (!FIL.cel) h += tabelaCelulasQL(mes);
+  return h;
+}
+function tabelaCelulasQL(mes) {
+  const fs = FIL.fr === "todas" ? ["c", "a", "r"] : [FIL.fr];
+  const linhas = SP.ql.unidades.map((nome, i) => { const idxs = qlIdx({cel: "u" + i}); return idxs.length ? {i, nome, n: idxs.length, g: grupoDe(idxs).meses[mes]} : null; }).filter(Boolean);
+  if (linhas.length < 2) return "";
+  const barra = (v, n) => `<div class="cel"><div class="barra"><i style="width:${n ? v / n * 100 : 0}%"></i></div><span class="num">${v}/${n}</span></div>`;
+  return sec("Por célula (lotação)", "Em cada célula, quantas pessoas bateram a meta em cada frente e quantas ainda não registraram nada no mês. Clique no nome para abrir a célula.",
+    `<section class="painel"><div style="overflow-x:auto"><table class="t"><thead><tr><th>Célula</th><th class="n">Pessoas</th>${fs.map(f => `<th>${FN[f]}</th>`).join("")}<th class="n">Sem nenhum registro</th></tr></thead><tbody>${
+      linhas.map(l => `<tr><td><button type="button" class="linkbtn" data-go="u${l.i}">${E(l.nome)}</button></td><td class="n num">${l.n}</td>${fs.map(f => `<td>${barra(l.g[f].bat, l.n)}</td>`).join("")}<td class="n num"><b>${l.g.sem}</b> de ${l.n}</td></tr>`).join("")}</tbody></table></div></section>`);
 }
 
 /* ---- recorte por ÁREA / CÉLULA / planta, num mês ou numa janela de meses ---- */
@@ -687,69 +796,102 @@ function tabelaComparativo(sid, fs, per, um) {
     `<section class="painel"><div style="overflow-x:auto"><table class="t"><thead><tr><th>${cab}</th><th>Registros</th>${fs.map(f => `<th class="n">${FN[f]}</th>`).join("")}<th class="n">Pessoas</th><th class="n">Na meta (${fs.map(f => FN[f][0]).join(" · ")})</th>${um ? `<th class="n">vs mês anterior${per === SP.mes_atual ? " (mesmo ponto)" : ""}</th>` : ""}</tr></thead><tbody>${dados.map(linha).join("")}</tbody></table></div></section>`);
 }
 
-/* ---- colaboradores (SÓ na versão local: tem nome) ---- */
+/* ---- por colaborador (SÓ na versão local: tem nome). Fica RECOLHIDO e abre com um clique, para a tela ficar discreta ---- */
 function secColaboradores() {
   if (!SP.pessoas) return "";
-  const eq = FIL.area === "equipe", turmas = [...new Set(SP.pessoas.filter(p => p.eq && p.t).map(p => p.t))].sort();
+  const eq = FIL.area === "equipe", ql = FIL.area === "ql", {rows} = colLinhas();
+  const ativos = rows.filter(x => !x.af), nz = ativos.filter(x => x.sit === "sem").length;
+  const turmas = [...new Set(SP.pessoas.filter(p => p.eq && p.t).map(p => p.t))].sort();
+  const celsEq = QLOK ? [...new Set(SP.pessoas.filter(p => p.eq && p.ql).map(p => p.u))].sort((a, b) => a - b) : [];
+  const nAf = ql ? qlIdx({afast: "so"}).length : 0;
   const o = (v, t, at) => `<option value="${E(v)}"${v === at ? " selected" : ""}>${E(t)}</option>`;
-  return sec("Colaboradores (só local)", eq ? `Os ${D.seguranca.total} da equipe, inclusive quem não registrou nada. Conta tudo o que a pessoa registrou, em qualquer célula (regra do controle da equipe).`
-      : `Quem registrou algo neste recorte e período, com o que registrou <b>dentro</b> dele. Nomes só aparecem aqui, na Central do Coordenador.`,
-    `<section class="painel"><div class="colfil"><input id="c-busca" type="search" placeholder="Buscar por nome" aria-label="Buscar colaborador" value="${E(FIL.busca)}">
+  const sub = eq ? `Os ${D.seguranca.total} da equipe, inclusive quem não registrou nada. Conta tudo o que a pessoa registrou, em qualquer local (regra do controle da equipe).`
+    : ql ? `Todas as pessoas ativas do recorte pelo QL do RH, inclusive quem não registrou nada. A lista abre ordenada por quem está há mais tempo sem registrar.`
+    : `Quem registrou algo neste recorte e período, com o que registrou <b>dentro</b> dele.`;
+  const cc = eq && QLOK ? SP.ql.conciliacao : null;
+  const conc = cc ? `<p class="peq" style="margin:12px 0 0">QL do RH: <b>${cc.no_ql}</b> pessoas sob a liderança da equipe (${cc.afastados} ${cc.afastados === 1 ? "afastada" : "afastadas"}) · controle dos lembretes: <b>${cc.no_controle}</b>.`
+    + (cc.normais_fora_do_controle.length ? ` Normal no QL e fora do controle: <b>${cc.normais_fora_do_controle.map(E).join("; ")}</b>.` : "")
+    + (cc.controle_fora_do_ql.length ? ` No controle e fora do QL da equipe: <b>${cc.controle_fora_do_ql.map(E).join("; ")}</b>.` : "") + `</p>` : "";
+  return sec("Por colaborador (só local)", sub + " Os nomes só aparecem aqui, na Central do Coordenador.",
+    `<details class="colab" id="col-det"${FIL.colAberto ? " open" : ""}><summary><span class="btn">Ver por colaborador</span>
+      <span class="num">${ativos.length} ${ativos.length === 1 ? "pessoa" : "pessoas"} · <b>${nz}</b> sem nenhum registro no período${porPessoa() ? "" : " (só aparece quem registrou)"}</span></summary>
+    <section class="painel"><div class="colfil"><input id="c-busca" type="search" placeholder="Buscar por nome" aria-label="Buscar colaborador" value="${E(FIL.busca)}">
       <select id="c-sit" aria-label="Situação">${o("", "Todas as situações", FIL.sit)}${o("sem", "Sem nenhum registro", FIL.sit)}${o("falta", "Alguma meta ainda não batida", FIL.sit)}${o("tudo", "Todas as metas batidas", FIL.sit)}</select>
       ${eq && turmas.length ? `<select id="c-turma" aria-label="Turma">${o("", "Todas as turmas", FIL.turma)}${turmas.map(t => o(t, "Turma " + t, FIL.turma)).join("")}</select>` : ""}
-      <button type="button" class="btn" id="c-csv">Baixar CSV</button></div><div id="col-tab" style="overflow-x:auto"></div></section>`);
+      ${eq && celsEq.length > 1 ? `<select id="c-cel" aria-label="Célula">${o("", "Todas as células", FIL.celEq)}${celsEq.map(u => o(String(u), SP.ql.unidades[u], FIL.celEq)).join("")}</select>` : ""}
+      ${ql && nAf ? `<label class="chk"><input type="checkbox" id="c-af"${FIL.afast ? " checked" : ""}> mostrar afastados (${nAf})</label>` : ""}
+      <button type="button" class="btn" id="c-csv">Baixar CSV</button></div><div id="col-tab" style="overflow-x:auto"></div>${conc}</section></details>`);
 }
 function colInit() {
   if (!$("c-busca")) return;
+  $("col-det").ontoggle = () => { FIL.colAberto = $("col-det").open; };
   $("c-busca").oninput = () => { FIL.busca = $("c-busca").value; FIL.lim = 80; colTab(); };
   $("c-sit").onchange = () => { FIL.sit = $("c-sit").value; FIL.lim = 80; colTab(); };
   if ($("c-turma")) $("c-turma").onchange = () => { FIL.turma = $("c-turma").value; FIL.lim = 80; colTab(); };
+  if ($("c-cel")) $("c-cel").onchange = () => { FIL.celEq = $("c-cel").value; FIL.lim = 80; colTab(); };
+  if ($("c-af")) $("c-af").onchange = () => { FIL.afast = $("c-af").checked; FIL.lim = 80; colTab(); };
   colTab();
 }
 function colLinhas() {
-  const eq = FIL.area === "equipe", ms = eq ? [FIL.per] : mesesDe(FIL.per), mset = new Set(ms.map(m => SP.meses.indexOf(m)));
-  const celOk = (eq || FIL.area === "P") ? null : new Set(SP.celulas.map((c, i) => (FIL.cel ? c.id === FIL.cel : c.area === FIL.area) ? i : -1).filter(i => i >= 0));
-  const ag = new Map();
+  const eq = FIL.area === "equipe", ql = FIL.area === "ql", lista = eq || ql;
+  const ms = lista ? [FIL.per] : mesesDe(FIL.per), mset = new Set(ms.map(m => SP.meses.indexOf(m)));
+  const celOk = (lista || FIL.area === "P") ? null : new Set(SP.celulas.map((c, i) => (FIL.cel ? c.id === FIL.cel : c.area === FIL.area) ? i : -1).filter(i => i >= 0));
+  /* nos recortes com lista, QUEM aparece vem do cadastro (equipe ou QL), não dos registros: assim quem está zerado aparece */
+  const quem = eq ? SP.pessoas.map((p, i) => p.eq ? i : -1).filter(i => i >= 0) : ql ? qlIdx({afast: FIL.afast ? "sim" : "nao"}) : null;
+  const dentro = quem ? new Set(quem) : null, ag = new Map();
   SP.linhas.forEach(([p, mi, ci, f, n]) => {
-    if (!mset.has(mi) || (celOk && !celOk.has(ci)) || (eq && !SP.pessoas[p].eq)) return;
+    if (!mset.has(mi) || (celOk && !celOk.has(ci)) || (dentro && !dentro.has(p))) return;
     let a = ag.get(p); if (!a) { a = {}; ag.set(p, a); }
     (a[mi] = a[mi] || [0, 0, 0])[f] += n;
   });
-  const M = [SP.metas.c, SP.metas.a, SP.metas.r], fi = FIL.fr === "todas" ? [0, 1, 2] : ["c", "a", "r"].indexOf(FIL.fr) >= 0 ? [["c", "a", "r"].indexOf(FIL.fr)] : [0, 1, 2];
+  const M = [SP.metas.c, SP.metas.a, SP.metas.r], fi = FIL.fr === "todas" ? [0, 1, 2] : [["c", "a", "r"].indexOf(FIL.fr)];
+  /* histórico curto (só com lista): total por mês nos 4 meses até o escolhido e há quantos meses seguidos a pessoa não registra */
+  const T = lista ? totais() : null, iSel = SP.meses.indexOf(FIL.per), jan = lista ? SP.meses.slice(Math.max(0, iSel - 3), iSel + 1) : [];
   const mk = (p) => {
-    const a = ag.get(p) || {}, tot = [0, 0, 0], nm = [0, 0, 0];
+    const a = ag.get(p) || {}, tot = [0, 0, 0], nm = [0, 0, 0], P_ = SP.pessoas[p];
     Object.values(a).forEach(v => v.forEach((n, f) => { tot[f] += n; if (n >= M[f]) nm[f]++; }));
     const s = soma(fi.map(f => tot[f])), nb = fi.filter(f => ms.length === 1 ? tot[f] >= M[f] : nm[f] === ms.length).length;
-    return {p, nome: SP.pessoas[p].n, turma: SP.pessoas[p].t, tot, nm, soma: s, nb, nf: fi.length, sit: s === 0 ? "sem" : nb === fi.length ? "tudo" : "falta"};
+    let h4 = null, seq = null, nunca = false;
+    if (lista) {
+      const tp = T.get(p) || {}, tm = (i) => { const x = tp[i]; return x ? soma(fi.map(f => x[f])) : 0; };
+      h4 = jan.map(m => tm(SP.meses.indexOf(m)));
+      seq = 0; for (let i = iSel; i >= 0 && tm(i) === 0; i--) seq++;
+      nunca = seq === iSel + 1;
+    }
+    return {p, nome: P_.n, turma: P_.t, u: P_.ql ? P_.u : -1, un: P_.ql ? SP.ql.unidades[P_.u] : "", lid: P_.ql ? SP.ql.lideres[P_.l] : "", cargo: P_.cg || "", af: !!P_.af,
+            tot, nm, soma: s, nb, nf: fi.length, sit: s === 0 ? "sem" : nb === fi.length ? "tudo" : "falta", h4, seq, nunca};
   };
-  let rows = [];
-  if (eq) SP.pessoas.forEach((x, p) => { if (x.eq) rows.push(mk(p)); }); else ag.forEach((_, p) => rows.push(mk(p)));
-  return {rows, ms, M, fi, eq};
+  const rows = quem ? quem.map(mk) : [...ag.keys()].map(mk);
+  return {rows, ms, M, fi, eq, ql, lista, jan};
 }
 function colTab() {
   const el = $("col-tab"); if (!el) return;
-  const {rows, ms, M, fi, eq} = colLinhas(), q = norm(FIL.busca.trim());
-  let r = rows.filter(x => (!q || norm(x.nome).includes(q)) && (!FIL.turma || x.turma === FIL.turma)
+  const {rows, ms, M, fi, eq, ql, lista, jan} = colLinhas(), q = norm(FIL.busca.trim()), comQL = QLOK && lista;
+  const r = rows.filter(x => (!q || norm(x.nome).includes(q)) && (!eq || !FIL.turma || x.turma === FIL.turma) && (!eq || !FIL.celEq || String(x.u) === FIL.celEq)
     && (!FIL.sit || (FIL.sit === "falta" ? x.sit !== "tudo" : x.sit === FIL.sit)));
-  const ord = FIL.ord || {k: "soma", d: eq ? 1 : -1};
-  const chave = {nome: x => norm(x.nome), turma: x => x.turma || "~", c: x => x.tot[0], a: x => x.tot[1], r: x => x.tot[2], soma: x => x.soma, sit: x => x.nb};
-  r.sort((a, b) => { const x = chave[ord.k](a), y = chave[ord.k](b); return (x < y ? -1 : x > y ? 1 : norm(a.nome) < norm(b.nome) ? -1 : 1) * ord.d; });
-  const mostra = r.slice(0, FIL.lim), um = ms.length === 1;
+  const ord = FIL.ord || (lista ? {k: "seq", d: -1} : {k: "soma", d: -1});
+  const chave = {nome: x => norm(x.nome), turma: x => x.turma || "~", un: x => x.un || "~", lid: x => x.lid || "~", c: x => x.tot[0], a: x => x.tot[1], r: x => x.tot[2],
+                 soma: x => x.soma, sit: x => x.nb, seq: x => (x.seq || 0) * 1000 - x.soma};
+  r.sort((a, b) => { const x = chave[ord.k](a), y = chave[ord.k](b); return x < y ? -ord.d : x > y ? ord.d : (norm(a.nome) < norm(b.nome) ? -1 : 1); });
+  const mostra = r.slice(0, FIL.lim), um = ms.length === 1, cur = FIL.per === SP.mes_atual;
   const th = (k, t, cls = "") => `<th class="ord ${cls}" data-o="${k}" aria-sort="${ord.k === k ? (ord.d > 0 ? "ascending" : "descending") : "none"}">${t}${ord.k === k ? (ord.d > 0 ? " ▲" : " ▼") : ""}</th>`;
-  const cel = (x, f) => { const n = x.tot[f], b = um ? n >= M[f] : false; return `<td class="n num${n ? "" : " z"}" data-l="${FN["car"[f]]}">${n}${b ? " ✓" : ""}${um ? "" : `<span class="mini">${x.nm[f]} de ${ms.length} meses na meta</span>`}</td>`; };
-  const sit = (x) => x.sit === "sem" ? chip("cr", "Sem registro") : x.nb === x.nf ? chip("ok", um ? "Meta batida" : "Meta em todos os meses") : chip("at", um ? `Bateu ${x.nb} de ${x.nf}` : `${x.nb} de ${x.nf} frentes em todos os meses`);
-  const nb = r.filter(x => x.sit === "tudo").length, nz = r.filter(x => x.sit === "sem").length;
-  el.innerHTML = `<div class="nota num">${r.length} ${r.length === 1 ? "pessoa" : "pessoas"} · ${nb} com todas as metas · ${nz} sem nenhum registro${eq ? "" : " (quem não registrou não aparece nesta lista)"}</div>
-    <table class="t"><thead><tr>${th("nome", "Colaborador")}${eq ? th("turma", "Turma") : ""}${fi.includes(0) ? th("c", "Condição", "n") : ""}${fi.includes(1) ? th("a", "Atitude Segura", "n") : ""}${fi.includes(2) ? th("r", "Recusa", "n") : ""}${th("soma", "Total", "n")}${th("sit", "Situação")}</tr></thead>
-    <tbody>${mostra.map(x => `<tr><td><b>${E(x.nome)}</b></td>${eq ? `<td>${E(x.turma || "—")}</td>` : ""}${fi.map(f => cel(x, f)).join("")}<td class="n num"><b>${x.soma}</b></td><td>${sit(x)}</td></tr>`).join("")}</tbody></table>
+  const cel = (x, f) => { const n = x.tot[f], b = um ? n >= M[f] : false; return `<td class="n num${n ? "" : " z"}">${n}${b ? " ✓" : ""}${um ? "" : `<span class="mini">${x.nm[f]} de ${ms.length} meses na meta</span>`}</td>`; };
+  const sit = (x) => x.af ? chip("ne", "Afastado") : x.sit === "sem" ? chip("cr", "Sem registro") : x.nb === x.nf ? chip("ok", um ? "Meta batida" : "Meta em todos os meses") : chip("at", um ? `Bateu ${x.nb} de ${x.nf}` : `${x.nb} de ${x.nf} frentes em todos os meses`);
+  const ha = (x) => x.af ? "—" : !x.seq ? "—" : x.nunca ? `<b>nenhum desde ${mesRot(SP.meses[0])}</b>` : x.seq === 1 ? (cur ? "só este mês" : "1 mês") : `<b>${x.seq} meses</b>`;
+  const h4 = (x) => x.h4.map((v, i) => `<i class="hq${v ? "" : " z"}" title="${mesRot(jan[i])}: ${v} ${v === 1 ? "registro" : "registros"}">${v}</i>`).join("");
+  const at = r.filter(x => !x.af), nb = at.filter(x => x.sit === "tudo").length, nz = at.filter(x => x.sit === "sem").length;
+  el.innerHTML = `<div class="nota num">${at.length} ${at.length === 1 ? "pessoa" : "pessoas"} · ${nb} com todas as metas · ${nz} sem nenhum registro${lista ? "" : " (quem não registrou não aparece nesta lista)"}${r.length > at.length ? ` · ${r.length - at.length} afastados (fora da conta)` : ""}</div>
+    <table class="t"><thead><tr>${th("nome", "Colaborador")}${eq ? th("turma", "Turma") : ""}${comQL ? th("un", "Célula") : ""}${comQL && ql && !FIL.lider ? th("lid", "Líder") : ""}${fi.includes(0) ? th("c", "Condição", "n") : ""}${fi.includes(1) ? th("a", "Atitude Segura", "n") : ""}${fi.includes(2) ? th("r", "Recusa", "n") : ""}${th("soma", "Total", "n")}${lista ? `<th>${jan.map(m => MES3[Number(m.slice(5, 7)) - 1]).join(" · ")}</th>` + th("seq", "Sem registrar há") : ""}${th("sit", "Situação")}</tr></thead>
+    <tbody>${mostra.map(x => `<tr${x.af ? ' class="af"' : ""}><td><b>${E(x.nome)}</b>${comQL && x.cargo ? `<span class="mini">${E(x.cargo)}</span>` : ""}</td>${eq ? `<td>${E(x.turma || "—")}</td>` : ""}${comQL ? `<td>${E(x.un || "—")}</td>` : ""}${comQL && ql && !FIL.lider ? `<td>${E(x.lid || "—")}</td>` : ""}${fi.map(f => cel(x, f)).join("")}<td class="n num"><b>${x.soma}</b></td>${lista ? `<td class="nw">${h4(x)}</td><td class="nw">${ha(x)}</td>` : ""}<td>${sit(x)}</td></tr>`).join("")}</tbody></table>
     ${r.length > mostra.length ? `<p style="margin-top:10px"><button type="button" class="btn" id="c-mais">Mostrar todas (${r.length})</button></p>` : ""}`;
-  el.querySelectorAll("[data-o]").forEach(t => t.onclick = () => { const k = t.dataset.o; FIL.ord = {k, d: ord.k === k ? -ord.d : (k === "nome" || k === "turma" ? 1 : -1)}; colTab(); });
+  el.querySelectorAll("[data-o]").forEach(t => t.onclick = () => { const k = t.dataset.o; FIL.ord = {k, d: ord.k === k ? -ord.d : (["nome", "turma", "un", "lid"].includes(k) ? 1 : -1)}; colTab(); });
   if ($("c-mais")) $("c-mais").onclick = () => { FIL.lim = 1e9; colTab(); };
   $("c-csv").onclick = () => {
-    const cab = ["Colaborador", ...(eq ? ["Turma"] : []), ...fi.map(f => FN["car"[f]]), "Total", "Situação"];
-    const lin = r.map(x => [x.nome, ...(eq ? [x.turma] : []), ...fi.map(f => x.tot[f]), x.soma, x.sit === "sem" ? "Sem registro" : x.nb === x.nf ? "Meta batida" : `Bateu ${x.nb} de ${x.nf}`]);
+    const sitT = (x) => x.af ? "Afastado" : x.sit === "sem" ? "Sem registro" : x.nb === x.nf ? "Meta batida" : `Bateu ${x.nb} de ${x.nf}`;
+    const cab = ["Colaborador", ...(eq ? ["Turma"] : []), ...(comQL ? ["Célula", "Líder", "Cargo"] : []), ...fi.map(f => FN["car"[f]]), "Total", ...(lista ? ["Meses seguidos sem registro"] : []), "Situação"];
+    const lin = r.map(x => [x.nome, ...(eq ? [x.turma] : []), ...(comQL ? [x.un, x.lid, x.cargo] : []), ...fi.map(f => x.tot[f]), x.soma, ...(lista ? [x.seq] : []), sitT(x)]);
     const csv = [cab, ...lin].map(l => l.map(c => `"${String(c ?? "").replace(/"/g, '""')}"`).join(";")).join("\r\n");
-    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["﻿" + csv], {type: "text/csv;charset=utf-8"}));
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([String.fromCharCode(0xFEFF) + csv], {type: "text/csv;charset=utf-8"}));
     a.download = `seguranca_colaboradores_${FIL.area}_${FIL.per}.csv`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
   };
 }
@@ -1026,6 +1168,13 @@ function fontesELimites() {
       lim.push("<b>Comparação com o histórico:</b> no mês em curso, os meses anteriores são cortados no mesmo dia (a base do Solvace é das 07h, então o último dia completo é o de ontem). “Acima/Perto/Abaixo do histórico” compara com a média dos 3 meses anteriores; “perto” é até 20% abaixo.");
       lim.push(`<b>Grupo pequeno:</b> recorte com menos de ${SP.k_min} pessoas no mês mostra os registros, mas não a contagem de pessoas${D.publico ? ", para não identificar ninguém" : ""}.`);
       if (D.publico && !SP.publico_todas) lim.push("<b>Outras áreas da planta</b> ficam na Central do Coordenador; este portal mostra a Trefila 2 e suas células.");
+      if (QLOK) {
+        const q = SP.ql;
+        r.push(linha("Lotação, líder e situação (QL)", `Planilha do RH no SharePoint · aba “${E(q.aba)}”`, E(q.arquivo_de || "—"), q.nota ? "Cópia local" : "Atual", q.nota ? "at" : "ok"));
+        lim.push(`<b>Lotação (QL do RH):</b> ${q.ativos} pessoas ativas e ${q.afastados} afastadas na Trefila 2. Afastados e os ${q.temporarios} temporários ficam fora da conta. A lotação e a situação são as de hoje, aplicadas também aos meses anteriores.`);
+        lim.push(`<b>Quem é quem:</b> o Solvace traz o nome, não a matrícula. O nome completo casa direto com o QL; nome abreviado só casa quando aponta para uma única pessoa e os registros são da Trefila 2 (${q.casados.exato} nomes casaram pelo nome completo e ${q.casados.abreviado} pelo abreviado, além da equipe do controle). Um nome que não casar aparece como “sem registro”: vale conferir antes de cobrar.`);
+        lim.push("<b>“Sem registrar há”</b> conta os meses seguidos sem nenhum registro até o período escolhido, dentro da base (desde " + mesRot(SP.meses[0]) + ").");
+      }
     }
     if (ok(s) && !s.base_ok) lim.push("<b>Base defasada:</b> o Solvace não atualizou no prazo; os números abaixo podem estar atrás da realidade.");
   } else if (PAG === "perdas") {

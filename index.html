@@ -52,6 +52,8 @@ body{
   white-space:nowrap;
 }
 .selo b{display:block;color:#c9d8e5;font-weight:600;padding-bottom:3px}
+.selo span{display:block;padding-top:3px}
+.selo .velho{color:#f5b942;font-weight:600}
 
 .abas{
   display:flex;gap:2px;padding:0 22px;max-width:1500px;margin:0 auto;
@@ -149,7 +151,7 @@ main{flex:1 1 auto;min-height:0;position:relative}
       <b>Portal Trefila&nbsp;2</b>
       <span>Cosigua &middot; Produção</span>
     </div>
-    <div class="selo"><b>Dados</b><span id="selo-dados">—</span></div>
+    <div class="selo"><b>Dados</b><span id="selo-dados">—</span><span id="selo-pub"></span></div>
   </div>
   <nav class="abas" role="tablist" aria-label="Dimensões">
     <button class="aba" role="tab" data-view="visao" aria-selected="false" id="aba-visao" hidden>Visão da área</button>
@@ -438,8 +440,32 @@ main{flex:1 1 auto;min-height:0;position:relative}
   });
 
   // selo de atualização (injetado na publicação)
-  var selo = "Backlog 20/10/2026 às 14:39";
-  if(selo) document.getElementById("selo-dados").textContent = selo;
+  // 20/10/2026: antes só dizia "Backlog <data>" e parecia que o portal inteiro estava velho. Agora mostra a data
+  // do backlog (SAP) e a da publicação, e avisa na tela quando o backlog passou de um dia útil sem atualizar
+  // (a conta é feita no navegador de quem abre, não na hora de publicar). Cada aba traz o carimbo da própria fonte.
+  var selo = {"pub": "20/10/2026 14:51", "backlog": "20/10/2026 às 14:39", "backlog_iso": "2026-10-20T14:39:00"};
+  if(selo){
+    var elD = document.getElementById("selo-dados"), elP = document.getElementById("selo-pub");
+    if(typeof selo === "string"){ elD.textContent = selo; }
+    else {
+      var diasUteis = function(de, ate){
+        var n = 0, d = new Date(de.getFullYear(), de.getMonth(), de.getDate());
+        var fim = new Date(ate.getFullYear(), ate.getMonth(), ate.getDate());
+        while(d < fim){ d.setDate(d.getDate() + 1); var w = d.getDay(); if(w !== 0 && w !== 6) n++; }
+        return n;
+      };
+      if(selo.backlog){
+        elD.textContent = "Backlog SAP " + selo.backlog;
+        var bi = selo.backlog_iso ? new Date(selo.backlog_iso) : null;
+        if(bi && !isNaN(bi) && diasUteis(bi, new Date()) >= 2){
+          elD.textContent += " · defasado";
+          elD.className = "velho";
+          elD.title = "O backlog do SAP não foi atualizado há mais de um dia útil. As outras abas têm o próprio carimbo.";
+        }
+      }
+      if(selo.pub) elP.textContent = "Publicado " + selo.pub;
+    }
+  }
 
   mostrar((location.hash || "#inicio").slice(1));
 })();
